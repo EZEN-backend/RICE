@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="rice:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>rice</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="rice-1.0.0-BUILD-SNAPSHOT.war">
+      <element id="artifact" artifact-name="rice:war exploded" />
+    </root>
+  </artifact>
+</component>
