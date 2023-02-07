@@ -36,6 +36,7 @@
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.2.8" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.2" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.0.7" />
+          <element id="library" level="project" name="Maven: opensymphony:sitemesh:2.4.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">
