@@ -12,6 +12,7 @@
 		body {
 			margin:0px;
 		}
+		
 		#topmsg {
 			width:100%;
 			height:40px;
@@ -28,15 +29,17 @@
 		}
 		
 		header {
-			width:1400px;
+			width:100%;
 			height:50px;
 			margin:auto;
 			font-size:14px;
 			position:relative;
+			background:yellow;
 		}
 		body #left {
-			float:left;
-			margin-top:-10px;
+			position:absolute;
+			left:30px;
+			z-index:1;
 		}
 		body #mymenu {
 			position:relative;
@@ -70,15 +73,9 @@
 			color:black;
 		}
 		
-		nav {
-			width:100%;
-			height:40px;
-			margin:auto;
-			text-align:center;
-		}
 		
 		footer {
-			width:1000px;
+			width:100%;
 			height:100px;
 			margin:auto;
 		}
@@ -118,41 +115,39 @@
 		  background:#EFEFEF;
 		}
 		
-		header ul {
-			display:flex;
-			list-style:none;
-		}
-		header li {
-			flex:1;
-			height:100px;
-		}
-		header a {
-			display:block;
-			text-decoration:none;
-			font-size:14px;
-			color:black;
-			margin-top:5px;
-		}
-		header a+nav {
-			display:none;
-		}
-		
+			ul li {list-style:none;}
+			
+			header {	
+				position:absolute;
+				margin-top:5px;
+				background:white;
+				height:50px;
+				overflow:hidden;
+			}
+			nav > ul > li {
+				top:-15px;
+			}
+			
+			
+			nav {width:100%; margin:0 auto;}
+			nav > ul > li {position:relative; left:500px; float:left; line-height:50px; margin-right:100px; text-align:center;}
+			nav > ul > li ul{ width:100%;}
+			nav > ul > li ul li {position:relative; right:39px; top:11px;}
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
-		    $(document).ready(function(){
-		    	$("header li").hover(
-		    		function()
-		    		{
-		    			$(this).children("nav").stop().slideDown("fast");
-		    			$(this).siblings().children("nav").stop().slideUp("fast");
-		    		},
-		    		function()
-		    		{
-		    			$(this).children("nav").stop().slideUp("fast");
-		    		}
-		    	);
-		    });
+		   $(function(){
+			   var $cate = $('nav >ul > li'),
+			   		$header = $('header');
+			   
+			   $cate.mouseenter(function(){
+				   $header.stop().animate({height:'300px'});
+			   })
+			   .mouseleave(function(){
+				   $header.stop().animate({height:'50px'});
+			   });
+		   });
+		    
 		    
 		   function view_sub()
 		   {
@@ -193,33 +188,40 @@
 			</div>
 	</div> <!-- 광고성 메세지 -->
 	<header>
-		<div id="left"> <a href=""><img src="../resources/img/rice.png" width="70" height="50"></a> </div>
+		<div id="left"> <a href=""><img src="resources/img/rice.png" width="70" height="50"></a> </div>
 			<nav>
-				<ul>
-					<li>
-						<a href="#"> 한 식 </a>
-						<nav>
-							<a href="#"> 닭 음식 </a>
-							<a href="#"> 소 음식</a>
-							<a href="#"> 돼지 음식 </a>
-						</nav>
+				<ul id="cate">
+					<li> 한 식
+						<ul>
+							<li> 밥 </li>
+							<li> 면 </li>
+							<li> 국 </li>
+							<li> 반찬 </li>
+						</ul>
+					 </li>
+					<li> 일 식 
+						<ul>
+							<li> 덮 </li>
+							<li> 초 </li>
+							<li> 묜 </li>
+							<li> 튀김 </li>
+						</ul>
 					</li>
-					<li>
-						<a href="#"> 중 식 </a>
-						<nav>
-							<a href="#"> 짜장 </a>
-							<a href="#"> 잠봉 </a>
-							<a href="#"> 탕수육 </a>
-						</nav>
+					<li> 양 식 
+						<ul>
+							<li> 고기 </li>
+							<li> 스프 </li>
+							<li> 양념 </li>
+							<li> 치킨 </li>
+						</ul>
 					</li>
-					<li>
-						<a href="#"> 양 식 </a>
-						<nav>
-							<a href="#"> 스테끼 </a>
-							<a href="#"> 파스타 </a>
-							<a href="#"> 스프 </a>
-						</nav>
-						
+					<li> 중 식 
+						<ul>
+							<li> 면 </li>
+							<li> 밥 </li>
+							<li> 국 </li>
+							<li> 튀김 </li>
+						</ul>
 					</li>
 				</ul>
 			</nav> <!-- menu 관련 -->
@@ -228,6 +230,6 @@
 	<decorator:body/>
 	
 	
-	<footer> <img src="../resources/img/footer.png" width="1000"></footer> <!-- 사이트관련 내용 -->
+	<footer> <img src="resources/img/footer.png" width="1000"></footer> <!-- 사이트관련 내용 -->
 </body>
 </html>
