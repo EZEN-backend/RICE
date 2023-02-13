@@ -11,77 +11,20 @@
 	<style>
 		body {
 			margin:0px;
-			z-index:1;
-			position:relative;
-			
-		}
-		#first {
-			width:100%;
-			height:40px;
-		}
-		#vsearch {
-			float:right;
-			position:relative;
-			top:2px;
-			left:-100px;
-		}
-		#csearch {
-			width:40px;
-			height:30px;
-			background:-60px 0;
-			float:right;
-			margin-top:5px;
-		}
-		#search_form {
-			position:absolute;
-			left:0;
-			right:0;
-			height:400px;
-			text-align:center;
-			background:white;
-			transition:0.5;
-			display:none;
-			z-index:1;
-		}
-		#search_form input[type="text"] {
-			height:35px;
-			border:none;
-			border-bottom:1px solid #34404b;
-			width:800px;
-			display:inline-block;
-			outline:none;
-		}
-		#search_form input[type="submit"] {
-			vertical-aligne:bottom;
-		}
-		.search_btn {
-			width:40px;
-			height:30px;
-			background:-60px 0;
-		}
-		#search_form > div {
-			position:relative;
-			margin-top:40px;
-			font-size:20px;
-			
-		}
-		
-		#search_form > div > span {
-			color:#C0C0C0;
 		}
 		
 		#topmsg {
 			width:100%;
 			height:40px;
-			background:#F0F0F0;
+			background:#EFEFEF;
 		}
 		
 		#topmsg #right {
-			margin-top:0px;
+			position:relative;
+			top:-32px;
 			text-align:right;
-			padding-top:10px;
+			padding-top:6px;
 			margin-right:50px;
-			font-size:14px;
 			
 		}
 		
@@ -92,7 +35,7 @@
 			font-size:14px;
 			position:relative;
 		}
-		header #left {
+		body #left {
 			position:absolute;
 			left:30px;
 			z-index:1;
@@ -132,29 +75,63 @@
 		
 		footer {
 			width:100%;
-			height:500px;
+			height:200px;
 			margin:auto;
-			background:black;
+		}
+		.search-bar {
+		  position:relative;
+		  left:590px;
+		  width: 500px;
+		  height: 35px;
+		  border-radius: 15px;
+		  border: solid 1px rgba(0, 0, 0, 0.3);
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  z-index: 1;
+		  opacity: 1;
+		  margin-top:3px;
+		  background:#EFEFEF;
 		}
 		
-		ul li {list-style:none; cursor:pointer;}
-		
-		header {
-			margin-top:0px;
-			background:white;
-			height:50px;
-			overflow:hidden;
-			position:absolute;
+		.search-bar__input {
+		  text-align:center;
+		  width: 500px;
+		  border: none;
+		  -webkit-appearance: none;
+		  text-align: center;
+		  margin-left: 10px;
+		  overflow: auto;
+		  z-index: 1;
+		  background:#EFEFEF;
 		}
-		nav > ul > li {
-			top:-15px;
+		
+		.search-bar__input:focus {
+		  text-align:center;
+		  outline: none;
+		  width: 500px;
+		  text-align: left;
+		  background:#EFEFEF;
 		}
 		
-		
-		nav {width:100%; margin:0 auto;}
-		nav > ul > li { position:relative; left:500px; float:left; line-height:50px; margin-right:100px; text-align:center;}
-		nav > ul > li ul{ width:100%;}
-		nav > ul > li ul li {position:relative; right:39px; top:11px;}
+			ul li {list-style:none;}
+			
+			header {
+				margin-top:0px;
+				background:white;
+				height:50px;
+				overflow:hidden;
+				position:absolute;
+			}
+			nav > ul > li {
+				top:-15px;
+			}
+			
+			
+			nav {width:100%; margin:0 auto;}
+			nav > ul > li { position:relative; left:500px; float:left; line-height:50px; margin-right:100px; text-align:center;}
+			nav > ul > li ul{ width:100%;}
+			nav > ul > li ul li {position:relative; right:39px; top:11px;}
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
@@ -171,48 +148,24 @@
 		   });
 		    
 		    
-		$(function()
-		{
-			$("#vsearch").click(function()
-			{
-				$("#search_form").stop().slideDown(200);
-			});
-		});
-		
-		$(function()
-			{
-				$("#csearch").click(function()
-				{
-					$("#search_form").stop().slideUp(200);
-				});
-			});
-		
-		
-		function view_sub()
-		{
-		 document.getElementById("mysub").style.visibility="visible";
-		}
-		function out_sub()
-		{
-		 document.getElementById("mysub").style.visibility="hidden";
-		}
+		   function view_sub()
+		   {
+			   document.getElementById("mysub").style.visibility="visible";
+		   }
+		   function out_sub()
+		   {
+			   document.getElementById("mysub").style.visibility="hidden";
+		   }
 	</script>
 	
 </head>
 	<decorator:head/>
 <body>
-<div id="first">
 	<div id="topmsg">
-		<form id="search_form" method="get" action="search_list">
-			<input type="text" name="search">
-			<input type="submit" value="검색" class="search_btn">
-			<input type="button" value="취소" id="csearch" style="cursor:pointer">
-			<div>
-			<span>인기상품</span><p>
-			잘팔린상품1<p>
-			잘팔린상품2<p>
-			잘팔린상품3<p>
-			잘팔린상품4
+		<form method="get" action="search_list">
+			<div class="search-bar">
+				<i class="fa-duotone fa-magnifying-glass"></i>
+				<input class="search-bar__input" type="search" placeholder="검색"/>
 			</div>
 		</form>
 		<div id="right">
@@ -234,8 +187,7 @@
 				</span>
 				</c:if>
 			</div>
-	</div>
-</div> <!-- 광고성 메세지 -->
+	</div> <!-- 광고성 메세지 -->
 	<header>
 		<div id="left"> <a href=""><img src="../resources/img/rice.png" width="70" height="50"></a> </div>
 			<nav>
@@ -273,7 +225,6 @@
 						</ul>
 					</li>
 				</ul>
-				<span id="vsearch" style="cursor:pointer"> 검색 </span>
 			</nav> <!-- menu 관련 -->
 	</header> <!-- 로그인,회원가입,로고 -->
 
