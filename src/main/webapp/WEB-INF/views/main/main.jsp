@@ -26,7 +26,7 @@
 		   {
 			   $("#msub").animate(
 			   {
-				   marginLeft:"-1500px"
+				   marginLeft:"-1920px"
 			   },2000,function()
 			          {
 				           $("#msub > img").eq(0).insertAfter( $("#msub > img").eq(3) );
@@ -36,18 +36,13 @@
 	   }
  </script>
 	<style>
-		#image {
-			width:1500px;
-			height:1000px;
-			margin:auto;
-		}
 		section {
-			width:100%;
+			width:1920px;
 			height:1000px;
 			margin:auto;
 		}
 		#mimage {
-	     width:1500px;
+	     width:1820px;
 	     height:1000px;
 	     overflow:hidden;
 	     margin:auto;
@@ -59,15 +54,16 @@
 	     padding-top:-10px;
 	   }
 	   #third {
-	   	width:100%;
+	   	width:1920px;
 	   	height:50px;
 	   	text-align:center;
 	   	padding-top:60px;
 	   	padding-bottom:0px;
 	   	background:#F0F0F0;
+	   	border-bottom:1px solid #E0F0F0;
 	   }
 	   #fourth {
-	    width:100%;
+	    width:1920px;
 	    height:300px;
 	   	text-align:center;
 	   	margin:auto;
@@ -99,10 +95,10 @@
 	</div>
 	<div id="mimage">
 		<div id="msub">
-			<img src="../resources/img/gook.jpeg" width="1500" height="1000">
-			<img src="../resources/img/bab.jpeg" width="1500" height="1000">
-			<img src="../resources/img/gogi.jpeg" width="1500" height="1000">
-			<img src="../resources/img/dduk.jpeg" width="1500" height="1000">
+			<img src="../resources/img/gook.jpeg" width="1920" height="1000">
+			<img src="../resources/img/bab.jpeg" width="1920" height="1000">
+			<img src="../resources/img/gogi.jpeg" width="1920" height="1000">
+			<img src="../resources/img/dduk.jpeg" width="1920" height="1000">
 		</div>
 	</div> <!-- 슬라이드 되는 큰 그림 -->
 	<section>
