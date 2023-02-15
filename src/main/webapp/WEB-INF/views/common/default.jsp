@@ -6,37 +6,125 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://kit.fontawesome.com/804c868edf.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/f1fa4a6c48.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 	<style>
 		body {
 			margin:0px;
+			z-index:1;
+			position:relative;
+			
 		}
-		#topmsg {
-			width:100%;
+		#first {
+			width:1920px;
 			height:40px;
-			background:#EFEFEF;
 		}
 		
-		#topmsg #right {
+		/* 카테고리 관련 스타일 */
+		ul li {list-style:none; cursor:pointer;}
+		
+		nav > ul > li {
+			top:-15px;
+			padding-left:55px;
+		}
+		
+		
+		nav {width:100%;height:40px; margin:0 auto;}
+		nav > ul > li { position:relative; left:500px; float:left; line-height:50px; margin-right:100px; text-align:center;}
+		nav > ul > li ul{ width:100%;}
+		nav > ul > li ul li {position:relative; right:39px; top:11px;}
+		
+		/* main cart,heart 아이콘 스타일 */
+		#cart_view {
+			position:absolute;
+			right:200px;
+		}
+		#wish_view {
+			position:absolute;
+			right:150px;
+		}
+		
+		/* 검색바 관련 스타일 */
+		#vsearch {
+			position:absolute;
+			right:250px;
+		}
+		
+		#csearch {
+			width:40px;
+			height:30px;
+			background:-60px 0;
+			float:right;
+			margin-top:5px;
+		}
+		#search_form {
 			position:relative;
-			top:-32px;
-			text-align:right;
-			padding-top:6px;
-			margin-right:50px;
+			left:0;
+			right:0;
+			height:400px;
+			text-align:center;
+			background:white;
+			transition:0.5;
+			display:none;
+			z-index:1;
+			border-bottom:1px solid black;
+		}
+		#search_form input[type="text"] {
+			height:35px;
+			border:none;
+			border-bottom:1px solid #34404b;
+			width:800px;
+			display:inline-block;
+			outline:none;
+		}
+		#search_form input[type="submit"] {
+			vertical-aligne:bottom;
+		}
+		.search_btn {
+			width:40px;
+			height:30px;
+			background:-60px 0;
+		}
+		#search_form > div {
+			position:relative;
+			margin-top:40px;
+			font-size:20px;
 			
 		}
 		
-		header {
-			width:1400px;
-			height:50px;
-			margin:auto;
-			font-size:14px;
-			position:relative;
+		#search_form > div > span {
+			color:#C0C0C0;
 		}
-		body #left {
-			float:left;
-			margin-top:-10px;
+		
+		
+		#topmsg {
+			width:100%;
+			height:40px;
+			background:#F0F0F0;
+		}
+		
+		#topmsg #right {
+			margin-top:0px;
+			text-align:right;
+			padding-top:10px;
+			margin-right:50px;
+			font-size:14px;
+			
+		}
+		
+		
+		header {
+			width:1920px;
+			margin-top:0px;
+			background:white;
+			height:50px;
+			overflow:hidden;
+			position:absolute;
+		}
+		header #left {
+			position:absolute;
+			left:30px;
+			z-index:1;
 		}
 		body #mymenu {
 			position:relative;
@@ -70,108 +158,195 @@
 			color:black;
 		}
 		
-		nav {
-			width:100%;
-			height:40px;
-			margin:auto;
-			text-align:center;
-		}
 		
 		footer {
-			width:1000px;
-			height:100px;
+			width:1920px;
+			height:443px;
 			margin:auto;
+			background:black;
 		}
-		.search-bar {
-		  position:relative;
-		  left:590px;
-		  width: 500px;
-		  height: 35px;
-		  border-radius: 15px;
-		  border: solid 1px rgba(0, 0, 0, 0.3);
-		  display: flex;
-		  justify-content: center;
-		  align-items: center;
-		  z-index: 1;
-		  opacity: 1;
-		  margin-top:3px;
-		  background:#EFEFEF;
+		#subfooter {
+			width:1372px;
+			height:60px;
+			position:relative;
+			padding:5px;
+			color:#C0C0C0;
+			margin:0px -6px;
+			border-bottom:1px solid white;
 		}
-		
-		.search-bar__input {
-		  text-align:center;
-		  width: 500px;
-		  border: none;
-		  -webkit-appearance: none;
-		  text-align: center;
-		  margin-left: 10px;
-		  overflow: auto;
-		  z-index: 1;
-		  background:#EFEFEF;
-		}
-		
-		.search-bar__input:focus {
-		  text-align:center;
-		  outline: none;
-		  width: 500px;
-		  text-align: left;
-		  background:#EFEFEF;
-		}
-		
-		header ul {
+		#lastfoot {
+			width:1360px;
+			height:91px;
 			display:flex;
-			list-style:none;
 		}
-		header li {
-			flex:1;
-			height:100px;
-		}
-		header a {
-			display:block;
+		#lastfoot a {
 			text-decoration:none;
-			font-size:14px;
-			color:black;
-			margin-top:5px;
+			text-decoration:underline;
+			color:#A0A0A0;
 		}
-		header a+nav {
-			display:none;
+		#lastfoot #lfooter {
+			width:680px;
+			height:79px;
+		}
+		#lastfoot #rfooter {
+			width:680px;
+			height:79px;
+			color:#C0C0C0;
+		}
+		#rfooter > div {
+			position:relative;
+			font-size:12px;
+			top:20px;
+			left:17px;
+		}
+		#lfooter #info {
+			position:relative;
+			top:20px;
+			left:-6px;
+			color:#C0C0C0;
+			font-size:12px;
+		}
+		#lfooter #service {
+			position:relative;
+			top:20px;
+			left:-6px;
+			color:#C0C0C0;
+			font-size:12px;
+		}
+		footer #container {
+			width:1440px;
+			height:403px;
+			margin:auto;
+			position:relative;
+			padding:40px 40px 0;
+		}
+		footer #footerbody {
+			position:absolute;
+			width:1372px;
+			height:214px;
+			top:10%;
+			margin: 0px -6px 16px;
+		}
+		footer #hf-group {
+			width:1029px;
+			height:213px;
+			margin:0px -6px;
+		}
+		#hf-group > div {
+			width:275px;
+			height:142px;
+			display:inline-block;
+			float:left;
+		}
+		#hf-group > div >ul li{
+			padding:6px;
+			list-style-type:none;
+		}
+		#hli {
+			font-size:16px;
+			color:white;
+		}
+		#sli {
+			font-size:13px;
+			color:#C0C0C0;
+		}
+		#social {
+			width:343px;
+			height:36px;
+			color:white;
+			position:absolute;
+			top:0px;
+			right:0px;
+		}
+		#hfirst {
+			width:1920px;
+			height:40px;
+			align:center;
+		}
+		#search_form i{
+			position:absolute;
+			padding-top:15px;
+			padding-left:10px;
 		}
 		
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
-		    $(document).ready(function(){
-		    	$("header li").hover(
-		    		function()
-		    		{
-		    			$(this).children("nav").stop().slideDown("fast");
-		    			$(this).siblings().children("nav").stop().slideUp("fast");
-		    		},
-		    		function()
-		    		{
-		    			$(this).children("nav").stop().slideUp("fast");
-		    		}
-		    	);
-		    });
+		   $(function(){
+			   var $cate = $('nav >ul > li'),
+			   		$header = $('header');
+			   
+			   $cate.mouseenter(function(){
+				   $header.stop().animate({height:'300px'});
+			   })
+			   .mouseleave(function(){
+				   $header.stop().animate({height:'50px'});
+			   });
+		   });
 		    
-		   function view_sub()
-		   {
-			   document.getElementById("mysub").style.visibility="visible";
-		   }
-		   function out_sub()
-		   {
-			   document.getElementById("mysub").style.visibility="hidden";
-		   }
+		    
+		$(function()
+		{
+			$("#vsearch").click(function()
+			{
+				$("#search_form").stop().slideDown(200);
+			});
+		});
+		
+		$(function()
+			{
+				$("#csearch").click(function()
+				{
+					$("#search_form").stop().slideUp(200);
+				});
+			});
+		
+		
+		function view_sub()
+		{
+		 document.getElementById("mysub").style.visibility="visible";
+		}
+		function out_sub()
+		{
+		 document.getElementById("mysub").style.visibility="hidden";
+		}
+		
+		function gsearch()
+		{
+			document.search_form.submit();
+		}
+		
+		// main 카트 아이콘 클릭시 이동하는 경로
+		function gcart()
+		{
+			location.href="cart_view";
+		}
+		// main 하트 아이콘 클릭시 이동하는 경로
+		function gwish()
+		{
+			location.href="wish_view";
+		}
 	</script>
 	
 </head>
 	<decorator:head/>
 <body>
+<div id="first">
 	<div id="topmsg">
-			<div class="search-bar">
-				<i class="fa-duotone fa-magnifying-glass"></i>
-				<input class="search-bar__input" type="search" placeholder="검색"/>
-			</div>
+		<div id="hfirst">
+			<form id="search_form" name="search_form" method="get" action="search_list">
+				<input type="text" name="search">
+				<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
+				<input type="button" value="취소" id="csearch" style="cursor:pointer">
+				<div>
+				<span>인기상품</span><p>
+				잘팔린상품1<p>
+				잘팔린상품2<p>
+				잘팔린상품3<p>
+				잘팔린상품4
+				</div>
+			</form>
+		</div>
 		<div id="right">
 			<c:if test="${userid == null }">
 			<a href="../login/login">  로그인  </a> | 
@@ -190,44 +365,120 @@
 					</ul>
 				</span>
 				</c:if>
-			</div>
-	</div> <!-- 광고성 메세지 -->
+		</div>
+	</div>
+</div> <!-- 광고성 메세지 -->
 	<header>
 		<div id="left"> <a href=""><img src="../resources/img/rice.png" width="70" height="50"></a> </div>
 			<nav>
-				<ul>
-					<li>
-						<a href="#"> 한 식 </a>
-						<nav>
-							<a href="#"> 닭 음식 </a>
-							<a href="#"> 소 음식</a>
-							<a href="#"> 돼지 음식 </a>
-						</nav>
+				<ul id="cate">
+					<li> 한 식
+						<ul>
+							<li> 밥 </li>
+							<li> 면 </li>
+							<li> 국 </li>
+							<li> 반찬 </li>
+						</ul>
+					 </li>
+					<li> 일 식 
+						<ul>
+							<li> 덮 </li>
+							<li> 초 </li>
+							<li> 묜 </li>
+							<li> 튀김 </li>
+						</ul>
 					</li>
-					<li>
-						<a href="#"> 중 식 </a>
-						<nav>
-							<a href="#"> 짜장 </a>
-							<a href="#"> 잠봉 </a>
-							<a href="#"> 탕수육 </a>
-						</nav>
+					<li> 양 식 
+						<ul>
+							<li> 고기 </li>
+							<li> 스프 </li>
+							<li> 양념 </li>
+							<li> 치킨 </li>
+						</ul>
 					</li>
-					<li>
-						<a href="#"> 양 식 </a>
-						<nav>
-							<a href="#"> 스테끼 </a>
-							<a href="#"> 파스타 </a>
-							<a href="#"> 스프 </a>
-						</nav>
-						
+					<li> 중 식 
+						<ul>
+							<li> 면 </li>
+							<li> 밥 </li>
+							<li> 국 </li>
+							<li> 튀김 </li>
+						</ul>
 					</li>
 				</ul>
+				<!-- 검색돋보기 -->
+				<i class="fa-solid fa-magnifying-glass" id="vsearch" style="cursor:pointer"></i>
+				<i class="fa-solid fa-cart-shopping" id="cart_view" onclick="gcart()" style="cursor:pointer"></i>
+				<i class="fa-regular fa-heart" id="wish_view" onclick="gwish()" style="cursor:pointer"></i>
 			</nav> <!-- menu 관련 -->
 	</header> <!-- 로그인,회원가입,로고 -->
 
 	<decorator:body/>
 	
 	
-	<footer> <img src="../resources/img/footer.png" width="1000"></footer> <!-- 사이트관련 내용 -->
+	<footer><!-- 사이트관련 내용 -->
+	<div id="container">
+		<div id="footerbody">
+			<div id="hf-group">
+				<div>
+					<ul>
+						<li id="hli"> 새로운대식 </li>
+						<li id="hli"> 회원가입 </li>
+						<li id="hli"> 박할머니 온라인몰 </li>
+						<li id="hli"> 박할머니 저널 </li>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<li id="hli"> 주문배송조회?? </li>
+						<li id="sli"> 결제 방법 </li>
+						<li id="sli"> 공지 사항 </li>
+						<li id="sli"> 문의 하기 </li>
+						<li id="sli"> 배송 조회  </li>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<li id="hli"> ABOUT RICE </li>
+						<li id="sli"> 대식 </li>
+						<li id="sli"> 후원 </li>
+						<li id="sli"> 지속적으로 먹기 </li>
+					</ul>
+				</div>
+			</div>
+			<div id="social">
+				<ul>
+					<li>
+						소셜 링크 연결 임시로 넣어둠
+					</li>
+				</ul>
+			</div>
+			<div id="subfooter">
+				© 2023 Rice, Inc. All Rights Reserved
+			</div>
+			<div id="lastfoot">
+				<div id="lfooter">
+					<span id="info">
+						(유)라이스코리아 대표 k1lee , 킴벌리 린 창 멘데스 |
+						서울 강남구 테헤란로 321 강남파이낸스센터 92층 | 통신판매업신고번호 2011-서울강남-02345 |
+						등록번호 111-12-20391 <a href="#">사업자 정보 확인</a>
+					</span>
+					<p>
+					<span id="service">
+						고객센터 전화 문의 <a href="#">080-012-0123</a> FAX 01-2345-6789 |
+						이메일 <a href="#">service@rice.co.kr</a> | 호스팅서비스사업자 (유)라이스코리아
+					</span>
+				</div>
+				<div id="rfooter">
+					<div>
+						현금 등으로 결제 시 안전 거래를 위해 나이키 쇼핑몰에서 가입하신 한국결제네트웍스 유한회사의 구매안전 서비스(<a href="#">결제대금예치</a>)를 이용하실 수 있습니다.<p>
+					</div>
+					<div>
+						콘텐츠산업진흥법에 의한 콘텐츠 보호 안내 <a href="#">자세히 보기</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</footer>
 </body>
 </html>
