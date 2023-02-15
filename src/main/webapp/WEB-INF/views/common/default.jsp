@@ -58,7 +58,7 @@
 			margin-top:5px;
 		}
 		#search_form {
-			position:relative;
+			position:absolute;
 			left:0;
 			right:0;
 			height:400px;
@@ -73,7 +73,7 @@
 			height:35px;
 			border:none;
 			border-bottom:1px solid #34404b;
-			width:800px;
+			width:100%;
 			display:inline-block;
 			outline:none;
 		}
@@ -110,13 +110,22 @@
 			margin-top:0px;
 			background:white;
 			height:50px;
+			
+		}
+		header #second {
+			width:1920px;
+			margin-top:0px;
+			background:white;
+			height:50px;
 			overflow:hidden;
+			position:absolute;
+			z-index:1;
 		}
 		header #left {
 			position:absolute;
 			left:30px;
-			z-index:1;
 		}
+		
 		body #mymenu {
 			position:relative;
 			display:inline-block;
@@ -265,13 +274,13 @@
 	<script>
 		   $(function(){
 			   var $cate = $('nav >ul > li'),
-			   		$header = $('header');
+			   		$second = $('#second');
 			   
 			   $cate.mouseenter(function(){
-				   $header.stop().animate({height:'300px'});
+				   $second.stop().animate({height:'300px'});
 			   })
 			   .mouseleave(function(){
-				   $header.stop().animate({height:'50px'});
+				   $second.stop().animate({height:'50px'});
 			   });
 		   });
 		    
@@ -360,6 +369,7 @@
 	</div>
 </div> <!-- 광고성 메세지 -->
 	<header>
+	<div id="second">
 		<div id="left"> <a href=""><img src="../resources/img/rice.png" width="70" height="50"></a> </div>
 			<nav>
 				<ul id="cate">
@@ -400,7 +410,8 @@
 				<i class="fa-solid fa-magnifying-glass" id="vsearch" style="cursor:pointer"></i>
 				<i class="fa-solid fa-cart-shopping" id="cart_view" onclick="gcart()" style="cursor:pointer"></i>
 				<i class="fa-regular fa-heart" id="wish_view" onclick="gwish()" style="cursor:pointer"></i>
-			</nav> <!-- menu 관련 -->
+			</nav>
+		</div> <!-- menu 관련 -->
 	</header> <!-- 로그인,회원가입,로고 -->
 
 	<decorator:body/>
