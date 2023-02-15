@@ -13,7 +13,7 @@
 			margin:0px;
 			z-index:1;
 			position:relative;
-			
+
 		}
 		#first {
 			width:1920px;
@@ -80,46 +80,37 @@
 		#search_form input[type="submit"] {
 			vertical-aligne:bottom;
 		}
-		.search_btn {
-			width:40px;
-			height:30px;
-			background:-60px 0;
-		}
 		#search_form > div {
 			position:relative;
 			margin-top:40px;
 			font-size:20px;
-			
 		}
-		
 		#search_form > div > span {
 			color:#C0C0C0;
 		}
-		
-		
 		#topmsg {
 			width:100%;
 			height:40px;
 			background:#F0F0F0;
+			display:flex;
 		}
-		
 		#topmsg #right {
 			margin-top:0px;
+			width:200px;
 			text-align:right;
-			padding-top:10px;
+			padding-top:12px;
 			margin-right:50px;
 			font-size:14px;
-			
 		}
-		
-		
+		#topmsg #right > a {
+			width:100px;
+		}
 		header {
 			width:1920px;
 			margin-top:0px;
 			background:white;
 			height:50px;
 			overflow:hidden;
-			position:absolute;
 		}
 		header #left {
 			position:absolute;

@@ -1,28 +1,18 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
     <script src="https://kit.fontawesome.com/804c868edf.js" crossorigin="anonymous"></script>
-    <title>Title</title>
     <style>
         .Section {
             width:1920px;
             height:1080px;
-        }
-        .main {
-            width:1920px;
-            height:1080px;
-            display:flex;
-            position:absolute;
-        }
-        .filterSection {
-            width:13.5%;
-            height:100%;
-            position:relative;
-        }
-        .bodySection {
-            width:86.5%;
-            height:100%;
-            position:relative;
+            margin:auto;
         }
         .offsetSection {
             width:100%;
@@ -69,6 +59,22 @@
             position: relative;
             height:100%;
         }
+        .main {
+            width:100%;
+            height:1000px;
+            display:flex;
+            position:absolute;
+        }
+        .filterSection {
+            width:13.5%;
+            height:100%;
+            position:relative;
+        }
+        .bodySection {
+            width:86.5%;
+            height:100%;
+            position:relative;
+        }
         .item {
             width:33%;
             height:600px;
@@ -89,7 +95,7 @@
     <div class="titleSection">
         <div class="title">
             <h1 class="title-text">
-                
+
             </h1>
             <h1 class="item-count">
 
@@ -119,6 +125,7 @@
             <main>
                 <section class="mainSection">
                     <div class="items">
+                        <c:forEach items="${list}" var="list" varStatus="status">
                         <div class="item">
                             <div class="item_body">
                                 <figure>
@@ -137,6 +144,11 @@
                                 </figure>
                             </div>
                         </div>
+                        <c:if test="${status.count % 3 == 0}">
+                        </div>
+                        <div>
+                        </c:if>
+                        </c:forEach>
                     </div>
                 </section>
             </main>
