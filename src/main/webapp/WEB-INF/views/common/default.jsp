@@ -66,23 +66,23 @@
 			background:white;
 			transition:0.5;
 			display:none;
-			z-index:1;
+			z-index:2;
 			border-bottom:1px solid black;
 		}
 		#search_form input[type="text"] {
 			height:35px;
 			border:none;
 			border-bottom:1px solid #34404b;
-			width:100%;
+			width:800px;
 			display:inline-block;
 			outline:none;
 		}
 		#search_form input[type="submit"] {
-			vertical-aligne:bottom;
+			vertical-align:bottom;
 		}
 		#search_form > div {
 			position:relative;
-			margin-top:40px;
+			margin-top:60px;
 			font-size:20px;
 		}
 		#search_form > div > span {
