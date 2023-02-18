@@ -272,34 +272,43 @@
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
-		   $(function(){
-			   var $cate = $('nav >ul > li'),
-			   		$second = $('#second');
-			   
-			   $cate.mouseenter(function(){
-				   $second.stop().animate({height:'300px'});
-			   })
-			   .mouseleave(function(){
-				   $second.stop().animate({height:'50px'});
-			   });
+	   $(function(){
+		   var $cate = $('nav >ul > li'),
+		   		$second = $('#second');
+		   
+		   $cate.mouseenter(function(){
+			   $second.stop().animate({height:'300px'});
+		   })
+		   .mouseleave(function(){
+			   $second.stop().animate({height:'50px'});
 		   });
+	   });
 		    
-		    
-		$(function()
-		{
-			$("#vsearch").click(function()
-			{
-				$("#search_form").stop().slideDown(200);
-			});
+		
+		// 검색바 slide
+		$(document).ready(function() {
+		  // 클릭 이벤트 등록
+		  $('#vsearch').click(function() {
+		    $('#search_form').slideDown(200);
+		  });
+		  
+		  // outside 클릭 이벤트 등록
+		  $(document).mouseup(function(e) {
+		    var container = $('#search_form');
+		    if (!container.is(e.target) && container.has(e.target).length == 0) {
+		      container.slideUp(200);
+		    }
+		  });
 		});
 		
+		// 취소 버튼 클릭시 slideUp
 		$(function()
+		{
+			$("#csearch").click(function()
 			{
-				$("#csearch").click(function()
-				{
-					$("#search_form").stop().slideUp(200);
-				});
+				$("#search_form").stop().slideUp(200);
 			});
+		});
 		
 		
 		function view_sub()
