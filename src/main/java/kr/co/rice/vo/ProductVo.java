@@ -2,7 +2,7 @@ package kr.co.rice.vo;
 
 public class ProductVo {
     private int id, price, views, subcategory_id;
-    private String title, name, size, body, code, extra_detail;
+    private String title, name, size, body, code, extra_detail, category_name, subcategory_name, spicylevel, image_url;
 	public int getId() {
 		return id;
 	}
@@ -63,5 +63,36 @@ public class ProductVo {
 	public void setExtra_detail(String extra_detail) {
 		this.extra_detail = extra_detail;
 	}
-    
+
+	public String getCategory_name() {
+		return category_name;
+	}
+
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
+
+	public String getSubcategory_name() {
+		return subcategory_name;
+	}
+
+	public void setSubcategory_name(String subcategory_name) {
+		this.subcategory_name = subcategory_name;
+	}
+
+	public String getSpicylevel() {
+		return spicylevel;
+	}
+
+	public void setSpicylevel(String spicylevel) {
+		this.spicylevel = spicylevel;
+	}
+
+	public String getImage_url() {
+		return image_url;
+	}
+
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
+	}
 }

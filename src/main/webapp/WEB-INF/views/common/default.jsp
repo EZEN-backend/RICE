@@ -384,34 +384,36 @@
 				<ul id="cate">
 					<li> 한 식
 						<ul>
-							<li> 밥 </li>
-							<li> 면 </li>
-							<li> 국 </li>
+							<li> 찜/탕 </li>
+							<li> 볶음류 </li>
+							<li> 구이 </li>
 							<li> 반찬 </li>
+							<li> 치킨 </li>
+							<li> 기타/분식 </li>
 						</ul>
 					 </li>
 					<li> 일 식 
 						<ul>
-							<li> 덮 </li>
-							<li> 초 </li>
-							<li> 묜 </li>
-							<li> 튀김 </li>
+							<li> 튀김류 </li>
+							<li> 면류 </li>
+							<li> 스시 </li>
+							<li> 덮밥 </li>
 						</ul>
 					</li>
-					<li> 양 식 
+					<li> 중 식
 						<ul>
-							<li> 고기 </li>
-							<li> 스프 </li>
-							<li> 양념 </li>
-							<li> 치킨 </li>
+							<li> 튀김류 </li>
+							<li> 면류 </li>
+							<li> 밥류 </li>
+							<li> 만두류 </li>
 						</ul>
 					</li>
-					<li> 중 식 
+					<li> 양 식
 						<ul>
-							<li> 면 </li>
-							<li> 밥 </li>
-							<li> 국 </li>
-							<li> 튀김 </li>
+							<li> 파스타 </li>
+							<li> 육류 </li>
+							<li> 피자 </li>
+							<li> 샐러드 </li>
 						</ul>
 					</li>
 				</ul>
