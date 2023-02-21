@@ -87,35 +87,6 @@
             margin:auto;
             position:static;
         }
-        
-        .left-nav-wrapper {
-        	height:1000px;
-        	padding: 0 0 1em 48px;
-        }
-        .left-nav {
-        	position:relative;
-        	background:#fff;
-        }
-        .category-content {
-        	width:192px;
-        	height:125px;
-        }
-        .category-css {
-       		width:192px;
-       		height:166px;
-       		margin:0px 0px 40px;
-       		margin-top:18px;
-       		border-bottom:1px solid black;
-        }
-        .category-css > a{
-        	display:block;
-        	text-decoration:none;
-        	color:black;
-        	text-align:left;
-        	font-size:15px;
-        	margin:0px 0px 0px 4px;
-        	padding:0px 18px 10px 0px;
-        }
     </style>
 </head>
 <body>
@@ -148,43 +119,32 @@
     <div class="offsetSection"></div>
     <div class="main">
         <div class="filterSection">
-			<div class="left-nav-wrapper">
-				<nav class="left-nav">
-					<div class="catecory-content">
-						<div class="category-css">
-							<a href=""> 한식 </a>
-							<a href=""> 중식 </a>
-							<a href=""> 일식 </a>
-							<a href=""> 양식 </a>
-						</div>
-					</div>
-				</nav>
-			</div>
+
         </div>
         <div class="bodySection">
             <main>
                 <section class="mainSection">
                     <div class="items">
-                        <c:forEach items="${list}" var="list" varStatus="status">
+                        <c:forEach items="${slist}" var="list" varStatus="status">
                         <div class="item">
                             <div class="item_body">
                                 <figure>
                                     <a class="item_card">
                                         <div class="item_img">
-											<img src="../resources/img/bab.jpeg" width="450" height="570">
+
                                         </div>
                                         <div class="item_info">
-                                            <div class="item_title">${list.title}</div>
-                                            <div class="item_subtitle">${list.name}</div>
+                                            <div class="item_title"></div>
+                                            <div class="item_subtitle"></div>
                                         </div>
                                         <div class="item_price">
-											<div> ${list.price}원 </div>
+
                                         </div>
                                     </a>
                                 </figure>
                             </div>
                         </div>
-                        <c:if test="${status.count % 3 == 0}">
+                        <!--<c:if test="${status.count % 3 == 0}">-->
                         </div>
                         <div>
                         </c:if>

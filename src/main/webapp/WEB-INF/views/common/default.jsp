@@ -343,7 +343,7 @@
 <div id="first">
 	<div id="topmsg">
 		<div id="hfirst">
-			<form id="search_form" name="search_form" method="get" action="search_list">
+			<form id="search_form" name="search_form" method="get" action="../search/list">
 				<input type="text" name="search">
 				<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
 				<input type="button" value="취소" id="csearch" style="cursor:pointer">

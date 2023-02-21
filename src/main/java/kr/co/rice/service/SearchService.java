@@ -10,6 +10,6 @@ import kr.co.rice.vo.ProductVo;
 
 public interface SearchService {
 	
-//	public String search_list(HttpServletRequest request,Model model);
+	public String list(HttpServletRequest request,Model model);
 
 }

@@ -19,11 +19,16 @@ public class SearchServiceImpl implements SearchService{
 	@Autowired
 	private SearchMapper mapper;
 
-//	@Override
-//	public String search_list(HttpServletRequest request, Model model) {
-//		String search = request.getParameter("search");
-//		
-//		model.addAttribute("search",mapper.search_list(search));
-//		return "/search/search_list";
-//	}
+	@Override
+	public String list(HttpServletRequest request, Model model) {
+		String search = "";
+		
+		if(request.getParameter("search")==null)
+			search = request.getParameter("search");
+		
+		ArrayList<ProductVo> list = mapper.list(search);
+		model.addAttribute("list",list);
+		
+		return "/products/list";
+	}
 }
