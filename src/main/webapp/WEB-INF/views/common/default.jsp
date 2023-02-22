@@ -16,6 +16,7 @@
 
 		}
 		#first {
+		    margin:auto;
 			width:1920px;
 			height:40px;
 		}
@@ -37,11 +38,11 @@
 		/* main cart,heart 아이콘 스타일 */
 		#cart_view {
 			position:absolute;
-			right:200px;
+			right:150px;
 		}
 		#wish_view {
 			position:absolute;
-			right:150px;
+			right:200px;
 		}
 		
 		/* 검색바 관련 스타일 */
@@ -106,15 +107,15 @@
 			width:100px;
 		}
 		header {
+		    margin:auto;
 			width:1920px;
-			margin-top:0px;
 			background:white;
 			height:50px;
 			
 		}
 		header #second {
 			width:1920px;
-			margin-top:0px;
+			margin:0;
 			background:white;
 			height:50px;
 			overflow:hidden;
@@ -268,6 +269,23 @@
 			padding-top:15px;
 			padding-left:10px;
 		}
+		/* 장바구니 속에 숫자 보이게 하기 */
+		#cart_amount {
+		    display:inline-block;
+		    position:absolute; 
+		    left:18px;
+		    top:-5px;
+		    width:13px; 
+		    height:13px; 
+		    border-radius:6px; 
+		    background-color:purple;
+		    color:white;
+		    font-size:5px;
+		    text-align:center;
+		    padding-top:2px;
+		    
+		}
+		
 		
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -328,12 +346,12 @@
 		// main 카트 아이콘 클릭시 이동하는 경로
 		function gcart()
 		{
-			location.href="cart_view";
+			location.href="/rice/cart";
 		}
 		// main 하트 아이콘 클릭시 이동하는 경로
 		function gwish()
 		{
-			location.href="wish_view";
+			location.href="/rice/wish";
 		}
 	</script>
 	
@@ -358,19 +376,19 @@
 		</div>
 		<div id="right">
 			<c:if test="${userid == null }">
-			<a href="../login/login">  로그인  </a> | 
-			<a href="../member/member_input">  회원가입  </a> 
+			<a href="/rice/login">  로그인  </a> | 
+			<a href="/rice/signup">  회원가입  </a> 
 			</c:if>
 			<c:if test="${userid != null }">
 				${name}~님, 안녕하세요
 				|  고객센터
 				<span id="mymenu">|  <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
 					<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
-						<li> <a href="../member/member_view">회원정보</a> </li>
+						<li> <a href="/rice/members">회원정보</a> </li>
 						<li> 주문목록 </li>		
 						<li> 적 립 금 </li>				
 						<li> 장바구니 </li>		
-						<li> <a href="../login/logout">로그아웃</a> </li>		
+						<li> <a href="/rice/logout">로그아웃</a> </li>		
 					</ul>
 				</span>
 				</c:if>
@@ -379,7 +397,7 @@
 </div> <!-- 광고성 메세지 -->
 	<header>
 	<div id="second">
-		<div id="left"> <a href=""><img src="../resources/img/rice.png" width="70" height="50"></a> </div>
+		<div id="left"> <a href="/rice"><img src="/rice/resources/img/rice.png" width="70" height="50"></a> </div>
 			<nav>
 				<ul id="cate">
 					<li> 한 식
@@ -415,11 +433,15 @@
 						</ul>
 					</li>
 				</ul>
+		   
 				<!-- 검색돋보기 -->
 				<i class="fa-solid fa-magnifying-glass" id="vsearch" style="cursor:pointer"></i>
-				<i class="fa-solid fa-cart-shopping" id="cart_view" onclick="gcart()" style="cursor:pointer"></i>
 				<i class="fa-regular fa-heart" id="wish_view" onclick="gwish()" style="cursor:pointer"></i>
-			</nav>
+				<i class="fa-solid fa-cart-shopping" id="cart_view" onclick="gcart()" style="cursor:pointer; ">
+				   <span id="cart_amount">0</span>
+				</i>
+				
+			 </nav>
 		</div> <!-- menu 관련 -->
 	</header> <!-- 로그인,회원가입,로고 -->
 

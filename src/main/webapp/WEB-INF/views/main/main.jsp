@@ -81,6 +81,7 @@
 	   }
 	   
 	   #third {
+	    margin:auto;
 	   	width:1920px;
 	   	height:50px;
 	   	text-align:center;
@@ -187,10 +188,10 @@
 	</div>
 	<div id="mimage">
 		<div id="msub">
-			<img src="../resources/img/gook.jpeg" width="1920" height="1000">
-			<img src="../resources/img/bab.jpeg" width="1920" height="1000">
-			<img src="../resources/img/gogi.jpeg" width="1920" height="1000">
-			<img src="../resources/img/dduk.jpeg" width="1920" height="1000">
+			<img src="/rice/resources/img/gook.jpeg" width="1920" height="1000">
+			<img src="/rice/resources/img/bab.jpeg" width="1920" height="1000">
+			<img src="/rice/resources/img/gogi.jpeg" width="1920" height="1000">
+			<img src="/rice/resources/img/dduk.jpeg" width="1920" height="1000">
 		</div>
 	</div> <!-- 슬라이드 되는 큰 그림 -->
 	<div id="fourth">
@@ -207,24 +208,24 @@
 	<section>
 		<ul class="slider" align="center">
 			<li class="slider_item"> <a href="" aria-label="떡볶이: 온 가족이 즐길수 있는 떡볶이를 먹어보실랍니까?" width="598.62" height="932.78">
-			<img src="../resources/img/dduckbok2.png" width="598.62" height="932.78"><br>
+			<img src="/rice/resources/img/dduckbok2.png" width="598.62" height="932.78"><br>
 			떡볶이 <br> 온 가족이 즐길수 있는 떡볶이를 먹어보실랍니까? </a> 
 			</li>
 			
 			<li class="slider_item"> <a href="" aria-label="국밥: 국물이 시원한 할매손 국밥을 드셔보세요" width="598.62" height="932.78">
-			<img src="../resources/img/gookbab.png" width="598.62" height="932.78"><br>
+			<img src="/rice/resources/img/gookbab.png" width="598.62" height="932.78"><br>
 			국밥 <br> 국물이 뜨끈하고 시원한 할매손 국밥을 드셔보세요! </a> 
 			</li>
 			
 			<li class="slider_item"> <a href="" aria-label="족발: 320시간 끓인 육수로 만든 족발을 드셔보십쇼" width="598.62" height="932.78">
-			<img src="../resources/img/jokbal.png" width="598.62" height="932.78"><br>
+			<img src="/rice/resources/img/jokbal.png" width="598.62" height="932.78"><br>
 			족발 <br> 320시간 끓인 육수로 만든 족발을 드셔보십쇼! </a> 
 			</li>
 		</ul>
 		
 	<div id="mimage2">
 		<div id="msub2">
-			<img src="../resources/img/mara.jpeg" width="1920" height="1000">
+			<img src="/rice/resources/img/mara.jpeg" width="1920" height="1000">
 		</div>
 	</div>
 		
@@ -242,7 +243,7 @@
 	
 	<div id="mimage3">
 		<div id="msub3">
-			<img src="../resources/img/children.jpeg" width="1920" height="1000">
+			<img src="/rice/resources/img/children.jpeg" width="1920" height="1000">
 		</div>
 	</div>
 	
@@ -261,12 +262,12 @@
 	<div>
 	<div style="font-size:26px; margin-left:35px;"> Japanese food pick </div>
 		<div class="sushi_container">
-		  <a href=""> <img src="../resources/img/sushi1.jpeg"> <div id="items-info"> 눈치없이 이쁜 <span style="float:right"> 13,000원 </span> <br> 연어 초밥 </div> </a>
-		  <a href=""> <img src="../resources/img/sushi2.jpeg"> <div id="items-info"> 한상가득 대식 <span style="float:right"> 13,000원 </span> <br> 모듬 초밥 </div> </a>
-		  <a href=""> <img src="../resources/img/sushi3.jpeg"> <div id="items-info"> 불에 살짝 데운 <span style="float:right"> 13,000원 </span> <br> 생선 초밥 </div> </a>
-		  <a href=""> <img src="../resources/img/fried-food1.jpeg"> <div id="items-info"> 가벼운 맥주와 함께 <span style="float:right"> 13,000원 </span> <br> 모듬 튀김 </div> </a>
-		  <a href=""> <img src="../resources/img/fried-food2.jpeg"> <div id="items-info"> 황금 빛깔 그녀석 <span style="float:right"> 13,000원 </span> <br> 새우 튀김 </div> </a>
-		 <a href="">  <img src="../resources/img/fried-food3.jpeg"> <div id="items-info"> 맛과 모양까지 다 갖춘 <span style="float:right"> 13,000원 </span> <br> 한입 모듬 튀김 </div> </a>
+		  <a href=""> <img src="/rice/resources/img/sushi1.jpeg"> <div id="items-info"> 눈치없이 이쁜 <span style="float:right"> 13,000원 </span> <br> 연어 초밥 </div> </a>
+		  <a href=""> <img src="/rice/resources/img/sushi2.jpeg"> <div id="items-info"> 한상가득 대식 <span style="float:right"> 13,000원 </span> <br> 모듬 초밥 </div> </a>
+		  <a href=""> <img src="/rice/resources/img/sushi3.jpeg"> <div id="items-info"> 불에 살짝 데운 <span style="float:right"> 13,000원 </span> <br> 생선 초밥 </div> </a>
+		  <a href=""> <img src="/rice/resources/img/fried-food1.jpeg"> <div id="items-info"> 가벼운 맥주와 함께 <span style="float:right"> 13,000원 </span> <br> 모듬 튀김 </div> </a>
+		  <a href=""> <img src="/rice/resources/img/fried-food2.jpeg"> <div id="items-info"> 황금 빛깔 그녀석 <span style="float:right"> 13,000원 </span> <br> 새우 튀김 </div> </a>
+		 <a href="">  <img src="/rice/resources/img/fried-food3.jpeg"> <div id="items-info"> 맛과 모양까지 다 갖춘 <span style="float:right"> 13,000원 </span> <br> 한입 모듬 튀김 </div> </a>
 		</div>
 	</div>
 	
