@@ -3,10 +3,11 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybats-3-mapper.dtd">
 <mapper namespace="kr.co.rice.mapper.ProductListMapper">
-	<select id="list" resultType="kr.co.rice.vo.ProductVo">
-		select sl.level as spicylevel, sc.name as subcategory_name, p.id, p.title, p.name, p.size, p.price, pi.image_url from products as p
+	<select id="category_list" resultType="kr.co.rice.vo.ProductVo">
+		select pi.image_url, c.id as category_id, c.name as category_name, sc.id as subcategory_id, sc.name as subcategory_name, p.* from products p
+		inner join subcategories as sc on sc.id = p.subcategory_id
+		inner join categories as c on c.id = sc.category_id
 		inner join products_images as pi on pi.product_id = p.id
-		inner join subcategories as sc on p.subcategory_id = sc.id
-		inner join spicylevels as sl on p.spicylevel_id = sl.id;
+		where sc.category_id = #{param1} and p.subcategory_id = #{param2}
 	</select>
 </mapper>

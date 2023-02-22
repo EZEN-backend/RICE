@@ -3,5 +3,5 @@ package kr.co.rice.service;
 import org.springframework.ui.Model;
 
 public interface ProductListService {
-	public String list(Model model);
+	public String category_list(int category_id, int subcategory_id, Model model);
 }
