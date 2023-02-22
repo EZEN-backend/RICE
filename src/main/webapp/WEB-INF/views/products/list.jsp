@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +12,7 @@
     <style>
         .Section {
             width:1920px;
-            height:1080px;
+            height:100%;
             margin:auto;
         }
         .offsetSection {
@@ -56,36 +57,82 @@
         }
         .filterbtn, .sortbtn {
             border: none;
-            position: relative;
             height:100%;
         }
         .main {
             width:100%;
-            height:1000px;
             display:flex;
-            position:absolute;
         }
         .filterSection {
             width:13.5%;
-            height:100%;
-            position:relative;
         }
         .bodySection {
             width:86.5%;
-            height:100%;
-            position:relative;
+            display:flex;
+            justify-content: center;
+        }
+        .item_card {
+            text-decoration-line: none;
+        }
+        .bodyMain {
+            width:95%;
+        }
+        .items {
+            display:flex;
+            justify-content: start;
         }
         .item {
-            width:33%;
-            height:600px;
-            display:inline-block;
+            width:33.3333%;
+            height:710px;
             margin-top:2px;
         }
         .item_body {
             width:97%;
             height:95%;
             margin:auto;
-            position:static;
+        }
+        figure {
+            width:100%;
+            height:100%;
+            display:contents;
+        }
+        .item_img {
+            width:100%;
+            height:76%;
+        }
+        .item_info {
+            width:100%;
+            height:24%;
+        }
+        .item_titles {
+            height:30%;
+        }
+        .item_title {
+            height:50%;
+            font-size:17px;
+            font-weight:500;
+            color:#111111;
+        }
+        .item_subtitle {
+            height:50%;
+            font-size:17px;
+            color:#757575;
+        }
+        .item_spicy_level {
+            height:15%;
+            font-size:17px;
+            color:#757575;
+        }
+        .item_size {
+            height:25%;
+            font-size:17px;
+            color:#757575;
+        }
+        .item_price {
+            height:25%;
+            font-weight:500;
+            font-size:17px;
+            color:black;
         }
     </style>
 </head>
@@ -122,23 +169,25 @@
 
         </div>
         <div class="bodySection">
-            <main>
+            <main class="bodyMain">
                 <section class="mainSection">
                     <div class="items">
                         <c:forEach items="${list}" var="list" varStatus="status">
                         <div class="item">
                             <div class="item_body">
                                 <figure>
-                                    <a class="item_card">
+                                    <a class="item_card" href="/products/detail/${list.id}">
                                         <div class="item_img">
-
+                                            <img class="image" src="/resources/img/${list.image_url}" width="507" height="507">
                                         </div>
                                         <div class="item_info">
-                                            <div class="item_title"></div>
-                                            <div class="item_subtitle"></div>
-                                        </div>
-                                        <div class="item_price">
-
+                                            <div class="item_titles">
+                                                <div class="item_title">${list.title}</div>
+                                                <div class="item_subtitle">${list.subcategory_name}</div>
+                                            </div>
+                                            <div class="item_spicy_level">${list.spicylevel}</div>
+                                            <div class="item_size">${list.size}</div>
+                                            <div class="item_price"><fmt:formatNumber value="${list.price}" pattern="###,###,###"/>원</div>
                                         </div>
                                     </a>
                                 </figure>
@@ -146,7 +195,7 @@
                         </div>
                         <c:if test="${status.count % 3 == 0}">
                         </div>
-                        <div>
+                        <div class="items">
                         </c:if>
                         </c:forEach>
                     </div>
