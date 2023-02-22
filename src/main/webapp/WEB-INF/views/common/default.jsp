@@ -96,7 +96,7 @@
 		}
 		#topmsg #right {
 			margin-top:0px;
-			width:200px;
+			width:300px;
 			text-align:right;
 			padding-top:12px;
 			margin-right:50px;
@@ -358,8 +358,10 @@
 		</div>
 		<div id="right">
 			<c:if test="${userid == null }">
-			<a href="../login/login">  로그인  </a> | 
-			<a href="../member/member_input">  회원가입  </a> 
+			<a href=""> 매장찾기 </a> | 
+			<a href=""> 고객센터 </a> | 
+			<a href=""> 가입하기 </a> | 
+			<a href="login"> 로그인 </a> 
 			</c:if>
 			<c:if test="${userid != null }">
 				${name}~님, 안녕하세요
