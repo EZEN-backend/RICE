@@ -376,19 +376,19 @@
 		</div>
 		<div id="right">
 			<c:if test="${userid == null }">
-			<a href="/rice/login">  로그인  </a> | 
-			<a href="/rice/signup">  회원가입  </a> 
+			<a href="/rice/users/signin">  로그인  </a> | 
+			<a href="/rice/users/signup">  회원가입  </a> 
 			</c:if>
 			<c:if test="${userid != null }">
 				${name}~님, 안녕하세요
 				|  고객센터
 				<span id="mymenu">|  <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
 					<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
-						<li> <a href="/rice/members">회원정보</a> </li>
+						<li> <a href="/rice/users">회원정보</a> </li>
 						<li> 주문목록 </li>		
 						<li> 적 립 금 </li>				
 						<li> 장바구니 </li>		
-						<li> <a href="/rice/logout">로그아웃</a> </li>		
+						<li> <a href="/rice/users/signout">로그아웃</a> </li>		
 					</ul>
 				</span>
 				</c:if>
