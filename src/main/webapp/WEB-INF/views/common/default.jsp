@@ -13,28 +13,42 @@
 			margin:0px;
 			z-index:1;
 			position:relative;
-
 		}
 		#first {
 		    margin:auto;
 			width:1920px;
 			height:40px;
 		}
-		
 		/* 카테고리 관련 스타일 */
-		ul li {list-style:none; cursor:pointer;}
-		
+		ul li {
+			list-style:none;
+			cursor:pointer;
+		}
 		nav > ul > li {
 			top:-15px;
 			padding-left:55px;
 		}
-		
-		
-		nav {width:100%;height:40px; margin:0 auto;}
-		nav > ul > li { position:relative; left:500px; float:left; line-height:50px; margin-right:100px; text-align:center;}
-		nav > ul > li ul{ width:100%;}
-		nav > ul > li ul li {position:relative; right:39px; top:11px;}
-		
+		nav {
+			width:100%;
+			height:40px;
+			margin:0 auto;
+		}
+		nav > ul > li {
+			position:relative;
+			left:500px;
+			float:left;
+			line-height:50px;
+			margin-right:100px;
+			text-align:start;
+		}
+		nav > ul > li ul{
+			width:100%;
+		}
+		nav > ul > li ul li {
+			position:relative;
+			right:39px;
+			top:11px;
+		}
 		/* main cart,heart 아이콘 스타일 */
 		#cart_view {
 			position:absolute;
@@ -44,7 +58,6 @@
 			position:absolute;
 			right:200px;
 		}
-		
 		/* 검색바 관련 스타일 */
 		#vsearch {
 			position:absolute;
@@ -111,7 +124,6 @@
 			width:1920px;
 			background:white;
 			height:50px;
-			
 		}
 		header #second {
 			width:1920px;
@@ -126,13 +138,24 @@
 			position:absolute;
 			left:30px;
 		}
-		
 		body #mymenu {
 			position:relative;
 			display:inline-block;
 			height:25px;
 		}
-		
+		#cate > li {
+			font-weight:500;
+			font-size:16px;
+		}
+		#cate > li > ul > li > a {
+			text-decoration-line: none;
+			color:#757575;
+			font-size:16px;
+		}
+		#cate > li > ul > li > a:hover {
+			color:#111111;
+			cursor:pointer;
+		}
 		body #mymenu #mysub {
 			width:105px;
 			height:90px;
@@ -158,8 +181,6 @@
 			text-decoration:none;
 			color:black;
 		}
-		
-		
 		footer {
 			width:1920px;
 			height:443px;
@@ -269,6 +290,7 @@
 			padding-top:15px;
 			padding-left:10px;
 		}
+
 		/* 장바구니 속에 숫자 보이게 하기 */
 		#cart_amount {
 		    display:inline-block;
@@ -287,6 +309,7 @@
 		}
 		
 		
+
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
@@ -398,38 +421,40 @@
 	<header>
 	<div id="second">
 		<div id="left"> <a href="/rice"><img src="/rice/resources/img/rice.png" width="70" height="50"></a> </div>
+		
 			<nav>
 				<ul id="cate">
 					<li> 한 식
 						<ul>
-							<li> 밥 </li>
-							<li> 면 </li>
-							<li> 국 </li>
-							<li> 반찬 </li>
+							<li> <a href="/products/1/1">찜/탕</a> </li>
+							<li> <a href="/products/1/2">반찬</a> </li>
+							<li> <a href="/products/1/3">볶음류</a> </li>
+							<li> <a href="/products/1/4">구이</a> </li>
+							<li> <a href="/products/1/5">기타/분식</a> </li>
 						</ul>
 					 </li>
-					<li> 일 식 
+					<li> 일 식
 						<ul>
-							<li> 덮 </li>
-							<li> 초 </li>
-							<li> 묜 </li>
-							<li> 튀김 </li>
+							<li> <a href="/products/2/1">튀김류</a> </li>
+							<li> <a href="/products/2/2">면류</a> </li>
+							<li> <a href="/products/2/3">스시</a> </li>
+							<li> <a href="/products/2/4">덮밥</a> </li>
 						</ul>
 					</li>
-					<li> 양 식 
+					<li> 중 식
 						<ul>
-							<li> 고기 </li>
-							<li> 스프 </li>
-							<li> 양념 </li>
-							<li> 치킨 </li>
+							<li> <a href="/products/3/1">튀김류</a> </li>
+							<li> <a href="/products/3/2">면류</a> </li>
+							<li> <a href="/products/3/3">밥류</a> </li>
+							<li> <a href="/products/3/4">만두류</a> </li>
 						</ul>
 					</li>
-					<li> 중 식 
+					<li> 양 식
 						<ul>
-							<li> 면 </li>
-							<li> 밥 </li>
-							<li> 국 </li>
-							<li> 튀김 </li>
+							<li> <a href="/products/4/1">파스타</a> </li>
+							<li> <a href="/products/4/2">육류</a> </li>
+							<li> <a href="/products/4/3">피자</a> </li>
+							<li> <a href="/products/4/4">샐러드</a> </li>
 						</ul>
 					</li>
 				</ul>
@@ -446,7 +471,6 @@
 	</header> <!-- 로그인,회원가입,로고 -->
 
 	<decorator:body/>
-	
 	
 	<footer><!-- 사이트관련 내용 -->
 	<div id="container">
