@@ -2,7 +2,9 @@
 <decorators defaultdir="/WEB-INF/views/common">
  <!-- 제외할 패턴 -->
  <excludes>
-  <pattern>/non</pattern>
+  <pattern>/login/login</pattern>
+  <pattern>/agree</pattern>
+  <pattern>/member_input</pattern>
  </excludes>
  <!-- 기본 패턴 -->
  <decorator name="default" page="default.jsp">

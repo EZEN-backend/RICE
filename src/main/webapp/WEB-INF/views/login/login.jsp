@@ -48,12 +48,21 @@
       margin-left : 300px;
    }
  
-  </style>
+  </style> 
 </head>
 <body> 
 
    <section>
-  	<img src = "../resources/img/logo.png" style = "float: left; margin-left : 280px;" width = "50px"> <br>
+   
+   <c:choose>
+		<c:when test="${sessionId != null}">
+			<h2> 네이버 아이디 로그인 성공하셨습니다!! </h2>
+			<h3>'${sessionId}' 님 환영합니다! </h3>
+            	<h3><a href="logout">로그아웃</a></h3>
+ 
+		</c:when>
+		<c:otherwise>
+  	<img src="../resources/img/rice.png" style = "float: left; margin-left : 280px;" width = "50px"> <br> <br>
       <form method="post" action="login_ok">
        
         <h2> 가입 또는 로그인을 위해 이메일을 입력하세요. </h2> <p>
@@ -64,9 +73,15 @@
         <div id = "agree"> 계속 진행하면 라이스의 <a href = "agree"> 개인 정보 처리 방침 </a> 및 <a href = "rule"> 이용약관 </a>에 <p>
         동의하게 됩니다. </p>
         <div> <input type="submit" value="계속"> </div>
-      
+			
       </form>
-   
+      
+      <!-- 네이버 로그인 창으로 이동 -->
+		<div id="naver_id_login" style="text-align:center; float :left; margin-left : 350px;"><a href="${url}">
+		<img src="../resources/img/navericon.png" width = "50px;"></a></div>
+		<br>
+   </c:otherwise>
+   </c:choose>
    </section>
 </body>
 </html>

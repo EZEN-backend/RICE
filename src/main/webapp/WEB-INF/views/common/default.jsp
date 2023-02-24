@@ -361,7 +361,7 @@
 			<a href=""> 매장찾기 </a> | 
 			<a href=""> 고객센터 </a> | 
 			<a href=""> 가입하기 </a> | 
-			<a href="login"> 로그인 </a> 
+			<a href="../login/login"> 로그인 </a> 
 			</c:if>
 			<c:if test="${userid != null }">
 				${name}~님, 안녕하세요
