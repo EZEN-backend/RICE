@@ -2,6 +2,8 @@ package kr.co.rice.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -36,7 +38,30 @@ public class CartWishServiceImpl implements CartWishService {
 		
 		return "cartwish/cart";
 	}
-	
+
+	@Override
+	public String wish(String del_id,Model model) {
+		String wish_img[]={"1.JPG","2.JPG","3.JPG","4.JPG"};
+
+		List<String> imgList = new ArrayList<String>();
+		for(int i=0; i<4; i++) {
+
+			imgList.add(wish_img[i]);
+		}
+
+		if(del_id!=null) {
+			String delete_img[]=del_id.split(",");
+
+			for(int i=0; i< delete_img.length; i++) {
+				imgList.remove(delete_img[i]);
+			}
+		}
+
+		model.addAttribute("imgList",imgList);
+
+
+		return "cartwish/wish";
+	}
 
 
 }
