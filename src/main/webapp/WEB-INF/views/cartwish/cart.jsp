@@ -6,19 +6,13 @@
 
 <head>
   <style>
-    body {
-      margin:0px;
-    }
-    
-   
-    
     input[type=checkbox] {
       height:10px;
     }
     
     .container {
       margin:auto auto 100px auto;
-      width:1100px;
+      width:65%;
       display:flex;
     
     }
@@ -95,13 +89,13 @@
     }
     
     .mini-right {
-       dispaly:inline-block;
+       display:inline-block;
        float:right;
     }
     .a {
        height:25px;
        font-size:12px;
-       dispaly:inline-block;
+       display:inline-block;
        margin:0 10px 0px 10px;
        padding-bottom:15px;
     }
@@ -291,7 +285,7 @@
            <input type="checkbox" onclick="maincheck(this)" id="up" checked>
            <span class="a">전체선택</span> 
            <span class="a" style="color:#cccccc;">|</span>
-           <span class="a" id="cdel" onclick="cartdel()">선택삭제</span>
+           <span class="a" onclick="cartdel()">선택삭제</span>
         </div> 
         
         <c:forEach var="item" items="${cartList}">
@@ -337,7 +331,7 @@
            <input type="checkbox" onclick="maincheck(this)" id="down" checked>
            <span class="a">전체선택</span> 
            <span class="a" style="color:#cccccc;">|</span>
-           <span class="a" id="cdel" onclick="cartdel()">선택삭제</span>
+           <span class="a"  onclick="cartdel()">선택삭제</span>
        </div> 
      </div>    
    
