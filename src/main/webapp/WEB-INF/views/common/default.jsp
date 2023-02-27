@@ -326,17 +326,6 @@
 		  display: none;
 		  backdrop-filter:blur(8px);
 		}
-		#modal2 {
-		  position:fixed;
-		  width:100%;
-		  height:100%;
-		  background:rgba(0, 0, 0, 0.5);
-		  top: 0;
-		  left: 0;
-		  z-index: 98;
-		  display: none;
-		  backdrop-filter:blur(8px);
-		}
 
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -344,15 +333,12 @@
 	   $(function(){
 		   var $cate = $('nav >ul > li'),
 		   		$second = $('#second');
-		   		$modal = $('#modal2');
 		   
 		   $cate.mouseenter(function(){
-			   $second.stop().animate({height:'300px'}),
-			   $modal.fadeIn();
+			   $second.stop().animate({height:'300px'});
 		   })
 		   .mouseleave(function(){
-			   $second.stop().animate({height:'50px'}),
-			   $modal.fadeOut();
+			   $second.stop().animate({height:'50px'});
 		   });
 	   });
 		    
@@ -454,7 +440,6 @@
 	<div id="second">
 		<div id="left"> <a href="/"><img src="/resources/img/rice.png" width="70" height="50"></a> </div>
 			<nav>
-			<div id="modal2"></div>
 				<ul id="cate">
 					<li> 한 식
 						<ul>
