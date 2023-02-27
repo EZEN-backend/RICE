@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 	<style>
 		body {
-			width:100%px;
+			width:100%;
 			margin:0px;
 			z-index:1;
 			position:relative;
