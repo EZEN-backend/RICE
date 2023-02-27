@@ -10,13 +10,13 @@
 <title>Insert title here</title>
 	<style>
 		body {
+			width:100%;
 			margin:0px;
 			z-index:1;
 			position:relative;
 		}
 		#first {
-		    margin:auto;
-			width:1920px;
+			width:100%;
 			height:40px;
 		}
 		/* 카테고리 관련 스타일 */
@@ -80,7 +80,7 @@
 			background:white;
 			transition:0.5;
 			display:none;
-			z-index:2;
+			z-index:99;
 			border-bottom:1px solid black;
 		}
 		#search_form input[type="text"] {
@@ -121,18 +121,18 @@
 		}
 		header {
 		    margin:auto;
-			width:1920px;
+			width:100%;
 			background:white;
 			height:50px;
 		}
 		header #second {
-			width:1920px;
-			margin:0;
+			width:100%;
+			margin-top:0px;
 			background:white;
 			height:50px;
 			overflow:hidden;
 			position:absolute;
-			z-index:1;
+			z-index:98;
 		}
 		header #left {
 			position:absolute;
@@ -281,7 +281,7 @@
 			right:0px;
 		}
 		#hfirst {
-			width:1920px;
+			width:100%;
 			height:40px;
 			align:center;
 		}
@@ -308,7 +308,24 @@
 		    
 		}
 		
-		
+		#search_form input[type=button] {
+			border:none;
+			border-radius:15px;
+		}
+		#search_form input[type=button]:hover{
+			background:#cccccc;
+		}
+		#modal {
+		  position:fixed;
+		  width:100%;
+		  height:100%;
+		  background:rgba(0, 0, 0, 0.5);
+		  top: 0;
+		  left: 0;
+		  z-index: 99;
+		  display: none;
+		  backdrop-filter:blur(8px);
+		}
 
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -326,29 +343,29 @@
 	   });
 		    
 		
-		// 검색바 slide
+		// 검색바를 포함하고 있는 modal slideDown
+		// 클릭 이벤트 등록 , 모달창을 제외한 부분에 backdrop-filter 이용해서 blur
+		
 		$(document).ready(function() {
-		  // 클릭 이벤트 등록
 		  $('#vsearch').click(function() {
 		    $('#search_form').slideDown(200);
+		    $("#modal").fadeIn();
 		  });
+		  
+		  $("#csearch").click(function(){
+		        $("#search_form").slideUp(100);
+		        $("#modal").fadeOut();
+		    });
 		  
 		  // outside 클릭 이벤트 등록
 		  $(document).mouseup(function(e) {
 		    var container = $('#search_form');
+		    var modal = $('#modal');
 		    if (!container.is(e.target) && container.has(e.target).length == 0) {
-		      container.slideUp(200);
+		      container.slideUp(100);
+		      modal.fadeOut();
 		    }
 		  });
-		});
-		
-		// 취소 버튼 클릭시 slideUp
-		$(function()
-		{
-			$("#csearch").click(function()
-			{
-				$("#search_form").stop().slideUp(200);
-			});
 		});
 		
 		
@@ -384,7 +401,8 @@
 <div id="first">
 	<div id="topmsg">
 		<div id="hfirst">
-			<form id="search_form" name="search_form" method="get" action="search_list">
+		<div id="modal"></div>
+			<form id="search_form" name="search_form" method="get" action="/search/list">
 				<input type="text" name="search">
 				<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
 				<input type="button" value="취소" id="csearch" style="cursor:pointer">
@@ -420,8 +438,7 @@
 </div> <!-- 광고성 메세지 -->
 	<header>
 	<div id="second">
-		<div id="left"> <a href="/rice"><img src="/rice/resources/img/rice.png" width="70" height="50"></a> </div>
-		
+		<div id="left"> <a href="/"><img src="/resources/img/rice.png" width="70" height="50"></a> </div>
 			<nav>
 				<ul id="cate">
 					<li> 한 식

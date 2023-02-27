@@ -1,8 +1,16 @@
 package kr.co.rice.vo;
 
 public class ProductVo {
-    private int id, price, views, subcategory_id, category_id;
+    private int id, price, views, subcategory_id, category_id, spicylevel_id;
     private String title, name, size, body, code, extra_detail, category_name, subcategory_name, spicylevel, image_url;
+    
+    
+	public int getSpicylevel_id() {
+		return spicylevel_id;
+	}
+	public void setSpicylevel_id(int spicylevel_id) {
+		this.spicylevel_id = spicylevel_id;
+	}
 	public int getId() {
 		return id;
 	}

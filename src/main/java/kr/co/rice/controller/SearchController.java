@@ -18,9 +18,9 @@ public class SearchController {
 	@Qualifier("ss")
 	private SearchService service;
 	
-	@RequestMapping("/search/search_list")
-	public String search_list(HttpServletRequest request,Model model)
+	@RequestMapping("/search/list")
+	public String list(HttpServletRequest request,Model model)
 	{
-		return "/search/search_list";
+		return service.list(request, model);
 	}
 }
