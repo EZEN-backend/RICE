@@ -15,6 +15,9 @@
 			z-index:1;
 			position:relative;
 		}
+		#header-wrapper {
+			
+		}
 		#first {
 			width:100%;
 			height:40px;
@@ -132,7 +135,7 @@
 			height:50px;
 			overflow:hidden;
 			position:absolute;
-			z-index:98;
+			z-index:100;
 		}
 		header #left {
 			position:absolute;
@@ -320,11 +323,11 @@
 		  width:100%;
 		  height:100%;
 		  background:rgba(0, 0, 0, 0.5);
-		  top: 0;
+		  top:50px;
 		  left: 0;
 		  z-index: 99;
 		  display: none;
-		  backdrop-filter:blur(8px);
+		  backdrop-filter:blur(5px);
 		}
 
 	</style>
@@ -332,13 +335,16 @@
 	<script>
 	   $(function(){
 		   var $cate = $('nav >ul > li'),
-		   		$second = $('#second');
+		   		$second = $('#second'),
+		   		$modal = $('#modal');
 		   
 		   $cate.mouseenter(function(){
-			   $second.stop().animate({height:'300px'});
+			   $second.animate({height:'300px'}),
+			   $modal.fadeIn();
 		   })
 		   .mouseleave(function(){
-			   $second.stop().animate({height:'50px'});
+			   $second.animate({height:'50px'}),
+			   $modal.fadeOut();
 		   });
 	   });
 		    
@@ -398,95 +404,96 @@
 </head>
 	<decorator:head/>
 <body>
-<div id="first">
-	<div id="topmsg">
-		<div id="hfirst">
-		<div id="modal"></div>
-			<form id="search_form" name="search_form" method="get" action="/search/list">
-				<input type="text" name="search">
-				<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
-				<input type="button" value="취소" id="csearch" style="cursor:pointer">
-				<div>
-				<span>인기상품</span><p>
-				잘팔린상품1<p>
-				잘팔린상품2<p>
-				잘팔린상품3<p>
-				잘팔린상품4
-				</div>
-			</form>
-		</div>
-		<div id="right">
-			<c:if test="${userid == null }">
-			<a href="/rice/users/signin">  로그인  </a> | 
-			<a href="/rice/users/signup">  회원가입  </a> 
-			</c:if>
-			<c:if test="${userid != null }">
-				${name}~님, 안녕하세요
-				|  고객센터
-				<span id="mymenu">|  <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
-					<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
-						<li> <a href="/rice/users">회원정보</a> </li>
-						<li> 주문목록 </li>		
-						<li> 적 립 금 </li>				
-						<li> 장바구니 </li>		
-						<li> <a href="/rice/users/signout">로그아웃</a> </li>		
-					</ul>
-				</span>
+<div id="modal"></div>
+<div id="header-wrapper">
+	<div id="first">
+		<div id="topmsg">
+			<div id="hfirst">
+				<form id="search_form" name="search_form" method="get" action="/search/list">
+					<input type="text" name="search">
+					<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
+					<input type="button" value="취소" id="csearch" style="cursor:pointer">
+					<div>
+					<span>인기상품</span><p>
+					잘팔린상품1<p>
+					잘팔린상품2<p>
+					잘팔린상품3<p>
+					잘팔린상품4
+					</div>
+				</form>
+			</div>
+			<div id="right">
+				<c:if test="${userid == null }">
+				<a href="/rice/users/signin">  로그인  </a> | 
+				<a href="/rice/users/signup">  회원가입  </a> 
 				</c:if>
+				<c:if test="${userid != null }">
+					${name}~님, 안녕하세요
+					|  고객센터
+					<span id="mymenu">|  <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
+						<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
+							<li> <a href="/rice/users">회원정보</a> </li>
+							<li> 주문목록 </li>		
+							<li> 적 립 금 </li>				
+							<li> 장바구니 </li>		
+							<li> <a href="/rice/users/signout">로그아웃</a> </li>		
+						</ul>
+					</span>
+					</c:if>
+			</div>
 		</div>
-	</div>
-</div> <!-- 광고성 메세지 -->
-	<header>
-	<div id="second">
-		<div id="left"> <a href="/"><img src="/resources/img/rice.png" width="70" height="50"></a> </div>
-			<nav>
-				<ul id="cate">
-					<li> 한 식
-						<ul>
-							<li> <a href="/products/1/1">찜/탕</a> </li>
-							<li> <a href="/products/1/2">반찬</a> </li>
-							<li> <a href="/products/1/3">볶음류</a> </li>
-							<li> <a href="/products/1/4">구이</a> </li>
-							<li> <a href="/products/1/5">기타/분식</a> </li>
-						</ul>
-					 </li>
-					<li> 일 식
-						<ul>
-							<li> <a href="/products/2/1">튀김류</a> </li>
-							<li> <a href="/products/2/2">면류</a> </li>
-							<li> <a href="/products/2/3">스시</a> </li>
-							<li> <a href="/products/2/4">덮밥</a> </li>
-						</ul>
-					</li>
-					<li> 중 식
-						<ul>
-							<li> <a href="/products/3/1">튀김류</a> </li>
-							<li> <a href="/products/3/2">면류</a> </li>
-							<li> <a href="/products/3/3">밥류</a> </li>
-							<li> <a href="/products/3/4">만두류</a> </li>
-						</ul>
-					</li>
-					<li> 양 식
-						<ul>
-							<li> <a href="/products/4/1">파스타</a> </li>
-							<li> <a href="/products/4/2">육류</a> </li>
-							<li> <a href="/products/4/3">피자</a> </li>
-							<li> <a href="/products/4/4">샐러드</a> </li>
-						</ul>
-					</li>
-				</ul>
-		   
-				<!-- 검색돋보기 -->
-				<i class="fa-solid fa-magnifying-glass" id="vsearch" style="cursor:pointer"></i>
-				<i class="fa-regular fa-heart" id="wish_view" onclick="gwish()" style="cursor:pointer"></i>
-				<i class="fa-solid fa-cart-shopping" id="cart_view" onclick="gcart()" style="cursor:pointer; ">
-				   <span id="cart_amount">0</span>
-				</i>
-				
-			 </nav>
-		</div> <!-- menu 관련 -->
-	</header> <!-- 로그인,회원가입,로고 -->
-
+	</div> <!-- 광고성 메세지 -->
+		<header>
+		<div id="second">
+			<div id="left"><a href="/"><img src="/resources/img/rice.png" width="70" height="50"></a> </div>
+				<nav>
+					<ul id="cate">
+						<li> 한 식
+							<ul>
+								<li> <a href="/products/1/1">찜/탕</a> </li>
+								<li> <a href="/products/1/2">반찬</a> </li>
+								<li> <a href="/products/1/3">볶음류</a> </li>
+								<li> <a href="/products/1/4">구이</a> </li>
+								<li> <a href="/products/1/5">기타/분식</a> </li>
+							</ul>
+						 </li>
+						<li> 일 식
+							<ul>
+								<li> <a href="/products/2/1">튀김류</a> </li>
+								<li> <a href="/products/2/2">면류</a> </li>
+								<li> <a href="/products/2/3">스시</a> </li>
+								<li> <a href="/products/2/4">덮밥</a> </li>
+							</ul>
+						</li>
+						<li> 중 식
+							<ul>
+								<li> <a href="/products/3/1">튀김류</a> </li>
+								<li> <a href="/products/3/2">면류</a> </li>
+								<li> <a href="/products/3/3">밥류</a> </li>
+								<li> <a href="/products/3/4">만두류</a> </li>
+							</ul>
+						</li>
+						<li> 양 식
+							<ul>
+								<li> <a href="/products/4/1">파스타</a> </li>
+								<li> <a href="/products/4/2">육류</a> </li>
+								<li> <a href="/products/4/3">피자</a> </li>
+								<li> <a href="/products/4/4">샐러드</a> </li>
+							</ul>
+						</li>
+					</ul>
+			   
+					<!-- 검색돋보기 -->
+					<i class="fa-solid fa-magnifying-glass" id="vsearch" style="cursor:pointer"></i>
+					<i class="fa-regular fa-heart" id="wish_view" onclick="gwish()" style="cursor:pointer"></i>
+					<i class="fa-solid fa-cart-shopping" id="cart_view" onclick="gcart()" style="cursor:pointer; ">
+					   <span id="cart_amount">0</span>
+					</i>
+					
+				 </nav>
+			</div> <!-- menu 관련 -->
+		</header> <!-- 로그인,회원가입,로고 -->
+</div>
 	<decorator:body/>
 	
 	<footer><!-- 사이트관련 내용 -->
