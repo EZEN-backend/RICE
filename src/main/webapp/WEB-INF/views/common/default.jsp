@@ -135,7 +135,7 @@
 			height:50px;
 			overflow:hidden;
 			position:absolute;
-			z-index:100;
+			z-index:98;
 		}
 		header #left {
 			position:absolute;
@@ -323,9 +323,9 @@
 		  width:100%;
 		  height:100%;
 		  background:rgba(0, 0, 0, 0.5);
-		  top:50px;
+		  top:40px;
 		  left: 0;
-		  z-index: 99;
+		  z-index: 90;
 		  display: none;
 		  backdrop-filter:blur(5px);
 		}
@@ -340,11 +340,11 @@
 		   
 		   $cate.mouseenter(function(){
 			   $second.animate({height:'300px'}),
-			   $modal.fadeIn();
+			   $modal.fadeIn("fast");
 		   })
 		   .mouseleave(function(){
 			   $second.animate({height:'50px'}),
-			   $modal.fadeOut();
+			   $modal.fadeOut("fast");
 		   });
 	   });
 		    
@@ -354,13 +354,13 @@
 		
 		$(document).ready(function() {
 		  $('#vsearch').click(function() {
-		    $('#search_form').slideDown(200);
-		    $("#modal").fadeIn();
+		    $('#search_form').slideDown(100);
+		    $("#modal").fadeIn("fast");
 		  });
 		  
 		  $("#csearch").click(function(){
 		        $("#search_form").slideUp(100);
-		        $("#modal").fadeOut();
+		        $("#modal").fadeOut("fast");
 		    });
 		  
 		  // outside 클릭 이벤트 등록
