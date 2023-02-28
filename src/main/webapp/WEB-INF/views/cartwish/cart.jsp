@@ -277,7 +277,7 @@
         <div id="event" style="border:1px solid #cccccc; padding:4px">
            <span style="color:#f19022; font-size:17px">오늘의 특별한  메뉴 : HOT SALE</span><br>
            <span style="font-size:13px">신선한 재료로 만든 특별한 먹거리를 저렴한 가격에 구입해 보세요.</span> 
-           <a href="/rice/special" style="color:black; font-size:13px">구입하기</a>
+           <a href="/special" style="color:black; font-size:13px">구입하기</a>
         </div>
         <div style="margin:15px 2px 30px 2px;font-size:17px; font-weight:1000">장바구니</div>
           
@@ -297,7 +297,7 @@
                             
               <div style="display:flex; margin-top:10px">       
                  <div style="flex-basis:3%"><input type="checkbox" class="csub" onclick="subcheck()" value="${item.cartId}" checked></div>
-                 <div style="flex-basis:25%"><img src="/rice/resources/cart-img/${item.pImg}" width="140" height="140"></div>
+                 <div style="flex-basis:25%"><img src="/resources/cart-img/${item.pImg}" width="140" height="140"></div>
                  <div style="flex-basis:72%">
                     <div style="height:50px">
                        <span style="display:inline-block;font-weight:550; margin-top:7px">${item.pTitle}</span>

@@ -17,6 +17,7 @@
         }
         .container:first-child {
             width:100%;
+            position: relative;
 
         }
         .container:first-child .item:nth-child(1){
@@ -26,29 +27,49 @@
             margin:20px auto 20px 50px;
 
         }
-        .container:first-child .item:nth-child(2){
-            margin:20px 50px 20px auto;
+        .container:first-child #change_wish {
+            position: absolute;
+            top: 5px;
+            left: 88% ;
+            display: block;
             width:100px;
             height:30px;
             line-height:30px;
             font-size:13px;
             border:1px solid black;
             border-radius: 15px;
-            background-color:black;
-            color:white;
+            background-color:white;
+            color:black;
             text-align:center;
 
         }
+        .container:first-child #change_wish2 {
+            position: absolute;
+            top: 5px;
+            left: 88% ;
+            display: none;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 13px;
+            border: 1px solid black;
+            border-radius: 15px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+
         .container:nth-child(2) {
             flex-flow:row wrap;
-            /* justify-content:space-between; */
             width:1000px;
             margin:auto;
         }
         .container:nth-child(2) .item_img {
             position:relative;
             width:300px;
-            margin:30px 10px 20px 20px;
+            height: auto;
+            margin:20px 10px 8px 20px;
         }
         .container:nth-child(2) .img_product {
             width:300px;
@@ -56,8 +77,10 @@
         }
         .container:nth-child(2) .img_heart {
             display:inline-block;
+            visibility: hidden;
             position:absolute;
-            left:250px;
+            left:260px;
+            top: 10px;
             width:50px;
             height:50px;
             border-radius:25px;
@@ -101,34 +124,27 @@
         #change_wish {
             cursor: pointer;
         }
+
         .container:last-child .popup:nth-child(1) {
-            width:20px;
-            height:20px;
-            font-size: 20px;
-            font-weight: 600;
-            margin: 3px 3px 10px auto;
-            cursor: pointer;
-        }
-        .container:last-child .popup:nth-child(2) {
             width: 270px;
             height: 20px;
             font-size: 15px;
             margin: 15px 0 0 20px;
         }
-        .container:last-child .popup:nth-child(3) {
+        .container:last-child .popup:nth-child(2) {
             width: 200px;
             height: 30px;
             font-size: 18px;
             font-width: 600;
             margin: 20px auto 0 20px;
         }
-        .container:last-child .popup:nth-child(4) {
+        .container:last-child .popup:nth-child(3) {
             width: 50px;
             height: 30px;
-            margin: 40px auto 0 20px;
+            margin: 20px auto 0 20px;
         }
 
-        .container:last-child .popup:nth-child(5) {
+        .container:last-child .popup:nth-child(4) {
             width: 200px;
             height: 40px;
             line-height: 40px;
@@ -138,7 +154,7 @@
             color: white;
             background: black;
             border-radius: 38px;
-            margin: 70px auto;
+            margin: 100px auto;
             cursor: pointer;
         }
 
@@ -154,13 +170,13 @@
                 var img_name=$(".img_name").eq(n).val();
 
                 if(status=="true") {
-                    $(".img_img").eq(n).attr("src","/rice/resources/cart-img/w1.png");
+                    $(".img_img").eq(n).attr("class","fa-regular fa-heart fa-2x img_img");
                     $(".del_status").eq(n).val("false");
                     $(".img_product").eq(n).css("opacity","0.3");
                     $(".img_del").eq(n).val(img_name);
                 }
                 else if(status="false") {
-                    $(".img_img").eq(n).attr("src","/rice/resources/cart-img/w2.png");
+                    $(".img_img").eq(n).attr("class","fa-solid fa-heart fa-2x img_img");
                     $(".del_status").eq(n).val("true");
                     $(".img_product").eq(n).css("opacity","1");
                     $(".img_del").eq(n).val("");
@@ -169,6 +185,12 @@
             });
 
             $("#change_wish").on("click", function () {
+                $("#change_wish").css("display","none");
+                $("#change_wish2").css("display","block");
+                $(".img_heart").css("visibility","visible");
+            });
+
+            $("#change_wish2").on("click", function () {
                 var del_id="";
 
                 for(var i=0; i<$(".img_del").length ; i++) {
@@ -177,7 +199,7 @@
                     }
                 }
 
-                location="/rice/wish/"+del_id+"/";
+                location="/wish/"+del_id+"/";
 
             });
 
@@ -188,12 +210,6 @@
                 $("#pop_img").attr("src",img_src);
                 $(".container:last-child").css("visibility","visible");
                 $(".container:last-child").css("top",scroll_top+100+"px");
-
-
-            });
-
-            $("#button_x").on("click",function () {
-                $(".container:last-child").css("visibility","hidden");
             });
 
             $("#button_cart").on("click",function () {
@@ -212,8 +228,11 @@
 
     <div class="container">
         <div class="item">위시리스트</div>
-        <div class="item" id="change_wish">수  정</div>
+        <div class="item" id="change_wish">수 &nbsp; &nbsp; &nbsp; &nbsp; 정</div>
+        <div  id="change_wish2">확 &nbsp; &nbsp; &nbsp; &nbsp;  인</div>
+
     </div>
+
 
     <!-- forEach문 -->
     <div class="container">
@@ -222,8 +241,8 @@
                 <input class="img_name" type="hidden" value="${item}">
                 <input class="img_del" type="hidden" value="">
                 <input class="del_status" type="hidden" value="true">
-                <div ><img class="img_product" src="/rice/resources/cart-img/${item}">
-                    <div class="img_heart"  ><img src="/rice/resources/cart-img/w2.png" class="img_img"></div>
+                <div ><img class="img_product" src="/resources/cart-img/${item}">
+                    <div class="img_heart"  ><i class="fa-solid fa-heart fa-2x img_img" ></i></div>
                 </div>
                 <div style="font-size:15px; font-weight:550">뚝배기 순두부 찌개
                     <span style="display:inline-block; float:right">17,000 원</span>
@@ -235,11 +254,12 @@
     </div>
     <!-- forEach문 종료 -->
 
+    <div style="margin-top: 50px"></div>
+
     <!-- 팝업 영역 -->
     <div class="container">
         <div class="item" ><img id="pop_img" src=""></div>
         <div class="item" id="pop_content">
-            <div class="popup" id="button_x">X</div>
             <div class="popup">밑반찬류 <span style="float: right; font-size: 17px; padding-right: 5px">17,000 원</span></div>
             <div class="popup">뚝배기 순두부 찌게</div>
             <div class="popup">
