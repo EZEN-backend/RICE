@@ -28,8 +28,22 @@ public class SearchServiceImpl implements SearchService{
 			search = request.getParameter("search");
 
 		ArrayList<ProductVo> list = mapper.list(search);
+		model.addAttribute("search",search);
 		model.addAttribute("list",list);
 		
 		return "/products/list";
 	}
+	
+	@Override
+	public ArrayList<ProductVo> getItems(HttpServletRequest request,Model model) {
+		String search = request.getParameter("search");
+		int start = Integer.parseInt(request.getParameter("start"));
+		int end = Integer.parseInt(request.getParameter("end"));
+		
+		ArrayList<ProductVo>list = mapper.getItems(search,start,end);
+		
+		
+		return list;
+	}
+	
 }

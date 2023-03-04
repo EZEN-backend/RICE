@@ -9,11 +9,23 @@
 <script src="https://kit.fontawesome.com/f1fa4a6c48.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 	<style>
+		@font-face {
+			font-family: 'PuradakGentleGothicR';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
+			font-weight: lighter;
+			font-style: normal;
+		}
 		body {
-			width:100%;
+			width:1920px;
 			margin:0px;
 			z-index:1;
 			position:relative;
+			font-family: 'PuradakGentleGothicR';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
+			font-weight: normal;
+			font-style: normal;
+			font-size:14px;
+		
 		}
 		#header-wrapper {
 			
@@ -33,8 +45,7 @@
 		}
 		nav {
 			width:100%;
-			height:40px;
-			margin:0 auto;
+			margin:0px auto;
 		}
 		nav > ul > li {
 			position:relative;
@@ -78,6 +89,7 @@
 			position:absolute;
 			left:0;
 			right:0;
+			width:100%;
 			height:400px;
 			text-align:center;
 			background:white;
@@ -185,7 +197,7 @@
 			color:black;
 		}
 		footer {
-			width:1920px;
+			width:100%;
 			height:443px;
 			margin:auto;
 			background:black;
@@ -325,7 +337,7 @@
 		  background:rgba(0, 0, 0, 0.5);
 		  top:40px;
 		  left: 0;
-		  z-index: 90;
+		  z-index: 95;
 		  display: none;
 		  backdrop-filter:blur(5px);
 		}
@@ -339,12 +351,12 @@
 		   		$modal = $('#modal');
 		   
 		   $cate.mouseenter(function(){
-			   $second.animate({height:'300px'}),
-			   $modal.fadeIn("fast");
+			   $second.animate({height:'320px'}),
+			   $modal.fadeIn();
 		   })
 		   .mouseleave(function(){
 			   $second.animate({height:'50px'}),
-			   $modal.fadeOut("fast");
+			   $modal.fadeOut();
 		   });
 	   });
 		    
@@ -354,13 +366,13 @@
 		
 		$(document).ready(function() {
 		  $('#vsearch').click(function() {
-		    $('#search_form').slideDown(100);
-		    $("#modal").fadeIn("fast");
+		    $('#search_form').slideDown(200);
+		    $("#modal").fadeIn();
 		  });
 		  
 		  $("#csearch").click(function(){
 		        $("#search_form").slideUp(100);
-		        $("#modal").fadeOut("fast");
+		        $("#modal").fadeOut();
 		    });
 		  
 		  // outside 클릭 이벤트 등록
@@ -410,7 +422,7 @@
 		<div id="topmsg">
 			<div id="hfirst">
 				<form id="search_form" name="search_form" method="get" action="/search/list">
-					<input type="text" name="search">
+					<input type="text" id="search" name="search">
 					<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
 					<input type="button" value="취소" id="csearch" style="cursor:pointer">
 					<div>
@@ -448,7 +460,7 @@
 			<div id="left"><a href="/"><img src="/resources/img/rice.png" width="70" height="50"></a> </div>
 				<nav>
 					<ul id="cate">
-						<li> 한 식
+						<li class="subcate"> 한 식
 							<ul>
 								<li> <a href="/products/1/1">찜/탕</a> </li>
 								<li> <a href="/products/1/2">반찬</a> </li>
@@ -457,7 +469,7 @@
 								<li> <a href="/products/1/5">기타/분식</a> </li>
 							</ul>
 						 </li>
-						<li> 일 식
+						<li class="subcate"> 일 식
 							<ul>
 								<li> <a href="/products/2/1">튀김류</a> </li>
 								<li> <a href="/products/2/2">면류</a> </li>
@@ -473,7 +485,7 @@
 								<li> <a href="/products/3/4">만두류</a> </li>
 							</ul>
 						</li>
-						<li> 양 식
+						<li class="subcate"> 양 식
 							<ul>
 								<li> <a href="/products/4/1">파스타</a> </li>
 								<li> <a href="/products/4/2">육류</a> </li>

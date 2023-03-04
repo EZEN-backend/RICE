@@ -10,4 +10,5 @@
 		inner join products_images as pi on pi.product_id = p.id
 		where sc.category_id = #{param1} and p.subcategory_id = #{param2}
 	</select>
+	
 </mapper>
