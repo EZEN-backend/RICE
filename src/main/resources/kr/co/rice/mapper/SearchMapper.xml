@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		inner join subcategories as sc on p.subcategory_id = sc.id
 		inner join spicylevels as sl on p.spicylevel_id = sl.id
 		where p.title like concat('%',#{param},'%') order by p.id desc
-		limit 3
+		limit 6
 	</select>
 	
 	<select id="getItems" resultType="kr.co.rice.vo.ProductVo">

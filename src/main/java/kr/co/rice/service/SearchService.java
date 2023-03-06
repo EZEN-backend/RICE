@@ -12,6 +12,6 @@ import kr.co.rice.vo.ProductVo;
 public interface SearchService {
 	
 	public String list(HttpServletRequest request,Model model);
-	public ArrayList<ProductVo> getItems(HttpServletRequest request, Model model);
+//	public ArrayList<ProductVo> getItems(HttpServletRequest request, Model model);
 
 }

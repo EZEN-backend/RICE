@@ -14,15 +14,20 @@
 <script>
 
 // 받아온 검색어를 변수안에 넣어주고
-var search = "${search}";
-
+// var search = "${search}";
+// +'&search='+search;
+	var category = ${category_id};
+	var subcategory = ${subcategory_id};
+	
 // 스크롤 이벤트가 한번에 여러번 실행되지 않게 하기 
 var timer = null;
 
 // 스크롤 이벤트 발동!
 $(window).scroll(function(){
     //console.log(search);
-    
+    //console.log(category);
+	//console.log(subcategory);
+	
     // 현재 스크롤의 위치를 scrT 라는 변수안에 저장
     var scrT = $(window).scrollTop();
 
@@ -40,7 +45,7 @@ $(window).scroll(function(){
             var end = 3; // 임시로 3개씩 추가로 가져오기
             
             // 쿼리파라미터 이용해서 limit ?,?에 들어갈 값 + 검색어 보내주기
-            var url = '/search/getItems?start='+start+'&end='+end+'&search='+search;
+            var url = '/products/getItems?category_id='+category+'&subcategory_id='+subcategory+'&start='+start+'&end='+end
             
             // 아래는 ajax 요청 처리
             $.ajax({
@@ -74,7 +79,6 @@ $(window).scroll(function(){
                         if((i+1)%3 == 0){
                             itemsHtml = '<div class="items">'+itemsHtml+'</div>';
                             $(".grid-all").append(itemsHtml);
-                            itemsHtml = '';
                         }
                     }
     				
@@ -86,7 +90,7 @@ $(window).scroll(function(){
                 },
             });
             timer = null; // 스크롤 이벤트를 한번 실행 후 값을 null로 다시 바꿔줘서 스크롤 이벤트 실행못하게 막기
-    	}, 150); // 0.15초 후에 ajax로 요청을 보내기
+    	}, 150);
     }
 });
 	
