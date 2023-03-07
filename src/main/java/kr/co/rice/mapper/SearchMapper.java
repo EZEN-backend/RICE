@@ -7,5 +7,5 @@ import kr.co.rice.vo.ProductVo;
 public interface SearchMapper {
 
 	public ArrayList<ProductVo> list(String search);
-//	public ArrayList<ProductVo> getItems(String search,int start, int end);
+	public ArrayList<ProductVo> getItems(String search,int start, int end);
 }

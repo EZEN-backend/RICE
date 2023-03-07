@@ -29,10 +29,10 @@ public class SearchController {
 		return service.list(request, model);
 	}
 	
-//	@ResponseBody
-//	@RequestMapping(value="/search/getItems2",method=RequestMethod.GET,produces = "application/json; charset=utf8")
-//	public ArrayList<ProductVo> getItems(HttpServletRequest request ,Model model)
-//	{
-//		return service.getItems2(request,model);
-//	}
+	@ResponseBody
+	@RequestMapping(value="/search/getItems2",method=RequestMethod.GET,produces = "application/json; charset=utf8")
+	public ArrayList<ProductVo> getItems(HttpServletRequest request ,Model model)
+	{
+		return service.getItems2(request,model);
+	}
 }

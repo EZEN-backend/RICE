@@ -14,10 +14,10 @@
 <script>
 
 // 받아온 검색어를 변수안에 넣어주고
-// var search = "${search}";
+	var search = "${search}";
 // +'&search='+search;
-	var category = ${category_id};
-	var subcategory = ${subcategory_id};
+	var category = "${category_id}";
+	var subcategory = "${subcategory_id}";
 	
 	// 스크롤 이벤트가 한번에 여러번 실행되지 않게 하기 
 	var timer = null;
@@ -45,8 +45,14 @@ $(window).scroll(function(){
             var end = 6; // 임시로 3개씩 추가로 가져오기
             
             // 쿼리파라미터 이용해서 limit ?,?에 들어갈 값 + 검색어 보내주기
-            var url = '/products/getItems?category_id='+category+'&subcategory_id='+subcategory+'&start='+start+'&end='+end
-            
+            if(category != "")
+            {
+            	var url = '/products/getItems?category_id='+category+'&subcategory_id='+subcategory+'&start='+start+'&end='+end
+            }
+            else
+            {
+            	var url = '/search/getItems2?start='+start+'&end='+end+'&search='+search;
+            }
             // 아래는 ajax 요청 처리
             $.ajax({
                 type : 'get',
