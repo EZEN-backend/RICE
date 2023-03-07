@@ -352,11 +352,11 @@
 		   		$modal = $('#modal');
 		   
 		   $cate.mouseenter(function(){
-			   $second.animate({height:'320px'}),
+			   $second.stop().animate({height:'320px'}),
 			   $modal.fadeIn();
 		   })
 		   .mouseleave(function(){
-			   $second.animate({height:'50px'}),
+			   $second.stop().animate({height:'50px'}),
 			   $modal.fadeOut();
 		   });
 	   });
