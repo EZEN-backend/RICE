@@ -132,16 +132,10 @@
 	   }
 	   
 	   section > .slider {
-	   	width:1784px;
+	   	width:100%;
 	   	height:978.78px;
-	   	display:flex;
-	    margin:0px 58px 0px 40px;
-	    padding:0px 0px 0px 20px;
-	   }
-	   section > .slider > .slider_item{
-	   	width:598.62px;
-	   	height:932.78px;
-	   	padding:10px;
+	   	display:grid;
+	   	grid-template-columns: 1fr 1fr 1fr;
 	   }
 	   .slider_item a {
 	   		text-decoration:none;
@@ -245,23 +239,22 @@
 	</div>
 	
 	<section>
-		<ul class="slider" align="center">
-			<li class="slider_item"> <a href="" aria-label="떡볶이: 온 가족이 즐길수 있는 떡볶이를 먹어보실랍니까?" width="598.62" height="932.78">
-			<img src="/resources/img/dduckbok2.png" width="598.62" height="932.78"><br>
+		<div class="slider">
+			<div class="slider_item"> <a href="" aria-label="떡볶이: 온 가족이 즐길수 있는 떡볶이를 먹어보실랍니까?" width="598.62" height="932.78">
+			<img src="/resources/img/dduckbok2.png" width="100%" height="932.78"><br>
 			떡볶이 <br> 온 가족이 즐길수 있는 떡볶이를 먹어보실랍니까? </a> 
-			</li>
+			</div>
 			
-			<li class="slider_item"> <a href="" aria-label="국밥: 국물이 시원한 할매손 국밥을 드셔보세요" width="598.62" height="932.78">
-			<img src="/resources/img/gookbab.png" width="598.62" height="932.78"><br>
+			<div class="slider_item"> <a href="" aria-label="국밥: 국물이 시원한 할매손 국밥을 드셔보세요" width="598.62" height="932.78">
+			<img src="/resources/img/gookbab.png" width="100%" height="932.78"><br>
 			국밥 <br> 국물이 뜨끈하고 시원한 할매손 국밥을 드셔보세요! </a> 
-			</li>
+			</div>
 			
-			<li class="slider_item"> <a href="" aria-label="족발: 320시간 끓인 육수로 만든 족발을 드셔보십쇼" width="598.62" height="932.78">
-			<img src="/resources/img/jokbal.png" width="598.62" height="932.78"><br>
+			<div class="slider_item"> <a href="" aria-label="족발: 320시간 끓인 육수로 만든 족발을 드셔보십쇼" width="598.62" height="932.78">
+			<img src="/resources/img/jokbal.png" width="100%" height="932.78"><br>
 			족발 <br> 320시간 끓인 육수로 만든 족발을 드셔보십쇼! </a> 
-			</li>
-		</ul>
-		
+			</div>
+		</div>
 	<div id="mimage2">
 		<div id="msub2">
 			<img src="/resources/img/mara.jpeg" width="100%">

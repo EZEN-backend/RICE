@@ -12,6 +12,96 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 <script>
+
+// 받아온 검색어를 변수안에 넣어주고
+	var search = "${search}";
+// +'&search='+search;
+	var category = "${category_id}";
+	var subcategory = "${subcategory_id}";
+	
+	// 스크롤 이벤트가 한번에 여러번 실행되지 않게 하기 
+	var timer = null;
+
+// 스크롤 이벤트 발동!
+$(window).scroll(function(){
+    //console.log(search);
+    //console.log(category);
+	//console.log(subcategory);
+	
+    // 현재 스크롤의 위치를 scrT 라는 변수안에 저장
+    var scrT = $(window).scrollTop();
+
+    // 현재스크롤위치(scrT) == 페이지 전체높이 - 브라우저창의 높이가 350이하 일때 실행
+    if(scrT + $(window).height() >= $(document).height() - 350) {
+    // 둘이 같아지면 아래를 실행해라 ~
+        
+    // setTime 이벤트로 스크롤 이벤트 한번만 실행 할 수 있게 처리하기
+    	if(timer != null)
+    	{
+    		clearTimeout(timer); // 스크롤 이벤트가 한번 실행이 되면 멈추게끔 타이머를 제거
+    	}
+    	timer = setTimeout(function(){
+    		var start = $('.product-item').length; // 출력된 상품들의 수
+            var end = 6; // 임시로 3개씩 추가로 가져오기
+            
+            // 쿼리파라미터 이용해서 limit ?,?에 들어갈 값 + 검색어 보내주기
+            if(category != "")
+            {
+            	var url = '/products/getItems?category_id='+category+'&subcategory_id='+subcategory+'&start='+start+'&end='+end
+            }
+            else
+            {
+            	var url = '/search/getItems2?start='+start+'&end='+end+'&search='+search;
+            }
+            // 아래는 ajax 요청 처리
+            $.ajax({
+                type : 'get',
+                url : url,
+                dataType:"json",
+                success : function(list) {
+                    var itemsHtml = '';
+                   	
+                    for(var i=0;i<list.length;i++)
+                    {
+                        var productHtml = '<div class="product-item '+list[i].size+' '+list[i].spicylevel_id+' ';
+                        
+                        if (parseFloat(list[i].price) <= 50000) {
+                            productHtml += 'low';
+                        } else if (parseFloat(list[i].price) > 50000 && parseFloat(list[i].price) <= 100000) {
+                            productHtml += 'middle';
+                        } else {
+                            productHtml += 'high';
+                        }
+                        // 문자열 이어줄때 실수한게 끝부분에 '+ 까지 적어둔 다음에 밑에줄에 적을때 ' 로 다시 이어줘야 하는거야 까먹지말자 주냥아
+                        productHtml += '"><div class="item"><div class="item_body"><figure><a class="item_card" href="/products/detail/'+list[i].id+'">'+
+                        '<div class="item_img"><img class="image" src="/resources/img/'+list[i].image_url+'" width="507" height="507"></div><div class="item_info">'+
+                        '<div class="item_titles"><div class="item_title">'+list[i].title+'</div><div class="item_subtitle">'+list[i].subcategory_name+'</div></div>'+
+                        '<div class="item_spicy_level">'+list[i].spicylevel+'</div><div class="item_size">'+list[i].size+'</div><div class="item_price">'+parseFloat(list[i].price).toLocaleString()+'원</div></div></a></figure></div></div></div>';
+                       
+                        itemsHtml += productHtml;
+    					
+                        // 데이터베이스에서 받아온 상품정보를 HTML문자열로 생성하기 + 그리드에 3개씩 넣어서 그룹화하기
+                        // 그룹화 한 후에 .grid-all 요소에 추가하여 출력!
+                        if((i+1)%3 == 0){
+                    	    var groupHtml = '<div class="items">'+itemsHtml+'</div>';
+                    	    $(".grid-all").append(groupHtml);
+                    	    itemsHtml = '';
+                    	}
+                    }
+    				
+                    // 데이터베이스에서 가져온 상품의 수가 3개로 나눠떨어지지 않을때는 나머지것들 그룹화하여 출력
+                    if(list.length%3 != 0){
+                        itemsHtml = '<div class="items">'+itemsHtml+'</div>';
+                        $(".grid-all").append(itemsHtml);
+                    }
+                },
+            });
+            timer = null; // 스크롤 이벤트를 한번 실행 후 값을 null로 다시 바꿔줘서 스크롤 이벤트 실행못하게 막기
+    	}, 150);
+    }
+});
+	
+	// isotope 라이브러리 처리 코
 	$(document).ready(function() {
 	  // Isotope grid
 	  var $grid = $('.grid').isotope({
@@ -237,14 +327,6 @@
         <div class="filterSection">
 			<div class="left-nav-wrapper">
 				<nav class="left-nav">
-					<div class="catecory-content">
-						<div class="category-css">
-							<a href=""> 한식 </a>
-							<a href=""> 중식 </a>
-							<a href=""> 일식 </a>
-							<a href=""> 양식 </a>
-						</div>
-					</div>
 					
 					<div class="filter-group-content">
 						<div class="filter-title-cate">
@@ -266,9 +348,9 @@
 							</div>
 						</div>
 						<div class="filters">
-							<input type="checkbox" value=".low">0~20,000원 <p>
-							<input type="checkbox" value=".middle">20,000 ~ 50,000원 <p>
-							<input type="checkbox" value=".high">50,000 ~ 100,000원 <p>
+							<input type="checkbox" value=".low">0~50,000원 <p>
+							<input type="checkbox" value=".middle">50,000 ~ 100,000원 <p>
+							<input type="checkbox" value=".high">100,000원 이상 상품 <p>
 						</div>
 					</div>
 					
@@ -279,9 +361,9 @@
 							</div>
 						</div>
 						<div class="filters">
-							<input type="checkbox" value=".소"> 소량인 <p>
-							<input type="checkbox" value=".중"> 중량인 <p>
-							<input type="checkbox" value=".대"> 대량인 <p>
+							<input type="checkbox" value=".S"> S <p>
+							<input type="checkbox" value=".M"> M <p>
+							<input type="checkbox" value=".L"> L <p>
 						</div>
 					</div>
 					
@@ -307,13 +389,13 @@
                     <div class="items">
                         <c:forEach items="${list}" var="list" varStatus="status">
                         <div class="product-item ${list.size} ${list.spicylevel_id}
-                        <c:if test="${list.price<=20000}">
+                        <c:if test="${list.price<=50000}">
                         low
                         </c:if>
-                        <c:if test="${list.price>20000 && list.price<=50000}">
+                        <c:if test="${list.price>50000 && list.price<=100000}">
                         middle
                         </c:if>
-                        <c:if test="${list.price>50000}">
+                        <c:if test="${list.price>100000}">
                         high
                         </c:if>
                         ">
@@ -322,7 +404,7 @@
                                 <figure>
                                     <a class="item_card" href="/products/detail/${list.id}">
                                         <div class="item_img">
-                                            <img class="image" src="../resources/img/${list.image_url}" width="507" height="507">
+                                            <img class="image" src="/resources/img/${list.image_url}" width="507" height="507">
                                         </div>
                                         <div class="item_info">
                                             <div class="item_titles">

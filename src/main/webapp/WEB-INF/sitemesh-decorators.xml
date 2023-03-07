@@ -3,6 +3,7 @@
  <!-- 제외할 패턴 -->
  <excludes>
   <pattern>/non</pattern>
+  <pattern>/admin/*</pattern>
  </excludes>
  <!-- 기본 패턴 -->
  <decorator name="default" page="default.jsp">
