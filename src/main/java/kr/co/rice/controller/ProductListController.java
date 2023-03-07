@@ -33,8 +33,8 @@ public class ProductListController {
 	
 	@ResponseBody
 	@RequestMapping(value="/products/getItems",method=RequestMethod.GET,produces = "application/json; charset=utf8")
-	public ArrayList<ProductVo> getItems(HttpServletRequest request ,Model model)
+	public ArrayList<ProductVo> getItems(HttpServletRequest request)
 	{
-		return service.getItems(request,model);
+		return service.getItems(request);
 	}
 }

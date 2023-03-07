@@ -30,9 +30,9 @@ public class SearchController {
 	}
 	
 //	@ResponseBody
-//	@RequestMapping(value="/search/getItems",method=RequestMethod.GET,produces = "application/json; charset=utf8")
+//	@RequestMapping(value="/search/getItems2",method=RequestMethod.GET,produces = "application/json; charset=utf8")
 //	public ArrayList<ProductVo> getItems(HttpServletRequest request ,Model model)
 //	{
-//		return service.getItems(request,model);
+//		return service.getItems2(request,model);
 //	}
 }

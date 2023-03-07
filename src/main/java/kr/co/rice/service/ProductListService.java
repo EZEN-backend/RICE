@@ -10,5 +10,5 @@ import kr.co.rice.vo.ProductVo;
 
 public interface ProductListService {
 	public String category_list(int category_id, int subcategory_id, Model model);
-	public ArrayList<ProductVo> getItems(HttpServletRequest request, Model model);
+	public ArrayList<ProductVo> getItems(HttpServletRequest request);
 }

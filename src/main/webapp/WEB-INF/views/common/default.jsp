@@ -173,16 +173,17 @@
 		}
 		body #mymenu #mysub {
 			width:105px;
-			height:90px;
+			height:110px;
 			padding-left:0px;
 			position:absolute;
 			margin-top:5px;
 			right:0px;
 			top:10px;
 			padding:4px;
-			z-index:1;
+			z-index:99;
 			background:white;
 			visibility:hidden;
+			border-radius:25px;
 		}
 		body #mymenu #mysub li {
 			list-style-type:none;

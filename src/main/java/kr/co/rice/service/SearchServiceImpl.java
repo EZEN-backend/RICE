@@ -35,7 +35,7 @@ public class SearchServiceImpl implements SearchService{
 	}
 	
 //	@Override
-//	public ArrayList<ProductVo> getItems(HttpServletRequest request,Model model) {
+//	public ArrayList<ProductVo> getItems2(HttpServletRequest request,Model model) {
 //		String search = request.getParameter("search");
 //		int start = Integer.parseInt(request.getParameter("start"));
 //		int end = Integer.parseInt(request.getParameter("end"));

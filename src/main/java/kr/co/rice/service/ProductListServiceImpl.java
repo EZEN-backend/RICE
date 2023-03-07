@@ -3,6 +3,7 @@ package kr.co.rice.service;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,7 +31,7 @@ public class ProductListServiceImpl implements ProductListService{
 	}
 	
 	@Override
-	public ArrayList<ProductVo> getItems(HttpServletRequest request,Model model) {
+	public ArrayList<ProductVo> getItems(HttpServletRequest request) {
 		int category_id = Integer.parseInt(request.getParameter("category_id"));
 		int subcategory_id = Integer.parseInt(request.getParameter("subcategory_id"));
 		

@@ -19,8 +19,8 @@
 	var category = ${category_id};
 	var subcategory = ${subcategory_id};
 	
-// 스크롤 이벤트가 한번에 여러번 실행되지 않게 하기 
-var timer = null;
+	// 스크롤 이벤트가 한번에 여러번 실행되지 않게 하기 
+	var timer = null;
 
 // 스크롤 이벤트 발동!
 $(window).scroll(function(){
@@ -42,7 +42,7 @@ $(window).scroll(function(){
     	}
     	timer = setTimeout(function(){
     		var start = $('.product-item').length; // 출력된 상품들의 수
-            var end = 3; // 임시로 3개씩 추가로 가져오기
+            var end = 6; // 임시로 3개씩 추가로 가져오기
             
             // 쿼리파라미터 이용해서 limit ?,?에 들어갈 값 + 검색어 보내주기
             var url = '/products/getItems?category_id='+category+'&subcategory_id='+subcategory+'&start='+start+'&end='+end
@@ -77,9 +77,10 @@ $(window).scroll(function(){
                         // 데이터베이스에서 받아온 상품정보를 HTML문자열로 생성하기 + 그리드에 3개씩 넣어서 그룹화하기
                         // 그룹화 한 후에 .grid-all 요소에 추가하여 출력!
                         if((i+1)%3 == 0){
-                            itemsHtml = '<div class="items">'+itemsHtml+'</div>';
-                            $(".grid-all").append(itemsHtml);
-                        }
+                    	    var groupHtml = '<div class="items">'+itemsHtml+'</div>';
+                    	    $(".grid-all").append(groupHtml);
+                    	    itemsHtml = '';
+                    	}
                     }
     				
                     // 데이터베이스에서 가져온 상품의 수가 3개로 나눠떨어지지 않을때는 나머지것들 그룹화하여 출력

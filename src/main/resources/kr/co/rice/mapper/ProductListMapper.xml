@@ -9,7 +9,7 @@
 		inner join categories as c on c.id = sc.category_id
 		inner join products_images as pi on pi.product_id = p.id
 		where sc.category_id = #{param1} and p.subcategory_id = #{param2}
-		limit 3
+		limit 6
 	</select>
 	
 	<select id="getItems" resultType="kr.co.rice.vo.ProductVo">
