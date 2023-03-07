@@ -65,9 +65,9 @@ $(window).scroll(function(){
                     {
                         var productHtml = '<div class="product-item '+list[i].size+' '+list[i].spicylevel_id+' ';
                         
-                        if (parseFloat(list[i].price) <= 20000) {
+                        if (parseFloat(list[i].price) <= 50000) {
                             productHtml += 'low';
-                        } else if (parseFloat(list[i].price) > 20000 && parseFloat(list[i].price) <= 50000) {
+                        } else if (parseFloat(list[i].price) > 50000 && parseFloat(list[i].price) <= 100000) {
                             productHtml += 'middle';
                         } else {
                             productHtml += 'high';
@@ -327,14 +327,6 @@ $(window).scroll(function(){
         <div class="filterSection">
 			<div class="left-nav-wrapper">
 				<nav class="left-nav">
-					<div class="catecory-content">
-						<div class="category-css">
-							<a href=""> 한식 </a>
-							<a href=""> 중식 </a>
-							<a href=""> 일식 </a>
-							<a href=""> 양식 </a>
-						</div>
-					</div>
 					
 					<div class="filter-group-content">
 						<div class="filter-title-cate">
@@ -356,9 +348,9 @@ $(window).scroll(function(){
 							</div>
 						</div>
 						<div class="filters">
-							<input type="checkbox" value=".low">0~20,000원 <p>
-							<input type="checkbox" value=".middle">20,000 ~ 50,000원 <p>
-							<input type="checkbox" value=".high">50,000 ~ 100,000원 <p>
+							<input type="checkbox" value=".low">0~50,000원 <p>
+							<input type="checkbox" value=".middle">50,000 ~ 100,000원 <p>
+							<input type="checkbox" value=".high">100,000원 이상 상품 <p>
 						</div>
 					</div>
 					
@@ -369,9 +361,9 @@ $(window).scroll(function(){
 							</div>
 						</div>
 						<div class="filters">
-							<input type="checkbox" value=".소"> 소량인 <p>
-							<input type="checkbox" value=".중"> 중량인 <p>
-							<input type="checkbox" value=".대"> 대량인 <p>
+							<input type="checkbox" value=".S"> S <p>
+							<input type="checkbox" value=".M"> M <p>
+							<input type="checkbox" value=".L"> L <p>
 						</div>
 					</div>
 					
@@ -397,13 +389,13 @@ $(window).scroll(function(){
                     <div class="items">
                         <c:forEach items="${list}" var="list" varStatus="status">
                         <div class="product-item ${list.size} ${list.spicylevel_id}
-                        <c:if test="${list.price<=20000}">
+                        <c:if test="${list.price<=50000}">
                         low
                         </c:if>
-                        <c:if test="${list.price>20000 && list.price<=50000}">
+                        <c:if test="${list.price>50000 && list.price<=100000}">
                         middle
                         </c:if>
-                        <c:if test="${list.price>50000}">
+                        <c:if test="${list.price>100000}">
                         high
                         </c:if>
                         ">
