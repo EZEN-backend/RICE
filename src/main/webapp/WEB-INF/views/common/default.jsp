@@ -8,342 +8,341 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://kit.fontawesome.com/f1fa4a6c48.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
-	<style>
-		@font-face {
-			font-family: 'PuradakGentleGothicR';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
-			font-weight: lighter;
-			font-style: normal;
-		}
-		body {
-			width:1920px;
-			margin:0px;
-			z-index:1;
-			position:relative;
-			font-family: 'PuradakGentleGothicR';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-			font-size:14px;
+<style>
+<style>
+	@font-face {
+		font-family: 'PuradakGentleGothicR';
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
+		font-weight: lighter;
+		font-style: normal;
+	}
+	body {
+		width:1920px;
+		margin:0px;
+		z-index:1;
+		position:relative;
+		font-family: 'PuradakGentleGothicR';
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+		font-size:14px;
+	
+	}
+	#header-wrapper {
 		
-		}
-		#header-wrapper {
-			
-		}
-		#first {
-			width:100%;
-			height:40px;
-		}
-		/* 카테고리 관련 스타일 */
-		ul li {
-			list-style:none;
-			cursor:pointer;
-		}
-		nav > ul > li {
-			top:-15px;
-			padding-left:55px;
-		}
-		nav {
-			width:100%;
-			margin:0px auto;
-		}
-		nav > ul > li {
-			position:relative;
-			left:500px;
-			float:left;
-			line-height:50px;
-			margin-right:100px;
-			text-align:start;
-		}
-		nav > ul > li ul{
-			width:100%;
-		}
-		nav > ul > li ul li {
-			position:relative;
-			right:39px;
-			top:11px;
-		}
-		/* main cart,heart 아이콘 스타일 */
-		#cart_view {
-			position:absolute;
-			right:150px;
-		}
-		#wish_view {
-			position:absolute;
-			right:200px;
-		}
-		/* 검색바 관련 스타일 */
-		#vsearch {
-			position:absolute;
-			right:250px;
-		}
-		
-		#csearch {
-			width:40px;
-			height:30px;
-			background:-60px 0;
-			float:right;
-			margin-top:5px;
-		}
-		#search_form {
-			position:absolute;
-			left:0;
-			right:0;
-			width:100%;
-			height:400px;
-			text-align:center;
-			background:white;
-			transition:0.5;
-			display:none;
-			z-index:99;
-			border-bottom:1px solid black;
-		}
-		#search_form input[type="text"] {
-			height:35px;
-			border:none;
-			border-bottom:1px solid #34404b;
-			width:800px;
-			display:inline-block;
-			outline:none;
-		}
-		#search_form input[type="submit"] {
-			vertical-align:bottom;
-		}
-		#search_form > div {
-			position:relative;
-			margin-top:60px;
-			font-size:20px;
-		}
-		#search_form > div > span {
-			color:#C0C0C0;
-		}
-		#topmsg {
-			width:100%;
-			height:40px;
-			background:#F0F0F0;
-			display:flex;
-		}
-		#topmsg #right {
-			margin-top:0px;
-			width:200px;
-			text-align:right;
-			padding-top:12px;
-			margin-right:50px;
-			font-size:14px;
-		}
-		#topmsg #right > a {
-			width:100px;
-		}
-		header {
-		    margin:auto;
-			width:100%;
-			background:white;
-			height:50px;
-		}
-		header #second {
-			width:100%;
-			margin-top:0px;
-			background:white;
-			height:50px;
-			overflow:hidden;
-			position:absolute;
-			z-index:98;
-		}
-		header #left {
-			position:absolute;
-			left:30px;
-		}
-		body #mymenu {
-			position:relative;
-			display:inline-block;
-			height:25px;
-		}
-		#cate > li {
-			font-weight:500;
-			font-size:16px;
-		}
-		#cate > li > ul > li > a {
-			text-decoration-line: none;
-			color:#757575;
-			font-size:16px;
-		}
-		#cate > li > ul > li > a:hover {
-			color:#111111;
-			cursor:pointer;
-		}
-		body #mymenu #mysub {
-			width:105px;
-			height:110px;
-			padding-left:0px;
-			position:absolute;
-			margin-top:5px;
-			right:0px;
-			top:10px;
-			padding:4px;
-			z-index:99;
-			background:white;
-			visibility:hidden;
-			border-radius:25px;
-		}
-		body #mymenu #mysub li {
-			list-style-type:none;
-			margin:auto;
-			margin-top:5px;
-			padding-top:-2px;
-			width:70px;
-			text-align:center;
-		}
-		#topmsg a {
-			text-decoration:none;
-			color:black;
-		}
-		footer {
-			width:100%;
-			height:443px;
-			margin:auto;
-			background:black;
-		}
-		#subfooter {
-			width:1372px;
-			height:60px;
-			position:relative;
-			padding:5px;
-			color:#C0C0C0;
-			margin:0px -6px;
-			border-bottom:1px solid white;
-		}
-		#lastfoot {
-			width:1360px;
-			height:91px;
-			display:flex;
-		}
-		#lastfoot a {
-			text-decoration:none;
-			text-decoration:underline;
-			color:#A0A0A0;
-		}
-		#lastfoot #lfooter {
-			width:680px;
-			height:79px;
-		}
-		#lastfoot #rfooter {
-			width:680px;
-			height:79px;
-			color:#C0C0C0;
-		}
-		#rfooter > div {
-			position:relative;
-			font-size:12px;
-			top:20px;
-			left:17px;
-		}
-		#lfooter #info {
-			position:relative;
-			top:20px;
-			left:-6px;
-			color:#C0C0C0;
-			font-size:12px;
-		}
-		#lfooter #service {
-			position:relative;
-			top:20px;
-			left:-6px;
-			color:#C0C0C0;
-			font-size:12px;
-		}
-		footer #container {
-			width:1440px;
-			height:403px;
-			margin:auto;
-			position:relative;
-			padding:40px 40px 0;
-		}
-		footer #footerbody {
-			position:absolute;
-			width:1372px;
-			height:214px;
-			top:10%;
-			margin: 0px -6px 16px;
-		}
-		footer #hf-group {
-			width:1029px;
-			height:213px;
-			margin:0px -6px;
-		}
-		#hf-group > div {
-			width:275px;
-			height:142px;
-			display:inline-block;
-			float:left;
-		}
-		#hf-group > div >ul li{
-			padding:6px;
-			list-style-type:none;
-		}
-		#hli {
-			font-size:16px;
-			color:white;
-		}
-		#sli {
-			font-size:13px;
-			color:#C0C0C0;
-		}
-		#social {
-			width:343px;
-			height:36px;
-			color:white;
-			position:absolute;
-			top:0px;
-			right:0px;
-		}
-		#hfirst {
-			width:100%;
-			height:40px;
-			align:center;
-		}
-		#search_form i{
-			position:absolute;
-			padding-top:15px;
-			padding-left:10px;
-		}
-
-		/* 장바구니 속에 숫자 보이게 하기 */
-		#cart_amount {
-		    display:inline-block;
-		    position:absolute; 
-		    left:18px;
-		    top:-5px;
-		    width:13px; 
-		    height:13px; 
-		    border-radius:6px; 
-		    background-color:purple;
-		    color:white;
-		    font-size:5px;
-		    text-align:center;
-		    padding-top:2px;
-		    
-		}
-		
-		#search_form input[type=button] {
-			border:none;
-			border-radius:15px;
-		}
-		#search_form input[type=button]:hover{
-			background:#cccccc;
-		}
-		#modal {
-		  position:fixed;
-		  width:100%;
-		  height:100%;
-		  background:rgba(0, 0, 0, 0.5);
-		  top:40px;
-		  left: 0;
-		  z-index: 95;
-		  display: none;
-		  backdrop-filter:blur(5px);
-		}
-
-	</style>
+	}
+	#first {
+		width:100%;
+		height:40px;
+	}
+	/* 카테고리 관련 스타일 */
+	ul li {
+		list-style:none;
+		cursor:pointer;
+	}
+	nav > ul > li {
+		top:-15px;
+		padding-left:55px;
+	}
+	nav {
+		width:100%;
+		margin:0px auto;
+	}
+	nav > ul > li {
+		position:relative;
+		left:500px;
+		float:left;
+		line-height:50px;
+		margin-right:100px;
+		text-align:start;
+	}
+	nav > ul > li ul{
+		width:100%;
+	}
+	nav > ul > li ul li {
+		position:relative;
+		right:39px;
+		top:11px;
+	}
+	/* main cart,heart 아이콘 스타일 */
+	#cart_view {
+		position:absolute;
+		right:150px;
+	}
+	#wish_view {
+		position:absolute;
+		right:200px;
+	}
+	/* 검색바 관련 스타일 */
+	#vsearch {
+		position:absolute;
+		right:250px;
+	}
+	
+	#csearch {
+		width:40px;
+		height:30px;
+		background:-60px 0;
+		float:right;
+		margin-top:5px;
+	}
+	#search_form {
+		position:absolute;
+		left:0;
+		right:0;
+		width:100%;
+		height:400px;
+		text-align:center;
+		background:white;
+		transition:0.5;
+		display:none;
+		z-index:99;
+		border-bottom:1px solid black;
+	}
+	#search_form input[type="text"] {
+		height:35px;
+		border:none;
+		border-bottom:1px solid #34404b;
+		width:800px;
+		display:inline-block;
+		outline:none;
+	}
+	#search_form input[type="submit"] {
+		vertical-align:bottom;
+	}
+	#search_form > div {
+		position:relative;
+		margin-top:60px;
+		font-size:20px;
+	}
+	#search_form > div > span {
+		color:#C0C0C0;
+	}
+	#topmsg {
+		width:100%;
+		height:40px;
+		background:#F0F0F0;
+		display:flex;
+	}
+	#topmsg #right {
+		margin-top:0px;
+		width:200px;
+		text-align:right;
+		padding-top:12px;
+		margin-right:50px;
+		font-size:14px;
+	}
+	#topmsg #right > a {
+		width:100px;
+	}
+	header {
+	    margin:auto;
+		width:100%;
+		background:white;
+		height:50px;
+	}
+	header #second {
+		width:100%;
+		margin-top:0px;
+		background:white;
+		height:50px;
+		overflow:hidden;
+		position:absolute;
+		z-index:98;
+	}
+	header #left {
+		position:absolute;
+		left:30px;
+	}
+	body #mymenu {
+		position:relative;
+		display:inline-block;
+		height:25px;
+	}
+	#cate > li {
+		font-weight:500;
+		font-size:16px;
+	}
+	#cate > li > ul > li > a {
+		text-decoration-line: none;
+		color:#757575;
+		font-size:16px;
+	}
+	#cate > li > ul > li > a:hover {
+		color:#111111;
+		cursor:pointer;
+	}
+	body #mymenu #mysub {
+		width:105px;
+		height:110px;
+		padding-left:0px;
+		position:absolute;
+		margin-top:5px;
+		right:0px;
+		top:10px;
+		padding:4px;
+		z-index:99;
+		background:white;
+		visibility:hidden;
+		border-radius:25px;
+	}
+	body #mymenu #mysub li {
+		list-style-type:none;
+		margin:auto;
+		margin-top:5px;
+		padding-top:-2px;
+		width:70px;
+		text-align:center;
+	}
+	#topmsg a {
+		text-decoration:none;
+		color:black;
+	}
+	footer {
+		width:100%;
+		height:443px;
+		margin:auto;
+		background:black;
+	}
+	#subfooter {
+		width:1372px;
+		height:60px;
+		position:relative;
+		padding:5px;
+		color:#C0C0C0;
+		margin:0px -6px;
+		border-bottom:1px solid white;
+	}
+	#lastfoot {
+		width:1360px;
+		height:91px;
+		display:flex;
+	}
+	#lastfoot a {
+		text-decoration:none;
+		text-decoration:underline;
+		color:#A0A0A0;
+	}
+	#lastfoot #lfooter {
+		width:680px;
+		height:79px;
+	}
+	#lastfoot #rfooter {
+		width:680px;
+		height:79px;
+		color:#C0C0C0;
+	}
+	#rfooter > div {
+		position:relative;
+		font-size:12px;
+		top:20px;
+		left:17px;
+	}
+	#lfooter #info {
+		position:relative;
+		top:20px;
+		left:-6px;
+		color:#C0C0C0;
+		font-size:12px;
+	}
+	#lfooter #service {
+		position:relative;
+		top:20px;
+		left:-6px;
+		color:#C0C0C0;
+		font-size:12px;
+	}
+	footer #container {
+		width:1440px;
+		height:403px;
+		margin:auto;
+		position:relative;
+		padding:40px 40px 0;
+	}
+	footer #footerbody {
+		position:absolute;
+		width:1372px;
+		height:214px;
+		top:10%;
+		margin: 0px -6px 16px;
+	}
+	footer #hf-group {
+		width:1029px;
+		height:213px;
+		margin:0px -6px;
+	}
+	#hf-group > div {
+		width:275px;
+		height:142px;
+		display:inline-block;
+		float:left;
+	}
+	#hf-group > div >ul li{
+		padding:6px;
+		list-style-type:none;
+	}
+	#hli {
+		font-size:16px;
+		color:white;
+	}
+	#sli {
+		font-size:13px;
+		color:#C0C0C0;
+	}
+	#social {
+		width:343px;
+		height:36px;
+		color:white;
+		position:absolute;
+		top:0px;
+		right:0px;
+	}
+	#hfirst {
+		width:100%;
+		height:40px;
+		align:center;
+	}
+	#search_form i{
+		position:absolute;
+		padding-top:15px;
+		padding-left:10px;
+	}
+	/* 장바구니 속에 숫자 보이게 하기 */
+	#cart_amount {
+	    display:inline-block;
+	    position:absolute; 
+	    left:18px;
+	    top:-5px;
+	    width:13px; 
+	    height:13px; 
+	    border-radius:6px; 
+	    background-color:purple;
+	    color:white;
+	    font-size:5px;
+	    text-align:center;
+	    padding-top:2px;
+	    
+	}
+	
+	#search_form input[type=button] {
+		border:none;
+		border-radius:15px;
+	}
+	#search_form input[type=button]:hover{
+		background:#cccccc;
+	}
+	#modal {
+	  position:fixed;
+	  width:100%;
+	  height:100%;
+	  background:rgba(0, 0, 0, 0.5);
+	  top:40px;
+	  left: 0;
+	  z-index: 95;
+	  display: none;
+	  backdrop-filter:blur(5px);
+	}
+</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
 	   $(function(){
@@ -360,7 +359,6 @@
 			   $modal.fadeOut();
 		   });
 	   });
-		    
 		
 		// 검색바를 포함하고 있는 modal slideDown
 		// 클릭 이벤트 등록 , 모달창을 제외한 부분에 backdrop-filter 이용해서 blur
@@ -412,6 +410,7 @@
 		{
 			location.href="/rice/wish";
 		}
+		
 	</script>
 	
 </head>
