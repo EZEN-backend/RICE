@@ -128,7 +128,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.0.7</version>
+			<version>8.0.23</version>
 		</dependency>
 		 <!-- myBatis -->
 		 <dependency>
@@ -164,6 +164,12 @@
 
 		<!-- naver -->
 		<dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+            <version>2.8.1</version>
+        </dependency>
+		
+		<dependency>
 			<groupId>com.github.scribejava</groupId>
 			<artifactId>scribejava-core</artifactId>
 			<version>2.8.1</version>
@@ -176,6 +182,25 @@
 		    <version>1.1.1</version>
 		</dependency>
 		
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.5</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+       <version>2.9.5</version>
+       </dependency>
+       
+		<!-- Spring Security -->
+ 		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+
 	</dependencies>
     <build>
         <plugins>

@@ -435,11 +435,11 @@
 			</form>
 		</div>
 		<div id="right">
-			<c:if test="${userid == null }">
+			<c:if test="${sessionId == null and sessionemail == null}">
 			<a href="/rice/users/signin">  매장찾기  </a> | 
 			<a href="/rice/users/signup">  고객센터  </a> |
 			<a href = ""> 가입하기 </a> |
-			<a href = "users/login"> 로그인 </a> 
+			<a href = "/rice/users/signin"> 로그인 </a> 
 			</c:if>
 				<c:if test="${userid != null }">
 					${name}~님, 안녕하세요
@@ -455,6 +455,21 @@
 					</span>
 					</c:if>
 			</div>
+			<c:if test="${sessionId != null or sessionemail != null }">
+				<c:if test = "${sessionemail != null }">
+				${sessionname}님, 안녕하세요
+				</c:if>
+				|  고객센터
+				<span id="mymenu">|  <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
+					<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
+						<li> <a href="/rice/users">회원정보</a> </li>
+						<li> 주문목록 </li>		
+						<li> 적 립 금 </li>				
+						<li> 장바구니 </li>		
+						<li> <a href= "users/signout">로그아웃</a> </li>		
+					</ul>
+				</span>
+				</c:if>
 		</div>
 	</div> <!-- 광고성 메세지 -->
 		<header>

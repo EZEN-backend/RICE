@@ -74,19 +74,21 @@
 <body> 
    <section>
   	<img src = "../resources/img/logo.png" style = "float: left; margin-left : 280px;" width = "50px"> <br>
-      <form method="post" action="login_ok">
+      <form method="post" action="userinputok">
+       <% 
+       	String email = request.getParameter("email");
+  	 	session = request.getSession();
+       %>
        
         <h2> 이제 라이스 멤버가 되어볼까요? </h2> <p>
         
-        <input type = "text" name = "firstname" placeholder = "이름" style = "width: 160px;">
-       	<input type = "text" name = "lastname" placeholder = "성" style = "width: 160px;"> <p>
-       	<input type = "password" name = "password" placeholder = "비밀번호"> <p>
-       	
-        <select id = "select" placeholder = "쇼핑 기본 설정">
-        	<option value = ""> 쇼핑 기본 설정 </option>
-        	<option value = "man"> 남성용 </option>
-        	<option value = "woman"> 여성용 </option>
-        </select> <p>
+        <input type = "hidden" name = "email" value = "<%=email%>">
+        
+ 
+        <input type = "text" name = "naveremail" value = "<%=session.getAttribute("naveremail") %>">
+     	
+        <input type = "text" name = "name" placeholder = "이름" style = "width: 320px;"> <p>
+       	<input type = "password" name = "pwd" placeholder = "비밀번호"> <p>
         
         <input type = "date" name = "birthdate" placeholder = "생년월일"> <p>
         

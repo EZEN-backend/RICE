@@ -52,13 +52,23 @@
 <body> 
    <section>
   	<img src = "../resources/img/logo.png" style = "float: left; margin-left : 280px;" width = "50px"> <br>
-      <form method="post" action="login_ok">
+      <form method="post">
+      
+      <%
+      		String email = request.getParameter("email");
+      		session = request.getSession();
+      %>
+      
+     
        
         <h2> 계속 진행하시려면 아래 권한에 동의해 주세요.</h2> <p>
         * 필수 항목 <p>
         
         라이스에 오신것을 환영합니다! 법률 약관이 업데이트되었습니다. 진행하시기 전에 <p>
         내용을 검토하고 동의해 주세요. <p>
+        
+        <input type = "hidden" name = "email" value = "<%=email%>">
+        <input type = "hidden" name = "naveremail" value = "<%=session.getAttribute("naveremail")%>">
         
         <input type = "checkbox"> 모든 약관에 동의합니다 <p>
         
@@ -67,10 +77,10 @@
   		<input type = "checkbox"> <a href = "">개인 정보의 제3자 제공 및 국외 이전</a>에 동의합니다 * <p>
         
         이 약관에 동의하지 않을 수 있지만, 그럴 경우 라이스 계정에 로그인할 수 없으며 새로운 계정을 생성할 수도 없습니다.
-        <div> <input type="submit" value="취소" onclick = "javascript: form.action='login" style = "background :white; color :black;"> 
-        	<input type="submit" value="계속" onclick = "javascript: form.action='after'"> </div>
+        <div> <input type="submit" value="취소" onclick = "javascript: form.action='login'" style = "background :white; color :black;"> 
+        	<input type="submit" value="계속" onclick = "javascript: form.action='signup'"> </div>
       </form>
-   
+      
    </section>
 </body>
 </html>
