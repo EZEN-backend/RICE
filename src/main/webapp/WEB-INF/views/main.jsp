@@ -54,7 +54,7 @@
 	   }
 	   
 	   #mimage2 {
-	     width:1920px;
+	     width:100%;
 	     height:1000px;
 	     overflow:hidden;
 	     margin:auto;
@@ -68,7 +68,7 @@
 	   }
 	   
 	   #mimage3 {
-	     width:1920px;
+	     width:100%;
 	     height:1000px;
 	     overflow:hidden;
 	     margin:auto;
@@ -95,7 +95,7 @@
 	   	color:black;
 	   }
 	   #fourth {
-	    width:1920px;
+	    width:100%;
 	    height:300px;
 	   	text-align:center;
 	   	margin:auto;
