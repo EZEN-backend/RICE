@@ -32,15 +32,15 @@
   }
    
   section input[type=text] {
-      width:330px;
+      width:270px;
       height:35px;
       border:1px solid black; 
       border-radius : 7px 7px 7px 7px / 7px 7px 7px 7px
    }
 
    section input[type=submit] {
-      width:80px;
-      height:45px;
+      width:100px;
+      height:55px;
       border:1px solid black; 
       background:black;
       color:white;
@@ -49,24 +49,24 @@
    }
  
   </style> 
-  <script>
-  		var chk = ${chk};
-  		console.log(chk);
-  </script>
+
 </head>
 <body> 
 
    <section>
 
-  	<img src="../resources/img/rice.png" style = "float: left; margin-left : 280px;" width = "50px"> <br> <br>
-      <form method="post" action="agreement">
+   	  <a href = "/"> <img src="../resources/img/rice.png" style = "float: left; margin-left : 280px;" width = "70px"> </a> <br> <br> <br> <p>
+      <form method="post" action="signup">
        
         <h2> 가입 또는 로그인을 위해 이메일을 입력하세요. </h2> <p>
-        <div id = "country"> 대한민국 <a href = "country"> 변경 </a> </div>
+        <div id = "country"> 대한민국 </div>
         
-        <div> <input type="text" name="email" placeholder="이메일"> </div> <p>
+        <div> <input type="text" name="email" placeholder="이메일"> 
+        	  <input type = "hidden" name = "naveremail" value = "null">
+        </div> <p>
         
-        <div id = "agree"> 계속 진행하면 라이스의 <a href = "agree"> 개인 정보 처리 방침 </a> 및 <a href = "rule"> 이용약관 </a>에 <p>
+        
+        <div id = "agree"> 계속 진행하면 라이스의  개인 정보 처리 방침 및 이용약관에 <p>
         동의하게 됩니다. </p> </div>
         
         <div> <input type="submit" value="계속"> </div>
@@ -75,7 +75,7 @@
       
       <!-- 네이버 로그인 창으로 이동 -->
 		<div id="naver_id_login" style="text-align:center; float :left; margin-left : 350px;"><a href="${url}">
-		<img src="../resources/img/naverlogin.png" width = "150px;"> </a></div>
+		<img src="../resources/img/naverlogin.png" width = "50px;"> </a></div>
 		<br>
  
    </section>

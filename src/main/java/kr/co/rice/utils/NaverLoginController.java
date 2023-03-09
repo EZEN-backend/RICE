@@ -45,8 +45,6 @@ public class NaverLoginController {
 
 		String naverAuthUrl = naverLogin.getAuthorizationUrl(session);
 
-		System.out.println("네이버:" + naverAuthUrl);
-
 		model.addAttribute("url", naverAuthUrl);
  
 		return "users/signin";
@@ -55,7 +53,6 @@ public class NaverLoginController {
 	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, HttpServletRequest request) throws IOException, ParseException {
 
-		System.out.println("여기는 callback");
 		OAuth2AccessToken oauthToken;
         oauthToken = naverLogin.getAccessToken(session, code, state);
  
@@ -67,25 +64,21 @@ public class NaverLoginController {
 		
 		JSONObject response_obj = (JSONObject)jsonObj.get("response");
 
-		String nickname = (String)response_obj.get("nickname");
+		String navername = (String)response_obj.get("name");
 		String naveremail = (String)response_obj.get("email");
-		System.out.println(nickname);
-		
 
-		session.setAttribute("sessionId", nickname); 
+		session.setAttribute("navername", navername); 
 		session.setAttribute("naveremail", naveremail);
 		
 		model.addAttribute("result", apiResult);
 	    
 		int count = mapper.Naver_Id_Check(naveremail);
-		
-		System.out.println(count);
 	    
 		if(count==1) {
 			return "/main";
 		}
 		else {
-			return "redirect:/users/agreement";
+			return "redirect:/users/signup";
 		}
 		
 	}

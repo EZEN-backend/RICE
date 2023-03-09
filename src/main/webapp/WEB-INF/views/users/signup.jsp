@@ -73,25 +73,30 @@
 </head>
 <body> 
    <section>
-  	<img src = "../resources/img/logo.png" style = "float: left; margin-left : 280px;" width = "50px"> <br>
+  	<a href = "/"> <img src = "../resources/img/rice.png" style = "float: left; margin-left : 280px;" width = "70px"> </a> <br> <br> <br> <p>
       <form method="post" action="userinputok">
        <% 
-       	String email = request.getParameter("email");
-  	 	session = request.getSession();
+       		String email = request.getParameter("email");
+  	 		session = request.getSession();
        %>
        
         <h2> 이제 라이스 멤버가 되어볼까요? </h2> <p>
         
         <input type = "hidden" name = "email" value = "<%=email%>">
-        
- 
-        <input type = "text" name = "naveremail" value = "<%=session.getAttribute("naveremail") %>">
-     	
+        <input type = "hidden" name = "naveremail" value = "<%=session.getAttribute("naveremail") %>">
+
+		<c:if test = "${naveremail == null }">
         <input type = "text" name = "name" placeholder = "이름" style = "width: 320px;"> <p>
        	<input type = "password" name = "pwd" placeholder = "비밀번호"> <p>
-        
+       	<input type = "date" name = "birthdate" placeholder = "생년월일"> <p>
+		</c:if>
+		  
+       	 <c:if test = "${naveremail != null }">
+        <input type = "hidden" name = "name" value = "${navername}">
+        <input type = "hidden" name = "pwd" value = "null">
         <input type = "date" name = "birthdate" placeholder = "생년월일"> <p>
-        
+         </c:if>
+
         <input type = "checkbox"> 라이스의 <a href ="" >개인 정보 처리 방침</a> 및 <a href = ""> 이용약관 </a>에 동의합니다.<p>
         
         <div> <input type="submit" value="계정 만들기"> </div>

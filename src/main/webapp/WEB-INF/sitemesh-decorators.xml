@@ -4,6 +4,7 @@
  <excludes>
   <pattern>/non</pattern>
   <pattern>/admin/*</pattern>
+  <pattern>/users/*</pattern>
  </excludes>
  <!-- 기본 패턴 -->
  <decorator name="default" page="default.jsp">

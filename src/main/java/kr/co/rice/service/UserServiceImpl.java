@@ -10,6 +10,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.mysql.cj.Session;
+
 import kr.co.rice.mapper.UserMapper;
 import kr.co.rice.vo.UserVo;
 
@@ -24,33 +26,42 @@ public class UserServiceImpl implements UserService{
 	BCryptPasswordEncoder passwordEncoder;
 	
 	@Override
-	public String user_input_ok(UserVo uvo, HttpServletRequest request, Model model)
+	public String user_input_ok(UserVo uvo, HttpServletRequest request, HttpSession session, Model model)
 	{
+		session = request.getSession();
+		
+		String naveremail = (String)session.getAttribute("naveremail");
+
+		if(naveremail == null) {
 		String pwd = request.getParameter("pwd").toString();
 		String encoderPwd = passwordEncoder.encode(pwd);
 		uvo.setPwd(encoderPwd);
 		
 		mapper.user_input_ok(uvo);
-
+		
 		return "redirect:/";
+		}
+		
+		else {
+		mapper.user_input_ok(uvo);
+		return "redirect:/";
+		}
 	}
 	
 		
 
 	@Override
-	public String sign_up(HttpServletRequest request) {
+	public String sign_up(HttpServletRequest request, HttpSession session) {
+		
+		session = request.getSession();
 		
 		String email = request.getParameter("email");
-		String naveremail = request.getParameter("naveremail");
+		String naveremail = (String)session.getAttribute("naveremail");
 		
-		if(naveremail.equals("null"))
+		if(naveremail == null)
 			naveremail= "1";
 		
-		System.out.println(naveremail);
-		
 		int idcheck = mapper.idcheck(email,naveremail);
-		
-		System.out.println(idcheck);
 		
 		if(idcheck >= 1 )
 		{
@@ -83,8 +94,8 @@ public class UserServiceImpl implements UserService{
 			}
 			else
 			{
-				session.setAttribute("sessionemail", uvo.getEmail());
-				session.setAttribute("sessionname", uvo.getName());
+				session.setAttribute("useremail", uvo.getEmail());
+				session.setAttribute("username", uvo.getName());
 				return "redirect:/";
 			}
 			

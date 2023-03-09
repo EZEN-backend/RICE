@@ -29,22 +29,16 @@ public class UserController {
 		return "users/signin";
 	}
 	
-	@RequestMapping("users/agreement")
-	public String agreement()
-	{
-		return "users/agreement";
-	}
-	
 	@RequestMapping("users/signup")
-	public String sign_up(HttpServletRequest request)
+	public String sign_up(HttpServletRequest request, HttpSession session)
 	{
-		return service.sign_up(request);
+		return service.sign_up(request, session);
 	}
 	
 	@RequestMapping("users/userinputok")
-	public String user_input_ok(UserVo uvo, HttpServletRequest request, Model model)
+	public String user_input_ok(UserVo uvo, HttpServletRequest request, HttpSession session, Model model)
 	{
-		return service.user_input_ok(uvo, request, model);
+		return service.user_input_ok(uvo, request, session, model);
 	}
 	
 	@RequestMapping("users/signinpwd")
