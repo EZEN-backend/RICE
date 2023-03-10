@@ -34,8 +34,47 @@
 			width:100%;
 			height:40px;
 		}
-		/* 카테고리 관련 스타일 */
-		ul li {
+		@media only screen and (min-width: 960px)
+		.pt1-lg {
+		    padding-top: 4px;
+		}
+		@media only screen and (min-width: 1440px)
+		.pre-desktop-menu {
+		    width: calc(100% - 680px);
+		}
+		.top-menu {
+			width:80%;
+		}
+		.pre-desktop-menu {
+		    width: calc(100% - 426px);
+		    margin: 0 auto;
+		    height: 60px;
+		    padding:2px;
+		    overflow: hidden;
+		    max-width: 1255px;
+		    text-align:center;
+		}
+		.subcate {
+			list-style: none;
+    		list-style-type: none;
+			display:inline-block;
+    		padding-top:17px;
+    		vertical-align: top;
+    		cursor:pointer;
+		}
+		.pre-desktop-menu li {
+			width: 200px;
+			height: 30px;
+		}
+		.cate-container {
+			width: 100%;
+			margin: 0 auto;
+			height: 330px;
+			text-align: center;
+			display:none;
+			position:absolute;
+			z-index:98;
+			background:white;
 			list-style:none;
 			cursor:pointer;
 		}
@@ -336,7 +375,7 @@
 		  width:100%;
 		  height:100%;
 		  background:rgba(0, 0, 0, 0.5);
-		  top:40px;
+		  top:150px;
 		  left: 0;
 		  z-index: 95;
 		  display: none;
@@ -346,22 +385,52 @@
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
-	   $(function(){
-		   var $cate = $('nav >ul > li'),
-		   		$second = $('#second'),
-		   		$modal = $('#modal');
-		   
-		   $cate.mouseenter(function(){
-			   $second.stop().animate({height:'320px'}),
-			   $modal.fadeIn();
-		   })
-		   .mouseleave(function(){
-			   $second.stop().animate({height:'50px'}),
-			   $modal.fadeOut();
+	
+	// 카테고리 기능 jquery
+	   /* $(document).ready(function(){
+		 var $subcate = $('.subcate'),
+		   	  $second = $('#second'),
+	   		  $modal = $('#modal'),
+		 	  $catecon = $('.cate-container');
+		 	 
+		   $($subcate).hover(function(){
+			  $catecon.stop().slideDown(),
+			  $modal.stop().fadeIn(); 
+		   },function(){
+			  $catecon.stop().slideUp();
+			  $modal.stop().fadeOut()
 		   });
-	   });
-		    
-		
+	   }); */
+	
+	   $(document).ready(function() {
+			var $second = $('#second'),
+			    $modal = $('#modal'),
+			    $subcate = $('.subcate'),
+			    $catecon = $('.cate-container');
+
+			  $($subcate).hover(function() {
+			    $catecon.stop().slideDown(),
+			    $modal.stop().fadeIn();
+			  }, function() {
+			    if (!$catecon.is(":hover")) {
+			    	$catecon.stop().slideUp();
+			    	$modal.stop().fadeOut();
+			    }
+			  });
+
+			  $('.subcate-container > a').hover(function(e) {
+			    e.stopPropagation();
+			  });
+
+			  $catecon.hover(function() {
+			    $modal.stop().fadeIn();
+			  }, function() {
+			    $catecon.stop().slideUp();
+			    $modal.stop().fadeOut();
+			  });
+			});
+	   
+
 		// 검색바를 포함하고 있는 modal slideDown
 		// 클릭 이벤트 등록 , 모달창을 제외한 부분에 backdrop-filter 이용해서 blur
 		
@@ -417,7 +486,7 @@
 </head>
 	<decorator:head/>
 <body>
-
+<div id="modal"></div>
 <div id="first">
 	<div id="topmsg">
 		<div id="hfirst">
@@ -445,9 +514,6 @@
 				<c:if test = "${useremail != null }">
 				${username}님, 안녕하세요 |  고객센터 |
 				</c:if>
-				<c:if test = "${naveremail != null }">
-				${navername}님, 안녕하세요 |  고객센터 |
-				</c:if>
 		
 				<span id="mymenu"> <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
 					<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
@@ -465,56 +531,54 @@
 		<header>
 		<div id="second">
 			<div id="left"><a href="/"><img src="/resources/img/rice.png" width="70" height="50"></a> </div>
-				<nav>
-					<ul id="cate">
-						<li class="subcate"> 한 식
-							<ul>
-								<li> <a href="/products/1/1">찜/탕</a> </li>
-								<li> <a href="/products/1/2">반찬</a> </li>
-								<li> <a href="/products/1/3">볶음류</a> </li>
-								<li> <a href="/products/1/4">구이</a> </li>
-								<li> <a href="/products/1/5">기타/분식</a> </li>
-							</ul>
-						 </li>
-						<li class="subcate"> 일 식
-							<ul>
-								<li> <a href="/products/2/1">튀김류</a> </li>
-								<li> <a href="/products/2/2">면류</a> </li>
-								<li> <a href="/products/2/3">스시</a> </li>
-								<li> <a href="/products/2/4">덮밥</a> </li>
-							</ul>
-						</li>
-						<li> 중 식
-							<ul>
-								<li> <a href="/products/3/1">튀김류</a> </li>
-								<li> <a href="/products/3/2">면류</a> </li>
-								<li> <a href="/products/3/3">밥류</a> </li>
-								<li> <a href="/products/3/4">만두류</a> </li>
-							</ul>
-						</li>
-						<li class="subcate"> 양 식
-							<ul>
-								<li> <a href="/products/4/1">파스타</a> </li>
-								<li> <a href="/products/4/2">육류</a> </li>
-								<li> <a href="/products/4/3">피자</a> </li>
-								<li> <a href="/products/4/4">샐러드</a> </li>
-							</ul>
-						</li>
-					</ul>
-			   
-					<!-- 검색돋보기 -->
-					<i class="fa-solid fa-magnifying-glass" id="vsearch" style="cursor:pointer"></i>
-					<i class="fa-regular fa-heart" id="wish_view" onclick="gwish()" style="cursor:pointer"></i>
-					<i class="fa-solid fa-cart-shopping" id="cart_view" onclick="gcart()" style="cursor:pointer; ">
-					   <span id="cart_amount">0</span>
-					</i>
-					
-				 </nav>
-			</div> <!-- menu 관련 -->
-		</header> <!-- 로그인,회원가입,로고 -->
-</div>
-	<decorator:body/>
-	
+			<div class="top-menu">
+				<ul class="pre-desktop-menu">
+					<li class="subcate"> 한 식 </li>
+					<li class="subcate"> 일 식 </li>
+					<li class="subcate"> 중 식 </li>
+					<li class="subcate"> 양 식 </li>
+				</ul>
+			</div>
+			<!-- 검색돋보기 -->
+			<div class="header-icons">
+				<i class="fa-solid fa-magnifying-glass" id="vsearch" style="cursor:pointer"></i>
+				<i class="fa-regular fa-heart" id="wish_view" onclick="gwish()" style="cursor:pointer"></i>
+				<i class="fa-solid fa-cart-shopping" id="cart_view" onclick="gcart()" style="cursor:pointer; ">
+			   		<span id="cart_amount">0</span>
+				</i>
+			</div>	
+		</div>
+	</header> <!-- 로그인,회원가입,로고 -->
+	<div class="cate-container">
+		<ul>
+			<li class="subcate-container">
+				<a href="/products/1/1">찜/탕</a><p>
+				<a href="/products/1/2">반찬</a><p>
+				<a href="/products/1/3">볶음류</a><p>
+				<a href="/products/1/4">구이</a><p>
+				<a href="/products/1/5">기타/분식</a>
+			</li>
+			<li class="subcate-container">
+				<a href="/products/2/1">튀김류</a><p>
+				<a href="/products/2/2">면류</a><p>
+				<a href="/products/2/3">스시</a><p>
+				<a href="/products/2/4">덮밥</a>
+			</li>
+			<li class="subcate-container">
+				<a href="/products/3/1">튀김류</a></p>
+				<a href="/products/3/2">면류</a></p>
+				<a href="/products/3/3">밥류</a></p>
+				<a href="/products/3/4">만두류</a>
+			</li>
+			<li class="subcate-container">
+				<a href="/products/4/1">파스타</a></p>
+				<a href="/products/4/2">육류</a></p>
+				<a href="/products/4/3">피자</a></p>
+				<a href="/products/4/4">샐러드</a>
+			</li>
+		</ul>
+	</div><!-- menu 관련 -->
+<decorator:body/>	
 	<footer><!-- 사이트관련 내용 -->
 	<div id="container">
 		<div id="footerbody">
