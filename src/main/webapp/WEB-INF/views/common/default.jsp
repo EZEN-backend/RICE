@@ -16,7 +16,7 @@
 			font-style: normal;
 		}
 		body {
-			width:1920px;
+			width:100%;
 			margin:0px;
 			z-index:1;
 			position:relative;
@@ -27,8 +27,11 @@
 			font-size:14px;
 		
 		}
-		#header-wrapper {
-			
+		a {
+			list-style-type:none;
+			text-decoration-line: none;
+			color:black;
+			cursor:pointer;
 		}
 		#first {
 			width:100%;
@@ -76,45 +79,24 @@
 			z-index:98;
 			background:white;
 			list-style:none;
-			cursor:pointer;
+			list-style-type:none;
 		}
-		nav > ul > li {
-			top:-15px;
-			padding-left:55px;
+		.cate-container > ul {
+			margin: 0px 0px 0px 0px;
+			padding-top:20px;
 		}
-		nav {
-			width:100%;
-			margin:0px auto;
+		.cate-container li{
+			width:200px;
 		}
-		nav > ul > li {
-			position:relative;
-			left:500px;
-			float:left;
-			line-height:50px;
-			margin-right:100px;
-			text-align:start;
+		.subcate-container {
+		    list-style: none;
+		    list-style-type: none;
+		    display: inline-block;		    
+		    vertical-align: top;
+		    line-height:50px;
 		}
-		nav > ul > li ul{
-			width:100%;
-		}
-		nav > ul > li ul li {
-			position:relative;
-			right:39px;
-			top:11px;
-		}
-		/* main cart,heart 아이콘 스타일 */
-		#cart_view {
-			position:absolute;
-			right:150px;
-		}
-		#wish_view {
-			position:absolute;
-			right:200px;
-		}
-		/* 검색바 관련 스타일 */
-		#vsearch {
-			position:absolute;
-			right:250px;
+		.subcate-container a {
+			margin-bottom:6px;
 		}
 		
 		#csearch {
@@ -164,7 +146,7 @@
 		}
 		#topmsg #right {
 			margin-top:0px;
-			width:600px;
+			width:200px;
 			text-align:right;
 			padding-top:12px;
 			margin-right:50px;
@@ -179,7 +161,22 @@
 			background:white;
 			height:50px;
 		}
+		
+		.header-icons {
+			width:8.9%;
+			text-align:center;
+			padding-top:15px;
+		}
+		.header-icons i {
+			padding-right:10px;
+			position:relative;
+		}
+		header #left {
+			width:11.1%;
+			text-align:center;
+		}
 		header #second {
+			display:flex;
 			width:100%;
 			margin-top:0px;
 			background:white;
@@ -187,10 +184,6 @@
 			overflow:hidden;
 			position:absolute;
 			z-index:98;
-		}
-		header #left {
-			position:absolute;
-			left:30px;
 		}
 		body #mymenu {
 			position:relative;
@@ -243,7 +236,7 @@
 			background:black;
 		}
 		#subfooter {
-			width:1372px;
+			width:100%;
 			height:60px;
 			position:relative;
 			padding:5px;
@@ -252,7 +245,7 @@
 			border-bottom:1px solid white;
 		}
 		#lastfoot {
-			width:1360px;
+			width:100%;
 			height:91px;
 			display:flex;
 		}
@@ -295,7 +288,6 @@
 			height:403px;
 			margin:auto;
 			position:relative;
-			padding:40px 40px 0;
 		}
 		footer #footerbody {
 			position:absolute;
@@ -430,7 +422,6 @@
 			  });
 			});
 	   
-
 		// 검색바를 포함하고 있는 modal slideDown
 		// 클릭 이벤트 등록 , 모달창을 제외한 부분에 backdrop-filter 이용해서 blur
 		
@@ -486,49 +477,46 @@
 </head>
 	<decorator:head/>
 <body>
+
 <div id="modal"></div>
-<div id="first">
-	<div id="topmsg">
-		<div id="hfirst">
-			<form id="search_form" name="search_form" method="get" action="search_list">
-				<input type="text" name="search">
-				<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
-				<input type="button" value="취소" id="csearch" style="cursor:pointer">
-				<div>
-				<span>인기상품</span><p>
-				잘팔린상품1<p>
-				잘팔린상품2<p>
-				잘팔린상품3<p>
-				잘팔린상품4
-				</div>
-			</form>
-		</div>
-		<div id="right">
-			<c:if test="${useremail == null and naveremail == null}">
-			<a href="/users/signin">  매장찾기  </a> | 
-			<a href="/users/signup">  고객센터  </a> |
-			<a href ="/users/signin"> 가입하기 </a> |
-			<a href = "/users/signin"> 로그인 </a> 
-			</c:if>
-			<c:if test="${useremail != null or naveremail != null }">
-				<c:if test = "${useremail != null }">
-				${username}님, 안녕하세요 |  고객센터 |
-				</c:if>
-		
-				<span id="mymenu"> <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
-					<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
-						<li> <a href="/rice/users">회원정보</a> </li>
-						<li> 주문목록 </li>		
-						<li> 적 립 금 </li>				
-						<li> 장바구니 </li>		
-						<li> <a href= "users/signout">로그아웃</a> </li>		
-					</ul>
-				</span>
-				</c:if>
+	<div id="first">
+		<div id="topmsg">
+			<div id="hfirst">
+				<form id="search_form" name="search_form" method="get" action="/search/list">
+					<input type="text" id="search" name="search">
+					<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
+					<input type="button" value="취소" id="csearch" style="cursor:pointer">
+					<div>
+					<span>인기상품</span><p>
+					잘팔린상품1<p>
+					잘팔린상품2<p>
+					잘팔린상품3<p>
+					잘팔린상품4
 					</div>
+				</form>
+			</div>
+			<div id="right">
+				<c:if test="${userid == null }">
+				<a href="/rice/users/signin">  로그인  </a> | 
+				<a href="/rice/users/signup">  회원가입  </a> 
+				</c:if>
+				<c:if test="${userid != null }">
+					${name}~님, 안녕하세요
+					|  고객센터
+					<span id="mymenu">|  <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
+						<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
+							<li> <a href="/rice/users">회원정보</a> </li>
+							<li> 주문목록 </li>		
+							<li> 적 립 금 </li>				
+							<li> 장바구니 </li>		
+							<li> <a href="/rice/users/signout">로그아웃</a> </li>		
+						</ul>
+					</span>
+					</c:if>
+			</div>
 		</div>
 	</div> <!-- 광고성 메세지 -->
-		<header>
+	<header>
 		<div id="second">
 			<div id="left"><a href="/"><img src="/resources/img/rice.png" width="70" height="50"></a> </div>
 			<div class="top-menu">
