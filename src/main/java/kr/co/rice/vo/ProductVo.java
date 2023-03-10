@@ -1,10 +1,25 @@
 package kr.co.rice.vo;
 
 public class ProductVo {
-    private int id, price, views, subcategory_id, category_id, spicylevel_id;
+    private int id, price, views, subcategory_id, category_id, spicylevel_id, reviews_amount, cart_products_amount;
     private String title, name, size, body, code, extra_detail, category_name, subcategory_name, spicylevel, image_url;
-    
-    
+
+	public int getReviews_amount() {
+		return reviews_amount;
+	}
+
+	public void setReviews_amount(int reviews_amount) {
+		this.reviews_amount = reviews_amount;
+	}
+
+	public int getCart_products_amount() {
+		return cart_products_amount;
+	}
+
+	public void setCart_products_amount(int cart_products_amount) {
+		this.cart_products_amount = cart_products_amount;
+	}
+
 	public int getSpicylevel_id() {
 		return spicylevel_id;
 	}

@@ -2,6 +2,7 @@ package kr.co.rice.service;
 
 import java.util.ArrayList;
 
+import kr.co.rice.vo.ProductImagesVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -23,4 +24,22 @@ public class ProductListServiceImpl implements ProductListService{
 		model.addAttribute("list", list);
 		return "/products/list";
 	}
+
+	@Override
+	public String product_views(int product_id) {
+		mapper.product_views(product_id);
+		return "redirect:/products/detail/"+product_id;
+	}
+
+	@Override
+	public String detail(int product_id, Model model) {
+		ProductVo pvo = mapper.detail(product_id);
+		ArrayList<ProductVo> recommend_pvo = mapper.recommend_products();
+		ArrayList<ProductImagesVo> imglist = mapper.getProductImage(product_id);
+		model.addAttribute("recommend_pvo", recommend_pvo);
+		model.addAttribute("imglist", imglist);
+		model.addAttribute("pvo", pvo);
+		return "/products/detail";
+	}
+
 }
