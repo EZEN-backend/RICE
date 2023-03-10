@@ -101,13 +101,18 @@ $(window).scroll(function(){
     }
 });
 	
-	// isotope 라이브러리 처리 코
-	$(document).ready(function() {
+	/* // isotope 라이브러리 처리 코
+	 $(document).ready(function() {
 	  // Isotope grid
 	  var $grid = $('.grid').isotope({
-	    itemSelector: '.product-item',
+	    itemSelector: '.items',
 	    layoutMode: 'fitRows'
 	  });
+	  
+	  // isotope 라이브러리랑 충돌이 일어나는부분인데 내가 고칠수가 없음
+		 // $('.items').css("position","relative");
+		 // $('.items').css("top","0px");
+		 
 	  // Filter checkboxes
 	  var $checkboxes = $('.filters input');
 	  $checkboxes.change(function() {
@@ -118,11 +123,33 @@ $(window).scroll(function(){
 	    filters = filters.join('');
 	    $grid.isotope({ filter: filters });
 	  });
-	});
+	}); */
+	
+	// 필터 보이기 + 각종 속성 변경
+	$(document).ready(function(){
+		$('.filterbtn').click(function(){
+			if($('.filterSection').is(':visible')){
+				$('.bodySection').css("width","100%"),
+				$('.filterSection').animate({width:"0px"},"fast").hide(300),
+				$('.image').animate({width:"507px",height:"507px"},300),
+				$('.item_body').animate({width:"90%"},"fast"),
+				$('.filter-text').text("필터 보이기");
+			}
+			else
+			{
+				$('.image').animate({width:"490px",height:"490px"},300),
+				$('.filterSection').animate({width:"13.5%"},300).show(),
+				$('.bodySection').animate({width:"86.5%"},300),
+				$('.item_body').animate({width:"97%"},300),
+				$('.filter-text').text("필터 숨기기");
+			}
+		});
+	}); 
+	
 </script>
  <style>
         .Section {
-            width:1920px;
+            width:100%;
             height:100%;
             margin:auto;
         }
@@ -136,7 +163,7 @@ $(window).scroll(function(){
             display:flex;
         }
         .title {
-            width:80%;
+            width:93%;
             height:100%;
             position:relative;
         }
@@ -151,13 +178,12 @@ $(window).scroll(function(){
             padding-left:5%;
         }
         .navFilter {
-            width:20%;
+            width:7%;
             height:100%;
-            display:flex;
             align-items: center;
         }
         .filterButton {
-            width:50%;
+            width:100%;
             height:65%;
             display:table;
         }
@@ -168,6 +194,11 @@ $(window).scroll(function(){
         .filterbtn, .sortbtn {
             border: none;
             height:100%;
+            background:white;
+            cursor:pointer;
+        }
+        .filter-text{
+        	font-size:13px;
         }
         .main {
             width:100%;
@@ -178,8 +209,10 @@ $(window).scroll(function(){
         }
         .bodySection {
             width:86.5%;
+            z-index:1;
             display:flex;
             justify-content: center;
+            background:white;
         }
         .item_card {
             text-decoration-line: none;
@@ -197,9 +230,12 @@ $(window).scroll(function(){
             justify-content: start;
         }
         .item {
-            width:33.3333%;
+            width:100%;
             height:710px;
             margin-top:2px;
+        }
+        .item_card {
+        	text-align:center;
         }
         .item_body {
             width:97%;
@@ -218,6 +254,7 @@ $(window).scroll(function(){
         .item_info {
             width:100%;
             height:24%;
+            text-align:left;
         }
         .item_titles {
             height:30%;
@@ -310,14 +347,8 @@ $(window).scroll(function(){
         <nav class="navFilter">
             <div class="filterButton">
                 <button class="filterbtn">
-                    <span class="filter-text"></span>
+                    <span class="filter-text">필터 숨기기</span>
                     <i class="fa-solid fa-arrow-down-short-wide"></i>
-                </button>
-            </div>
-            <div class="sortButton">
-                <button class="sortbtn">
-                    <span class="sort-text"></span>
-                    <i class="fa-sharp fa-solid fa-chevron-down"></i>
                 </button>
             </div>
         </nav>
@@ -404,7 +435,7 @@ $(window).scroll(function(){
                                 <figure>
                                     <a class="item_card" href="/products/detail/${list.id}">
                                         <div class="item_img">
-                                            <img class="image" src="/resources/img/${list.image_url}" width="507" height="507">
+                                            <img class="image" src="/resources/img/${list.image_url}" width="507px" height="507px">
                                         </div>
                                         <div class="item_info">
                                             <div class="item_titles">
