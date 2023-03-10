@@ -287,7 +287,6 @@
 			height:403px;
 			margin:auto;
 			position:relative;
-			padding:40px 40px 0;
 		}
 		footer #footerbody {
 			position:absolute;
