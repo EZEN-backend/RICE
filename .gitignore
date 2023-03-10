@@ -1,6 +1,11 @@
 .idea/
 target/
 .DS_Store
+rice.iml
+
+/src/main/webapp/META-INF
+/src/main/webapp/WEB-INF/classes
+/src/main/webapp/WEB-INF/lib
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,intellij,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,intellij,eclipse
