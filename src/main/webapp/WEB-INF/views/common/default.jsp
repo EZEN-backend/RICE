@@ -441,11 +441,11 @@
 		 
 		 $subcate.mouseenter(function(){
 			   $($second).stop().animate({height:'385px'}),
-			   $($catecon).stop().slideDown(),
+			   $($catecon).stop().slideDown("fast"),
 			   $modal.stop().fadeIn();
 		   })
 		 $subcate.mouseleave(function(){
-			   $($catecon).stop().slideUp(),
+			   $($catecon).stop().slideUp("fast"),
 			   $second.stop().animate({height:'50px'}),
 			   $modal.stop().fadeOut();
 		   });
