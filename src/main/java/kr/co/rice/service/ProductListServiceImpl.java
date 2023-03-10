@@ -3,14 +3,13 @@ package kr.co.rice.service;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import kr.co.rice.vo.ProductImagesVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import kr.co.rice.vo.ProductImagesVo;
 import kr.co.rice.mapper.ProductListMapper;
 import kr.co.rice.vo.ProductVo;
 

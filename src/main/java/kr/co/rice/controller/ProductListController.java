@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import kr.co.rice.service.ProductListService;
 import kr.co.rice.vo.ProductVo;
 
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 @Controller
 public class ProductListController {
 	
@@ -35,6 +32,7 @@ public class ProductListController {
 
 	@GetMapping("/products/detail/{product_id}")
 	public String product_detail(@PathVariable("product_id")int product_id, Model model) {
+
 		return service.detail(product_id, model);
 	}
 
