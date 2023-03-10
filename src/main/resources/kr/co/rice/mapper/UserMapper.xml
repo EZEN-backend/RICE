@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+ 
+ <mapper namespace = "kr.co.rice.mapper.UserMapper">
+ 
+ <!-- 일반회원 아이디 중복 체크 -->
+ <select id = "Id_Check" resultType = "int">
+ 	select count(*) from users where email = #{param}
+ </select>
+ 
+ <!-- 네이버 아이디 중복 체크 -->
+ <select id = "Naver_Id_Check" resultType = "int">
+ 	select count(*) from users where naveremail = #{param}
+ </select>
+
+<!-- 회원가입 -->
+ <insert id="user_input_ok" parameterType="kr.co.rice.vo.UserVo">
+    insert into users(email, naveremail, name, pwd, birthdate, created_at)
+    values(#{email}, #{naveremail}, #{name}, #{pwd}, #{birthdate}, now())
+  </insert>
+  
+  <select id="idcheck" resultType="int">
+  	select count(*) from users where email=#{param1} or naveremail=#{param2} 
+  </select>
+  
+  <select id = "pwd_check" resultType = "kr.co.rice.vo.UserVo">
+  	select name, email from users where email = #{param1} and pwd = #{param2}
+  </select>
+  
+  <select id = "pwdcheck" resultType = "String">
+  	select pwd from users where email = #{param}
+  </select>
+</mapper>
