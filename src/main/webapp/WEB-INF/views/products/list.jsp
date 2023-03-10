@@ -122,7 +122,7 @@ $(window).scroll(function(){
 </script>
  <style>
         .Section {
-            width:1920px;
+            width:100%;
             height:100%;
             margin:auto;
         }
@@ -258,10 +258,6 @@ $(window).scroll(function(){
         	position:relative;
         	background:#fff;
         }
-        .category-content {
-        	width:192px;
-        	height:125px;
-        }
         .category-css {
        		width:192px;
        		height:166px;
@@ -285,13 +281,6 @@ $(window).scroll(function(){
         .filter-title-cate {
         	padding:12px 0px;
         	margin-top:13px;
-        }
-        .filers {
-        	width:196px;
-        	height:108px;
-        	padding:0px 0px 20px;
-        	border-bottom:1px solid #cccccc;
-        	display:block;
         }
     </style>
 </head>
@@ -402,7 +391,7 @@ $(window).scroll(function(){
                         <div class="item">
                             <div class="item_body">
                                 <figure>
-                                    <a class="item_card" href="/products/detail/${list.id}">
+                                    <a class="item_card" href="/products/views/${list.id}">
                                         <div class="item_img">
                                             <img class="image" src="/resources/img/${list.image_url}" width="507" height="507">
                                         </div>
