@@ -131,13 +131,13 @@ $(window).scroll(function(){
 			if($('.filterSection').is(':visible')){
 				$('.bodySection').css("width","100%"),
 				$('.filterSection').animate({width:"0px"},"fast").hide(300),
-				$('.image').animate({width:"547.19px",height:"512.62px"},300),
+				$('.image').animate({width:"507px",height:"507px"},300),
 				$('.item_body').animate({width:"90%"},"fast"),
 				$('.filter-text').text("필터 보이기");
 			}
 			else
 			{
-				$('.image').animate({width:"507px",height:"507px"},300),
+				$('.image').animate({width:"490px",height:"490px"},300),
 				$('.filterSection').animate({width:"13.5%"},300).show(),
 				$('.bodySection').animate({width:"86.5%"},300),
 				$('.item_body').animate({width:"97%"},300),
@@ -149,7 +149,7 @@ $(window).scroll(function(){
 </script>
  <style>
         .Section {
-            width:1920px;
+            width:100%;
             height:100%;
             margin:auto;
         }

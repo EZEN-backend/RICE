@@ -71,7 +71,7 @@
 		.cate-container {
 			width: 100%;
 			margin: 0 auto;
-			height: 150px;
+			height: 330px;
 			text-align: center;
 			display:none;
 			position:absolute;
@@ -80,64 +80,23 @@
 			list-style:none;
 			list-style-type:none;
 		}
+		.cate-container > ul {
+			margin: 0px 0px 0px 0px;
+			padding-top:20px;
+		}
 		.cate-container li{
 			width:200px;
 		}
 		.subcate-container {
 		    list-style: none;
 		    list-style-type: none;
-		    display: inline-block;
-		    padding-top: 17px;
+		    display: inline-block;		    
 		    vertical-align: top;
 		    line-height:50px;
 		}
 		.subcate-container a {
 			margin-bottom:6px;
 		}
-		/* 카테고리 관련 스타일 */
-	 	/* nav ul li {
-			list-style:none;
-			cursor:pointer;
-			
-		}
-		nav > ul > li {
-			top:-15px;
-			padding-left:55px;
-		}
-		nav {
-			width:100%;
-			margin:0px auto;
-		}
-		nav > ul > li {
-			position:relative;
-			left:500px;
-			float:left;
-			line-height:50px;
-			margin-right:100px;
-			text-align:start;
-		}
-		nav > ul > li ul{
-			width:100%;
-		}
-		nav > ul > li ul li {
-			position:relative;
-			right:39px;
-			top:11px;
-		} */
-		/* main cart,heart 아이콘 스타일 */
-		/* #cart_view {
-			position:absolute;
-			right:150px;
-		}
-		#wish_view {
-			position:absolute;
-			right:200px;
-		} */
-		/* 검색바 관련 스타일 */
-		/* #vsearch {
-			position:absolute;
-			right:250px;
-		} */
 		
 		#csearch {
 			width:40px;
@@ -203,7 +162,7 @@
 		}
 		
 		.header-icons {
-			width:9.2%;
+			width:8.9%;
 			text-align:center;
 			padding-top:15px;
 		}
@@ -212,7 +171,7 @@
 			position:relative;
 		}
 		header #left {
-			width:10.8%;
+			width:11.1%;
 			text-align:center;
 		}
 		header #second {
@@ -418,33 +377,21 @@
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
-	  /*  $(function(){
-		   var $cate = $('nav >ul > li'),
-		   		$second = $('#second'),
-		   		$modal = $('#modal');
-		   
-		   $cate.mouseenter(function(){
-			   $second.stop().animate({height:'320px'}),
-			   $modal.fadeIn();
-		   })
-		   .mouseleave(function(){
-			   $second.stop().animate({height:'50px'}),
-			   $modal.fadeOut();
-		   });
-	   }); */
 	
+	// 카테고리 기능 jquery
 	   $(function(){
 		 var $subcate = $('.subcate'),
 		   	  $second = $('#second'),
 	   		  $modal = $('#modal'),
-		 	  $catecon = $('.cate-container');
+		 	  $catecon = $('.cate-container'),
+		 	  $top = $('.top-menu');
 		 
 		 $subcate.mouseenter(function(){
-			   $($second).stop().animate({height:'385px'}),
+			   $($second).stop().animate({height:'330px'}),
 			   $($catecon).stop().slideDown("fast"),
 			   $modal.stop().fadeIn();
 		   })
-		 $subcate.mouseleave(function(){
+		 $catecon.mouseleave(function(){
 			   $($catecon).stop().slideUp("fast"),
 			   $second.stop().animate({height:'50px'}),
 			   $modal.stop().fadeOut();
@@ -561,8 +508,8 @@
 				<i class="fa-solid fa-magnifying-glass" id="vsearch" style="cursor:pointer"></i>
 				<i class="fa-regular fa-heart" id="wish_view" onclick="gwish()" style="cursor:pointer"></i>
 				<i class="fa-solid fa-cart-shopping" id="cart_view" onclick="gcart()" style="cursor:pointer; ">
-			   <span id="cart_amount">0</span>
-			</i>
+			   		<span id="cart_amount">0</span>
+				</i>
 			</div>	
 		</div>
 	</header> <!-- 로그인,회원가입,로고 -->
