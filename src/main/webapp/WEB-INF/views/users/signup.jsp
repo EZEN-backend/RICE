@@ -7,18 +7,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
  <style>
-   section {
-      width:1000px;
-      height:600px;
-      margin:auto;
-      margin-top : 50px;
-      text-align:center;
-   }
-   section div {
-   	text-color : red;
-     margin-top:12px;
-   }
-
+ 	body {
+ 		width:100%;
+ 		height:100%;
+ 		margin:0px;
+ 		line-height:1.5;
+ 	}
+	.fullbody {
+		display:flex;
+		justify-content:center;
+		height:100%;
+	}
+	.mainbody {
+		max-width:460px;
+		margin: 0px 36px;
+		width:100%;
+	}
+	
    #country, #agree {
 	 color : #A5A5A5;
    }
@@ -27,81 +32,103 @@
   	color : #A5A5A5;
    }
    
-  input::placeholder {
+  input:placeholder {
 	text-align : left;
   }
-   
-  select {
-      width:330px;
-      height:35px;
-      border:1px solid black; 
-      border-radius : 7px 7px 7px 7px / 7px 7px 7px 7px
-  }
   
-  section input[type=text] {
-      width:330px;
-      height:35px;
+  .mainbody input[type=text] {
+      width:460px;
+      height:55px;
       border:1px solid black; 
       border-radius : 7px 7px 7px 7px / 7px 7px 7px 7px
    }
 
-   section input[type=submit] {
-      width:80px;
-      height:45px;
-      border:1px solid black; 
-      background:black;
-      color:white;
-      border-radius : 30px 30px 30px 30px / 30px 30px 30px 30px;
-      margin-left : 300px;
-   }
    
-     section input[type=password] {
-      width:330px;
-      height:35px;
+     .mainbody input[type=password] {
+      width:460px;
+      height:55px;
       border:1px solid black; 
       border-radius : 7px 7px 7px 7px / 7px 7px 7px 7px
    }
    
-   	 section input[type=date] {
-      width:330px;
-      height:35px;
+   	 .mainbody input[type=date] {
+      width:464px;
+      height:55px;
       border:1px solid black; 
       border-radius : 7px 7px 7px 7px / 7px 7px 7px 7px
    	}
- 
+   .mainbody input[type=submit] {
+      width:80px;
+      height:45px;
+      border:1px solid white;
+      background:#e0e0e0;
+      color:#666666;
+      border-radius : 30px 30px 30px 30px / 30px 30px 30px 30px;
+      float:right;
+      cursor:pointer;
+   }
+   	
   </style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script>
+	
+	
+  	$(document).ready(function(){
+  		var $submit = $('.submit');
+  		var $check = $('.agreecheck');
+  		
+  		$check.on('change',function(){
+  			if (this.checked) {
+  	  		    $submit.prop('disabled',false),
+  	  		    $submit.css("background","black"),
+  	  		    $submit.css("color","white");
+  	  		  } else {
+  	  		    $submit.prop('disabled',true),
+  	  		  	$submit.css("background","#e0e0e0"),
+  				$submit.css("color","#666666");
+  	  		  }
+  		});
+  	});
+  	
+  	
+	// 체크박스 체크안하면 진행 안되게 막기
+	
+	
+  </script>
 </head>
 <body> 
-   <section>
-  	<a href = "/"> <img src = "../resources/img/rice.png" style = "float: left; margin-left : 280px;" width = "70px"> </a> <br> <br> <br> <p>
-      <form method="post" action="userinputok">
-       <% 
-       		String email = request.getParameter("email");
-  	 		session = request.getSession();
-       %>
-       
-        <h2> 이제 라이스 멤버가 되어볼까요? </h2> <p>
-        
-        <input type = "hidden" name = "email" value = "<%=email%>">
-        <input type = "hidden" name = "naveremail" value = "<%=session.getAttribute("naveremail") %>">
-
-		<c:if test = "${naveremail == null }">
-        <input type = "text" name = "name" placeholder = "이름" style = "width: 320px;"> <p>
-       	<input type = "password" name = "pwd" placeholder = "비밀번호"> <p>
-       	<input type = "date" name = "birthdate" placeholder = "생년월일"> <p>
-		</c:if>
-		  
-       	 <c:if test = "${naveremail != null }">
-        <input type = "hidden" name = "name" value = "${navername}">
-        <input type = "hidden" name = "pwd" value = "null">
-        <input type = "date" name = "birthdate" placeholder = "생년월일"> <p>
-         </c:if>
-
-        <input type = "checkbox"> 라이스의 <a href ="" >개인 정보 처리 방침</a> 및 <a href = ""> 이용약관 </a>에 동의합니다.<p>
-        
-        <div> <input type="submit" value="계정 만들기"> </div>
-      </form>
-   
-   </section>
+	<div class="fullbody">
+	   <div class="mainbody">
+	  	<a href = "/"> <img src = "../resources/img/rice.png" width = "60px"> </a> 
+	      <form method="post" action="userinputok">
+	       <% 
+	       		String email = request.getParameter("email");
+	  	 		session = request.getSession();
+	       %>
+	       
+	        <h2> 이제 라이스 멤버가 되어볼까요? </h2> <p>
+	        
+	        <input type = "hidden" name = "email" value = "<%=email%>">
+	        <input type = "hidden" name = "naveremail" value = "<%=session.getAttribute("naveremail") %>">
+	
+			<c:if test = "${naveremail == null }">
+	        <input type = "text" name = "name" placeholder = "이름"> <p>
+	       	<input type = "password" name = "pwd" placeholder = "비밀번호"> <p>
+	       	<input type = "date" name = "birthdate" placeholder = "생년월일"> <p>
+			</c:if>
+			  
+	       	 <c:if test = "${naveremail != null }">
+	        <input type = "hidden" name = "name" value = "${navername}">
+	        <input type = "hidden" name = "pwd" value = "null">
+	        <input type = "date" name = "birthdate" placeholder = "생년월일"> <p>
+	         </c:if>
+	
+	        <input type = "checkbox" class="agreecheck"> 라이스의 <a href ="" >개인 정보 처리 방침</a> 및 <a href = ""> 이용약관 </a>에 동의합니다.<p>
+	        
+	        <div> <input type="submit" value="계정 만들기" class="submit" disabled> </div>
+	      </form>
+	   
+	   </div>
+	</div>
 </body>
 </html>

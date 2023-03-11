@@ -37,14 +37,6 @@
 			width:100%;
 			height:40px;
 		}
-		@media only screen and (min-width: 960px)
-		.pt1-lg {
-		    padding-top: 4px;
-		}
-		@media only screen and (min-width: 1440px)
-		.pre-desktop-menu {
-		    width: calc(100% - 680px);
-		}
 		.top-menu {
 			width:80%;
 		}
@@ -378,22 +370,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
 	
-	// 카테고리 기능 jquery
-	   /* $(document).ready(function(){
-		 var $subcate = $('.subcate'),
-		   	  $second = $('#second'),
-	   		  $modal = $('#modal'),
-		 	  $catecon = $('.cate-container');
-		 	 
-		   $($subcate).hover(function(){
-			  $catecon.stop().slideDown(),
-			  $modal.stop().fadeIn(); 
-		   },function(){
-			  $catecon.stop().slideUp();
-			  $modal.stop().fadeOut()
-		   });
-	   }); */
-	
+	// 새로 만든 카테고리 기능
 	   $(document).ready(function() {
 			var $second = $('#second'),
 			    $modal = $('#modal'),
@@ -497,8 +474,8 @@
 			</div>
 			<div id="right">
 				<c:if test="${userid == null }">
-				<a href="/rice/users/signin">  로그인  </a> | 
-				<a href="/rice/users/signup">  회원가입  </a> 
+				<a href="/users/signin">  로그인  </a> | 
+				<a href="/users/signup">  회원가입  </a> 
 				</c:if>
 				<c:if test="${userid != null }">
 					${name}~님, 안녕하세요
