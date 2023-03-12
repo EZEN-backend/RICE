@@ -49,7 +49,23 @@
    }
  
   </style> 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
 
+	// 이메일의 value률 참조하여 submit이 작동하거나,안하거나 
+	$(document).ready(function(){
+		$('form').submit(function(event){
+			var email = $('.email').val();
+			
+			 // 조건은 이메일의 value의 길이가 8보다 작으면, 이메일의 value에 @가 포함되지 않으
+			if(email.length < 8 || email.indexOf("@") == -1)
+			{
+				event.preventDefault();
+				alert('이메일 형식으로 작성해주세요');
+			}
+		});
+	});
+</script>
 </head>
 <body> 
 
@@ -61,7 +77,7 @@
         <h2> 가입 또는 로그인을 위해 이메일을 입력하세요. </h2> <p>
         <div id = "country"> 대한민국 </div>
         
-        <div> <input type="text" name="email" placeholder="이메일"> 
+        <div> <input class="email" type="text" name="email" placeholder="이메일"> 
         	  <input type = "hidden" name = "naveremail" value = "null">
         </div> <p>
         
@@ -69,7 +85,7 @@
         <div id = "agree"> 계속 진행하면 라이스의  개인 정보 처리 방침 및 이용약관에 <p>
         동의하게 됩니다. </p> </div>
         
-        <div> <input type="submit" value="계속"> </div>
+        <div> <input type="submit" value="계속" style="cursor:pointer"> </div>
 			
       </form>
       
