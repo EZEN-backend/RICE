@@ -308,20 +308,6 @@ $(window).scroll(function(){
 
             </h1>
         </div>
-        <nav class="navFilter">
-            <div class="filterButton">
-                <button class="filterbtn">
-                    <span class="filter-text"></span>
-                    <i class="fa-solid fa-arrow-down-short-wide"></i>
-                </button>
-            </div>
-            <div class="sortButton">
-                <button class="sortbtn">
-                    <span class="sort-text"></span>
-                    <i class="fa-sharp fa-solid fa-chevron-down"></i>
-                </button>
-            </div>
-        </nav>
     </div>
     <div class="offsetSection"></div>
     <div class="main">
