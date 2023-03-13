@@ -40,7 +40,7 @@
       width:460px;
       height:55px;
       border:1px solid black; 
-      border-radius : 7px 7px 7px 7px / 7px 7px 7px 7px
+      border-radius : 7px;
    }
 
    
@@ -48,14 +48,14 @@
       width:460px;
       height:55px;
       border:1px solid black; 
-      border-radius : 7px 7px 7px 7px / 7px 7px 7px 7px
+      border-radius : 7px;
    }
    
    	 .mainbody input[type=date] {
       width:464px;
       height:55px;
       border:1px solid black; 
-      border-radius : 7px 7px 7px 7px / 7px 7px 7px 7px
+      border-radius : 7px;
    	}
    .mainbody input[type=submit] {
       width:80px;
@@ -63,7 +63,7 @@
       border:1px solid white;
       background:#e0e0e0;
       color:#666666;
-      border-radius : 30px 30px 30px 30px / 30px 30px 30px 30px;
+      border-radius : 30px;
       float:right;
       cursor:pointer;
    }
@@ -99,7 +99,9 @@
 <body> 
 	<div class="fullbody">
 	   <div class="mainbody">
-	  	<a href = "/"> <img src = "../resources/img/rice.png" width = "60px"> </a> 
+	    <div style="margin-top:20px;">
+	  		<a href = "/"> <img src = "../resources/img/rice.png" width = "60px"> </a> 
+	  	</div>
 	      <form method="post" action="userinputok">
 	       <% 
 	       		String email = request.getParameter("email");
