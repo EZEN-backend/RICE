@@ -293,6 +293,7 @@
             cursor: pointer;
             margin-bottom: 40px;
         }
+
         .sizeBox {
             border: 1px solid #ccc;
         }
@@ -485,63 +486,75 @@
         .detail-subname, .detail-size {
             color: #757575;
         }
-    /*
-    */
+
+        /*
+        */
         .recommendsContainer {
-            width:94%;
-            height:30%;
-            margin:auto;
+            width: 94%;
+            height: 30%;
+            margin: auto;
         }
+
         .recommend-item {
             margin: 0;
         }
+
         /* 슬라이드바 헤더 */
         .recommend-header {
-            margin:auto;
-            width:94.5%;
+            margin: auto;
+            width: 94.5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
         }
+
         .header-title {
             font-size: 20px;
             font-weight: normal;
         }
+
         .link-to-detail:visited {
-            color:black;
+            color: black;
         }
+
         .link-to-detail {
             text-decoration: none;
-            color:black;
+            color: black;
         }
+
         /* 이전, 다음 버튼 */
         /*    border:1px solid rgba(0, 0, 0, 0.5);*/
         /*    border-radius: 15px;*/
         .recommendBtn-wrapper {
-            display:flex;
+            display: flex;
         }
+
         .previousBtn-wrapper, .nextBtn-wrapper {
-            border-radius:30px;
-            background:rgb(245, 245, 245);
-            width:50px;
-            height:50px;
-            display:flex;
-            margin:auto;
+            border-radius: 30px;
+            background: rgb(245, 245, 245);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            margin: auto;
             justify-content: center;
         }
+
         .nextBtn-wrapper {
             margin: 0px 0px 0px 10px;
         }
+
         .previousBtn, .nextBtn {
             background-color: transparent;
             border: none;
             cursor: pointer;
             font-size: 30px;
         }
+
         .previousBtn:hover, .nextBtn:hover {
             color: gray;
         }
+
         /* 슬라이드바 본문 */
         .recommend-slider {
             display: flex;
@@ -553,16 +566,19 @@
             -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
         }
+
         .slide-item {
             flex: 0 0 33.33%;
             width: 100%;
             scroll-snap-align: center;
         }
+
         /* 슬라이드바 아이템 이미지 */
         .recommend-item-image-container {
             position: relative;
             padding-top: 100%;
         }
+
         .recommend-item-image {
             position: absolute;
             top: 0;
@@ -570,27 +586,32 @@
             right: 0;
             bottom: 0;
         }
+
         .recommend-item-image img {
             max-width: 100%;
             max-height: 100%;
             display: block;
             margin: 0 auto;
         }
+
         .recommend-detail-text h1 {
             font-size: 18px;
             font-weight: normal;
             margin: 0;
         }
+
         .recommend-detail-text h2 {
             font-size: 16px;
             font-weight: normal;
             margin: 5px 0;
         }
+
         .recommend-detail-price h3 {
             font-size: 16px;
             font-weight: bold;
             margin: 0;
         }
+
         /*
           */
     </style>
@@ -676,18 +697,18 @@
                 $('body').css('overflow', 'auto');
             });
 
-            $('.previousBtn').click(function(){
+            $('.previousBtn').click(function () {
                 const currentPosition = $('.recommend-slider').scrollLeft();
                 const itemWidth = $('.slide-item').width();
                 const newPosition = currentPosition - itemWidth;
-                $('.recommend-slider').animate({scrollLeft:newPosition}, 200);
+                $('.recommend-slider').animate({scrollLeft: newPosition}, 200);
             });
 
-            $('.nextBtn').click(function(){
+            $('.nextBtn').click(function () {
                 const currentPosition = $('.recommend-slider').scrollLeft();
                 const itemWidth = $('.slide-item').width();
                 const newPosition = currentPosition + itemWidth;
-                $('.recommend-slider').animate({scrollLeft:newPosition}, 200);
+                $('.recommend-slider').animate({scrollLeft: newPosition}, 200);
             });
         });
     </script>
@@ -904,34 +925,36 @@
                                         </div>
                                     </div>
                                     <ul class="recommend-slider">
-                                    <c:forEach items="${recommend_pvo}" var="items" varStatus="item-count">
-                                        <li class="slide-item">
-                                            <a class="link-to-detail" href="/products/views/${items.id}">
-                                                <figure class="recommend-card">
-                                                    <div class="recommend-body">
-                                                        <div class="recommend-item-image-container">
-                                                            <div class="recommend-item-image">
-                                                                <picture>
-                                                                    <img src="/resources/img/${items.image_url}">
-                                                                </picture>
+                                        <c:forEach items="${recommend_pvo}" var="items" varStatus="item-count">
+                                            <li class="slide-item">
+                                                <a class="link-to-detail" href="/products/views/${items.id}">
+                                                    <figure class="recommend-card">
+                                                        <div class="recommend-body">
+                                                            <div class="recommend-item-image-container">
+                                                                <div class="recommend-item-image">
+                                                                    <picture>
+                                                                        <img src="/resources/img/${items.image_url}">
+                                                                    </picture>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="recommend-item-text">
-                                                            <div class="recommend-detail-text">
-                                                                <h1>${items.name}</h1>
-                                                                <h2>${items.subcategory_name}</h2>
-                                                            </div>
-                                                            <div class="recommend-detail-price">
-                                                                <div class="recommend-price">
-                                                                    <h3><fmt:formatNumber value="${pvo.price}" pattern="###,###,###"/> 원</h3>
+                                                            <div class="recommend-item-text">
+                                                                <div class="recommend-detail-text">
+                                                                    <h1>${items.name}</h1>
+                                                                    <h2>${items.subcategory_name}</h2>
+                                                                </div>
+                                                                <div class="recommend-detail-price">
+                                                                    <div class="recommend-price">
+                                                                        <h3><fmt:formatNumber value="${pvo.price}"
+                                                                                              pattern="###,###,###"/>
+                                                                            원</h3>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </figure>
-                                            </a>
-                                        </li>
-                                    </c:forEach>
+                                                    </figure>
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
@@ -965,7 +988,8 @@
                                     <p class="detail-name">${pvo.name} </p>
                                     <p class="detail-subname">${pvo.subcategory_name}</p>
                                     <p class="detail-size">사이즈 ${pvo.size}</p>
-                                    <p class="detail-price"><fmt:formatNumber value="${pvo.price}" pattern="###,###,###"/> 원</p>
+                                    <p class="detail-price"><fmt:formatNumber value="${pvo.price}"
+                                                                              pattern="###,###,###"/> 원</p>
                                 </div>
                             </div>
                             <div class="modal-btn">
