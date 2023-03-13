@@ -3,10 +3,6 @@ target/
 .DS_Store
 rice.iml
 
-/src/main/webapp/META-INF
-/src/main/webapp/WEB-INF/classes
-/src/main/webapp/WEB-INF/lib
-
 src/main/webapp/META-INF/
 src/main/webapp/WEB-INF/lib/
 src/main/webapp/WEB-INF/classes/
