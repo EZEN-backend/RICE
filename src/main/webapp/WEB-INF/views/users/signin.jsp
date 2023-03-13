@@ -62,16 +62,6 @@
 </script>
 </head>
 <body> 
-  <div class="fullbody">
-   <div></div>
-	   <div class="mainbody">
-	     <div class="mainlogo" style="margin-top:20px;">
-	   	   <a href = "/"> <img src="../resources/img/rice.png" width = "70px"> </a><br>
-	     </div> 
-	       <form method="post" action="signup">
-	        <h2> 가입 또는 로그인을 위해 이메일을 입력하세요. </h2> <p>
-	        <div id = "country"> 대한민국 </div>
-
    <div class="fullbody">
    <div></div>
 	   <div class="mainbody">
