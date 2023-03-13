@@ -99,7 +99,7 @@
 <body> 
 	<div class="fullbody">
 	   <div class="mainbody">
-	  	<div style="margin-top:20px;">
+	    <div style="margin-top:20px;">
 	  		<a href = "/"> <img src = "../resources/img/rice.png" width = "60px"> </a> 
 	  	</div>
 	      <form method="post" action="userinputok">
