@@ -384,7 +384,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 9999;
-            display: none;
+            /*display: none;*/
         }
 
         .modal-header {
@@ -846,8 +846,15 @@
                                             </details>
                                             <details class="product-reviews">
                                                 <summary>
-                                                    <h3>리뷰 (1)</h3>
-                                                    <span>리뷰 점수 반영</span>
+                                            <c:choose>
+                                                <c:when test="${pvo.reviews_amount == 0}">
+                                                    <h3 >리뷰 </h3>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <h3>리뷰 (${pvo.reviews_amount})</h3>
+                                                </c:otherwise>
+                                            </c:choose>
+                                                    <span></span>
                                                 </summary>
                                                 <div class="reviews-data">
                                                     <div class="reviews-component">
@@ -993,10 +1000,14 @@
                                 </div>
                             </div>
                             <div class="modal-btn">
-                                <c:if test="${pvo.cart_products_amount != 0}">
-                                    <button class="cart-btn">장바구니 (${pvo.cart_products_amount})</button>
-                                </c:if>
-                                <button class="cart-btn">장바구니</button>
+                        <c:choose>
+                            <c:when test="${pvo.cart_products_amount != 0}">
+                                <button class="cart-btn">장바구니 (${pvo.cart_products_amount})</button>
+                            </c:when>
+                            <c:otherwise>
+                                <button class="cart-btn">장바구니 </button>
+                            </c:otherwise>
+                        </c:choose>
                                 <button class="order-btn">결제하기</button>
                             </div>
                         </div>
