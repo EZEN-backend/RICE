@@ -119,6 +119,7 @@ $(window).scroll(function(){
 	    $grid.isotope({ filter: filters });
 	  });
 	});
+	
 </script>
  <style>
         .Section {

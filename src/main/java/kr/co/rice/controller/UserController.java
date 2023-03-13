@@ -23,7 +23,7 @@ public class UserController {
 	@Qualifier("us")
 	private UserService service;
 	
-	@RequestMapping("users/sign_in")
+	@RequestMapping("users/signin")
 	public String sign_in()
 	{
 		return "users/signin";

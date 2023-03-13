@@ -54,7 +54,7 @@
 	   }
 	   
 	   #mimage2 {
-	     width:1920px;
+	     width:100%;
 	     height:1000px;
 	     overflow:hidden;
 	     margin:auto;
@@ -68,7 +68,7 @@
 	   }
 	   
 	   #mimage3 {
-	     width:1920px;
+	     width:100%;
 	     height:1000px;
 	     overflow:hidden;
 	     margin:auto;
@@ -95,7 +95,7 @@
 	   	color:black;
 	   }
 	   #fourth {
-	    width:1920px;
+	    width:100%;
 	    height:300px;
 	   	text-align:center;
 	   	margin:auto;
@@ -240,18 +240,18 @@
 	
 	<section>
 		<div class="slider">
-			<div class="slider_item"> <a href="" aria-label="떡볶이: 온 가족이 즐길수 있는 떡볶이를 먹어보실랍니까?" width="598.62" height="932.78">
-			<img src="/resources/img/dduckbok2.png" width="100%" height="932.78"><br>
+			<div class="slider_item"> <a href="" aria-label="떡볶이: 온 가족이 즐길수 있는 떡볶이를 먹어보실랍니까?" width="598.62" height="665">
+			<img src="/resources/img/dduckbok2.png" width="100%" height="665"><br>
 			떡볶이 <br> 온 가족이 즐길수 있는 떡볶이를 먹어보실랍니까? </a> 
 			</div>
 			
-			<div class="slider_item"> <a href="" aria-label="국밥: 국물이 시원한 할매손 국밥을 드셔보세요" width="598.62" height="932.78">
-			<img src="/resources/img/gookbab.png" width="100%" height="932.78"><br>
+			<div class="slider_item"> <a href="" aria-label="국밥: 국물이 시원한 할매손 국밥을 드셔보세요" width="598.62" height="665">
+			<img src="/resources/img/gookbab.png" width="100%" height="665"><br>
 			국밥 <br> 국물이 뜨끈하고 시원한 할매손 국밥을 드셔보세요! </a> 
 			</div>
 			
-			<div class="slider_item"> <a href="" aria-label="족발: 320시간 끓인 육수로 만든 족발을 드셔보십쇼" width="598.62" height="932.78">
-			<img src="/resources/img/jokbal.png" width="100%" height="932.78"><br>
+			<div class="slider_item"> <a href="" aria-label="족발: 320시간 끓인 육수로 만든 족발을 드셔보십쇼" width="598.62" height="665">
+			<img src="/resources/img/jokbal.png" width="100%" height="665"><br>
 			족발 <br> 320시간 끓인 육수로 만든 족발을 드셔보십쇼! </a> 
 			</div>
 		</div>
