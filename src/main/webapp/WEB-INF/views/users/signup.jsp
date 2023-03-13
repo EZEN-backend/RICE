@@ -125,7 +125,7 @@
 	        <input type = "date" name = "birthdate" placeholder = "생년월일"> <p>
 	         </c:if>
 	
-	        <input type = "checkbox" class="agreecheck"> 라이스의 <a href ="" >개인 정보 처리 방침</a> 및 <a href = ""> 이용약관 </a>에 동의합니다.<p>
+	        <input type = "checkbox" class="agreecheck"> 라이스의 <a href ="#" >개인 정보 처리 방침</a> 및 <a href = "#"> 이용약관 </a>에 동의합니다.<p>
 	        
 	        <div> <input type="submit" value="계정 만들기" class="submit" disabled> </div>
 	      </form>
