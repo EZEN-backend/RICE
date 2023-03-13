@@ -123,7 +123,7 @@ $(window).scroll(function(){
 </script>
  <style>
         .Section {
-            width:1920px;
+            width:100%;
             height:100%;
             margin:auto;
         }
@@ -198,7 +198,7 @@ $(window).scroll(function(){
             justify-content: start;
         }
         .item {
-            width:33.3333%;
+            width:100%;
             height:710px;
             margin-top:2px;
         }
@@ -405,7 +405,7 @@ $(window).scroll(function(){
                                 <figure>
                                     <a class="item_card" href="/products/detail/${list.id}">
                                         <div class="item_img">
-                                            <img class="image" src="/resources/img/${list.image_url}" width="507" height="507">
+                                            <img class="image" src="/resources/img/${list.image_url}" width="100%" height="507">
                                         </div>
                                         <div class="item_info">
                                             <div class="item_titles">
