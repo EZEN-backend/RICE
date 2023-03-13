@@ -297,27 +297,12 @@ $(window).scroll(function(){
 
             </h1>
         </div>
-        <nav class="navFilter">
-            <div class="filterButton">
-                <button class="filterbtn">
-                    <span class="filter-text"></span>
-                    <i class="fa-solid fa-arrow-down-short-wide"></i>
-                </button>
-            </div>
-            <div class="sortButton">
-                <button class="sortbtn">
-                    <span class="sort-text"></span>
-                    <i class="fa-sharp fa-solid fa-chevron-down"></i>
-                </button>
-            </div>
-        </nav>
     </div>
     <div class="offsetSection"></div>
     <div class="main">
         <div class="filterSection">
 			<div class="left-nav-wrapper">
 				<nav class="left-nav">
-					
 					<div class="filter-group-content">
 						<div class="filter-title-cate">
 							<div class="spicy-level-label">
@@ -330,7 +315,6 @@ $(window).scroll(function(){
 							<input type="checkbox" value=".3">존내 매움
 						</div>
 					</div>
-					
 					<div class="filter-group-content">
 						<div class="filter-title-cate">
 							<div class="spicy-level-label">
