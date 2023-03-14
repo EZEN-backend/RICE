@@ -621,6 +621,7 @@
         const $closeModalButtons = $('.close-modal');
         const $modalContainers = $('.modal-container');
         let product_id = ${pvo.id};
+        let price = ${pvo.price};
         let size = "";
         let spicy = "";
 
@@ -637,9 +638,14 @@
             });
 
             $(".cartButton").on("click", function () {
+                if (size == "M") {
+                    price = ${pvo.price} * 1.2;
+                } else if (size == "L") {
+                    price = ${pvo.price} * 1.4;
+                }
                 $.ajax({
                     type: "GET",
-                    url: "/wishBtn?product_id=" + product_id + "&size=" + size + "&spicy=" + spicy + "&price=",
+                    url: "/wishBtn?product_id=" + product_id + "&size=" + size + "&spicy=" + spicy + "&price=" + price,
                     dataType: "text",
                     success: function (data) {
                         //경우의 수 | 담긴다 or 안담긴다
@@ -1008,7 +1014,7 @@
                                 <button class="cart-btn">장바구니 </button>
                             </c:otherwise>
                         </c:choose>
-                                <button class="order-btn">결제하기</button>
+                                <button class="order-btn" onclick="location.href='/products/orders?price=${pvo.price}&product_id=${pvo.id}'">결제하기</button>
                             </div>
                         </div>
                     </div>
