@@ -30,18 +30,18 @@ public class UserServiceImpl implements UserService{
 		String naveremail = (String)session.getAttribute("naveremail");
 
 		if(naveremail == null) {
-		String pwd = request.getParameter("pwd").toString();
-		String encoderPwd = passwordEncoder.encode(pwd);
-		uvo.setPwd(encoderPwd);
-		
-		mapper.user_input_ok(uvo);
-		
-		return "redirect:/";
+			String pwd = request.getParameter("pwd").toString();
+			String encoderPwd = passwordEncoder.encode(pwd);
+			uvo.setPwd(encoderPwd);
+			
+			mapper.user_input_ok(uvo);
+			
+			return "redirect:/";
 		}
 		
 		else {
-		mapper.user_input_ok(uvo);
-		return "redirect:/";
+			mapper.user_input_ok(uvo);
+			return "redirect:/";
 		}
 	}
 	

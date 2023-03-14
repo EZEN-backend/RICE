@@ -138,7 +138,7 @@
 		}
 		#topmsg #right {
 			margin-top:0px;
-			width:200px;
+			width:400px;
 			text-align:right;
 			padding-top:12px;
 			margin-right:50px;
@@ -442,12 +442,12 @@
 		// main 카트 아이콘 클릭시 이동하는 경로
 		function gcart()
 		{
-			location.href="/rice/cart";
+			location.href="/cart";
 		}
 		// main 하트 아이콘 클릭시 이동하는 경로
 		function gwish()
 		{
-			location.href="/rice/wish";
+			location.href="/wish";
 		}
 	</script>
 	
@@ -455,41 +455,48 @@
 	<decorator:head/>
 <body>
 
-<div id="modal"></div>
-	<div id="first">
-		<div id="topmsg">
-			<div id="hfirst">
-				<form id="search_form" name="search_form" method="get" action="/search/list">
-					<input type="text" id="search" name="search">
-					<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
-					<input type="button" value="취소" id="csearch" style="cursor:pointer">
-					<div>
-					<span>인기상품</span><p>
-					잘팔린상품1<p>
-					잘팔린상품2<p>
-					잘팔린상품3<p>
-					잘팔린상품4
-					</div>
-				</form>
-			</div>
-			<div id="right">
-				<c:if test="${userid == null }">
-				<a href="/users/signin">  로그인  </a> | 
-				<a href="/users/signup">  회원가입  </a> 
+<div id="first">
+	<div id="topmsg">
+		<div id="hfirst">
+			<form id="search_form" name="search_form" method="get" action="search_list">
+				<input type="text" name="search">
+				<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
+				<input type="button" value="취소" id="csearch" style="cursor:pointer">
+				<div>
+				<span>인기상품</span><p>
+				잘팔린상품1<p>
+				잘팔린상품2<p>
+				잘팔린상품3<p>
+				잘팔린상품4
+				</div>
+			</form>
+		</div>
+		<div id="right">
+			<c:if test="${useremail == null and naveremail == null}">
+			<a href="/users/signin">  매장찾기  </a> | 
+			<a href="/users/signup">  고객센터  </a> |
+			<a href ="/users/signin"> 가입하기 </a> |
+			<a href = "/users/signin"> 로그인 </a> 
+			</c:if>
+			<c:if test="${useremail != null or naveremail != null }">
+				<c:if test = "${useremail != null }">
+				${username}님, 안녕하세요 |  고객센터 |
 				</c:if>
-				<c:if test="${userid != null }">
-					${name}~님, 안녕하세요
-					|  고객센터
-					<span id="mymenu">|  <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
+					<c:if test = "${naveremail != null }">
+					${navername}님, 안녕하세요 |  고객센터 |
+					</c:if>
+	
+					<span id="mymenu"> <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
 						<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
-							<li> <a href="/rice/users">회원정보</a> </li>
+							<li> <a href="/users/userview">회원정보</a> </li>
 							<li> 주문목록 </li>		
 							<li> 적 립 금 </li>				
 							<li> 장바구니 </li>		
-							<li> <a href="/rice/users/signout">로그아웃</a> </li>		
+							<li> <a href= "users/signout">로그아웃</a> </li>		
 						</ul>
 					</span>
 					</c:if>
+					</div>
 			</div>
 		</div>
 	</div> <!-- 광고성 메세지 -->

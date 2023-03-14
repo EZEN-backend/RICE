@@ -74,7 +74,7 @@ $(window).scroll(function(){
                         }
                         // 문자열 이어줄때 실수한게 끝부분에 '+ 까지 적어둔 다음에 밑에줄에 적을때 ' 로 다시 이어줘야 하는거야 까먹지말자 주냥아
                         productHtml += '"><div class="item"><div class="item_body"><figure><a class="item_card" href="/products/detail/'+list[i].id+'">'+
-                        '<div class="item_img"><img class="image" src="/resources/img/'+list[i].image_url+'" width="507" height="507"></div><div class="item_info">'+
+                        '<div class="item_img"><img class="image" src="/resources/img/'+list[i].image_url+'" width="100%" height="490"></div><div class="item_info">'+
                         '<div class="item_titles"><div class="item_title">'+list[i].title+'</div><div class="item_subtitle">'+list[i].subcategory_name+'</div></div>'+
                         '<div class="item_spicy_level">'+list[i].spicylevel+'</div><div class="item_size">'+list[i].size+'</div><div class="item_price">'+parseFloat(list[i].price).toLocaleString()+'원</div></div></a></figure></div></div></div>';
                        
@@ -214,11 +214,11 @@ $(window).scroll(function(){
         }
         .item_img {
             width:100%;
-            height:76%;
+            height:74%;
         }
         .item_info {
             width:100%;
-            height:24%;
+            height:26%;
         }
         .item_titles {
             height:30%;
@@ -378,7 +378,7 @@ $(window).scroll(function(){
                                 <figure>
                                     <a class="item_card" href="/products/views/${list.id}">
                                         <div class="item_img">
-                                            <img class="image" src="/resources/img/${list.image_url}" width="100%" height="507">
+                                            <img class="image" src="/resources/img/${list.image_url}" width="100%" height="490">
                                         </div>
                                         <div class="item_info">
                                             <div class="item_titles">
