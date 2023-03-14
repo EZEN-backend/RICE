@@ -10,8 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.mysql.cj.Session;
-
 import kr.co.rice.mapper.UserMapper;
 import kr.co.rice.vo.UserVo;
 
