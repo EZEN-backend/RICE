@@ -12,7 +12,6 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 <script>
-
 // 받아온 검색어를 변수안에 넣어주고
 	var search = "${search}";
 // +'&search='+search;
@@ -21,7 +20,6 @@
 	
 	// 스크롤 이벤트가 한번에 여러번 실행되지 않게 하기 
 	var timer = null;
-
 // 스크롤 이벤트 발동!
 $(window).scroll(function(){
     //console.log(search);
@@ -30,7 +28,6 @@ $(window).scroll(function(){
 	
     // 현재 스크롤의 위치를 scrT 라는 변수안에 저장
     var scrT = $(window).scrollTop();
-
     // 현재스크롤위치(scrT) == 페이지 전체높이 - 브라우저창의 높이가 350이하 일때 실행
     if(scrT + $(window).height() >= $(document).height() - 350) {
     // 둘이 같아지면 아래를 실행해라 ~

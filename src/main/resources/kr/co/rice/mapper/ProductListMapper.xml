@@ -38,4 +38,26 @@
 		where sc.category_id = #{param1} and p.subcategory_id = #{param2}
 		order by p.id desc limit #{param3},#{param4}
 	</select>
+	
+	<!-- 장바구니 테이블에서 cartId를 통해서 데이터 가져오기 -->
+	<select id="getCartsByCartId" resultType="HashMap">
+	    select c.quantity, c.size, c.spicy, adddate(curdate(),3) as deliveryDay, pi.image_url as product_img, p.title, ca.name as subcategory 
+	    from carts as c , products as p, products_images as pi, categories as ca 
+	    where c.product_id=p.id and p.id=pi.product_id and p.subcategory_id=ca.id and c.user_id=#{param1} and c.id=#{param2}
+    </select>
+    
+    <!-- 장바구니 테이블에서 가장 마지막에 업데이트 된 데이터 가져오기 -->
+	<select id="getCartsRecently" resultType="HashMap">
+	    select c.quantity, c.size, c.spicy, adddate(curdate(),3) as deliveryDay, pi.image_url as product_img, p.title, ca.name as subcategory 
+	    from carts as c , products as p, products_images as pi, categories as ca 
+	    where c.product_id=p.id and p.id=pi.product_id and p.subcategory_id=ca.id and c.user_id=#{param} 
+	    order by c.updated_at desc 
+	    limit 1
+	</select>
+	
+	<!-- 배송예정일 가져오기 -->
+	<select id="getDeliveryDay" resultType="String">
+	    select adddate(curdate(),3) as deliveryDay from carts where user_id=#{param1} and id=#{param2}
+	</select>
+	
 </mapper>

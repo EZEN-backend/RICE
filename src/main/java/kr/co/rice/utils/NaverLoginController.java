@@ -82,13 +82,7 @@ public class NaverLoginController {
 		}
 		
 	}
-	@RequestMapping(value = "/signout", method = { RequestMethod.GET, RequestMethod.POST })
-	public String signout(HttpSession session)throws IOException {
-		
-			session.invalidate();
- 
-			return "redirect:/";
-		}
+	
 	
 	@RequestMapping(value = "/users/signout", method = { RequestMethod.GET, RequestMethod.POST })
 	public String signout2(HttpSession session)throws IOException {
@@ -96,6 +90,6 @@ public class NaverLoginController {
 			session.invalidate();
 
 			return "redirect:/";
-		}
+	}
 	
 }

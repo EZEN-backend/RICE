@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%> 
-<script src="https://kit.fontawesome.com/f1fa4a6c48.js" crossorigin="anonymous"></script>
 
 <head>
   <style>
@@ -12,7 +11,7 @@
     
     .container {
       margin:auto auto 100px auto;
-      width:65%;
+      width:55%;
       display:flex;
     
     }
@@ -86,6 +85,7 @@
        font-size:13px;
        background-color:black;
        border-radius:40px;
+       cursor: pointer;
     }
     
     .mini-right {
@@ -99,13 +99,19 @@
        margin:0 10px 0px 10px;
        padding-bottom:15px;
     }
+   
   
   </style>
+  
+  <script src="https://kit.fontawesome.com/f1fa4a6c48.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
   
   <script>
    window.onload=function() {
 	   sendTotalPrice(); //총결제금액 구하는 함수
-	   cartAmount();     //카트 그림에 장바구니구매 수량 보내는 함수
+	  
    }
    
    function maincheck(my) { //전체선택 체크박스 클릭시 
@@ -131,7 +137,7 @@
 	   }
 	   
 	   sendTotalPrice(); // 개별 상품구입액을 다 더해서 총액을 보내는 함수
-	   cartAmount(); 
+	   cartAmount(); //장바구니 카트에 현재 장바구니 수량 표시
    }
   
    function subcheck() {//개별 상품별 체크박스 클릭시
@@ -145,7 +151,6 @@
 			   n++;
 		   }
 	   }
-
        if(len==n) {
     	   document.getElementById("up").checked=true;
 		   document.getElementById("down").checked=true;
@@ -159,7 +164,8 @@
        cartAmount(); 
    }
    
-   function cartdel() {    //장바구니 선택상품 삭제시 
+   //장바구니 선택상품 삭제시 
+   function cartdel() {    
 	   var id="";
 	   var csub=document.getElementsByClassName("csub");
 	   var len=csub.length; 
@@ -170,73 +176,33 @@
 	   }	   
 	   
 	   if(id!="") {
-	      location="cartdel?id="+id;
+	      location="cartDel?id="+id;
 	   }
    }
-   </script>
    
-   <script src="https://code.jquery.com/jquery-latest.js"></script>
-   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
-   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
-   <script>
-   /* $(function() {
-	   var $imsi=$(".su");
-	   
-	   $(".su").spinner({
-		   min:1,
-		   max:10,
-		   spin:function(e,ui) {
-			   // 수량, 단가를 알아야 된다..
-			   // ui.value : 수량
-			   var n=$imsi.index(this);
-		       // alert( $("section .pr").eq(n).value ) ;
-		       //alert( document.getElementsByClassName("pr")[n].value);
-		       var pr=document.getElementsByClassName("pr")[n].value;  // 단가
-		       var price=parseInt(ui.value*pr); 
-		       document.getElementsByClassName("subPrice")[n].value=price;
-		       
-		       price=comma(price);
-		       document.getElementsByClassName("prin")[n].innerText=price+"원";
-		       
-		       sendTotalPrice();
-		       
-		       // ajax를 통해 cart테이블의 수량을 변경시켜준다..
-		       var pcode=document.getElementsByClassName("pcode")[n].value;
-		       var su=ui.value;
-		       
-		       var chk=new XMLHttpRequest();
-		       chk.onload=function() {
-		    	   //alert(chk.responseText);
-		    	   if(chk.responseText=="1")
-		    		   alert("내부오류");
-		       }
-		       chk.open("get","cart_su?pcode="+pcode+"&su="+su);
-		       chk.send();
-		       
-	       }
-	   });
-   }); */
+   //장바구니에 담긴 상품의 총금액 구하는 함수
    
-   var productCode;
    function sendTotalPrice() {
 	   
 	   var checkBox=document.getElementsByClassName("csub");
 	   var subPrice=document.getElementsByClassName("subPrice");
 	   var pCode=document.getElementsByClassName("pcode");
 	   var totalPrice=0;
-	   productCode="";
+	   var productCode="";
 	   
 	   for(var i=0; i<checkBox.length;i++) {
 		   if(checkBox[i].checked) {
 			   totalPrice+= parseInt(subPrice[i].value);
 			   productCode+= pCode[i].value+",";
 		   }
+		   
 	   }
-	   	 
-	   document.getElementById("total").innerText=comma(totalPrice);
-	   /* document.getElementById("deliveryFee").innerText=comma(deliveryFee); */
-	   document.getElementById("total2").innerText=comma(totalPrice);
-	   /* document.getElementById("productCode").value=productCode; */
+	   
+	   totalPrice=Math.ceil(totalPrice/100)*100; //100자리에서 올림	
+	   //총합계 금액  영역에 데이터 전달
+	   document.getElementById("total").innerText=comma(totalPrice)+"원";
+	   document.getElementById("total2").innerText=comma(totalPrice)+"원";
+	  
 	   
 	   if(productCode=="") {
 		   document.getElementById("submitt").disabled=true;
@@ -252,15 +218,7 @@
    }
    
    function cartAmount() {  //카트 그림속에 숫자 집어넣는 함수
-	   var csub=document.getElementsByClassName("csub");
-	   var len=csub.length; 
-       var n=0;
-       
-       for(i=0;i<len;i++) {
-		    if(csub[i].checked) {
-		    	n++;
-		    }
-	   }
+	   var n=${count};
        
        document.getElementById("cart_amount").innerText=n;
    }
@@ -268,6 +226,102 @@
    function comma(num) {  //상품금액에 , 첨가하는 함수
 	   return new Intl.NumberFormat().format(num);
    }
+   
+  
+   $(function() {
+	   
+	   //옵션 select 태크 변경시 실행되는 함수
+	   function changeOption(n) {
+		  // var n=$(".amount").index(this); //이벤트 발생하는 상품의 인덱스 값
+	       var pr=$(".pr").eq(n).val();  // 상품 개별 가격
+	       var cartId=$(".csub").eq(n).val();  //상품 아이디
+	       
+    	   var quantity=$(".amount").eq(n).val();  //상품 수량
+    	   var spicy=$(".spicy").eq(n).val();  //상품 맵기
+    	   var size=$(".size").eq(n).val();  //상품 사이즈
+    	   //수량을 곱한 개별 상품의 가격
+	       var price=parseInt(quantity*pr); 
+	       //사이즈별 가격 변동 사항 반영한 가격
+    	   if(size=="S") price=price;
+    	   else if(size=="M") price=price*1.2;
+    	   else if(size=="L") price=price*1.4;
+	       
+	       $(".subPrice").eq(n).val(price); //옵션을 모두 적용한 개별 상품 가격을 저장
+	       
+	       price=comma(price);// 가격에 ',' 표시함
+	       $(".prin").eq(n).text(price+"원"); // 개별 상품 가격 표시 영역에 가격 나타냄
+	       
+	       sendTotalPrice();  // 장바구니 화면 우측에 상품 가격의 '총합'을 구해서 표시하는 함수 실행
+	       
+	       // ajax를 통해 cart테이블의 수량을 변경 사항 cart 테이블로 보냄
+	       $.ajax ({
+	    	   type:"get",
+	    	   url: "/cartOption?cartId="+cartId+"&quantity="+quantity+"&size="+size+"&spicy="+spicy,
+	           dataType: "text",
+	           success: function(data) {
+	        	   console.log("옵션변경 성공");
+	           },
+	           error: function() {
+	        	   console.log("옵션변경 에러");
+	           }
+	    	   
+	       });
+       }
+	   
+	   // 장바구니 상품 갯수 변경시 장바구니 테이블에 반영하고 상품총합계에도 반영
+	   $(".amount").change(function() {
+		   var num=$(".amount").index(this);
+		   
+	       changeOption(num);
+	    }); 
+	   
+	  // 장바구니 상품 사이즈 변경시 장바구니 테이블에 반영하고 상품총합계에도 반영
+	   $(".size").change(function() {
+		   var num=$(".size").index(this);
+		   
+	       changeOption(num);
+	   }); 
+	   
+	  // 장바구니 상품 맵기 변경시 장바구니 테이블에 반영하고 상품총합계에도 반영
+	   $(".spicy").change(function() {
+		   var num=$(".spicy").index(this);
+		   
+	       changeOption(num);
+	   });
+	  
+	    //장바구니 페이지 열릴때  상품 수량,사이즈,맵기를 나타내는 select 태그에 현재 장바구니 테이블에 저장되어 있는 값 나타나게 함   
+	    var cartList=JSON.parse('${cartList1}');
+	    
+	    $.each(cartList, function(i) {
+	    	var quantity=cartList[i].quantity;
+	    	var size=cartList[i].size;
+	    	var spicy=cartList[i].spicy;
+	    	
+	    	$(".amount").eq(i).val(quantity);
+	    	$(".size").eq(i).val(size);
+	    	$(".spicy").eq(i).val(spicy);
+	    });
+	    
+	    //주문 결제 클릭시
+	   $("#submitt").on("click", function(){
+		   
+	    	//장바구니에 담긴 상품들의 id와 상품 금액 저장
+	    	var cartId="";    
+	        var price="";
+	        var totalPrice=$("#total2").text();
+	        
+	        var csub= $(".csub");
+	        var prin= $(".prin");
+	    	for(var i=0; i < csub.length; i++) {
+	    		cartId = cartId+csub.eq(i).val().trim()+"-";
+	    		price = price+prin.eq(i).text().trim()+"-";
+	    	}   
+	    	//결제화면으로 cartId와 subPrice 값 보내기
+	    	location.href="/products/orders/"+cartId+"/"+price+"/"+totalPrice;
+	    });
+	});
+   
+   
   </script>
 </head>
 <body>
@@ -277,7 +331,7 @@
         <div id="event" style="border:1px solid #cccccc; padding:4px">
            <span style="color:#f19022; font-size:17px">오늘의 특별한  메뉴 : HOT SALE</span><br>
            <span style="font-size:13px">신선한 재료로 만든 특별한 먹거리를 저렴한 가격에 구입해 보세요.</span> 
-           <a href="/rice/special" style="color:black; font-size:13px">구입하기</a>
+           <a href="/special" style="color:black; font-size:13px">구입하기</a>
         </div>
         <div style="margin:15px 2px 30px 2px;font-size:17px; font-weight:1000">장바구니</div>
           
@@ -285,41 +339,57 @@
            <input type="checkbox" onclick="maincheck(this)" id="up" checked>
            <span class="a">전체선택</span> 
            <span class="a" style="color:#cccccc;">|</span>
-           <span class="a" onclick="cartdel()">선택삭제</span>
+           <span class="a" onclick="cartdel()" style="cursor:pointer">선택삭제</span>
         </div> 
         
         <c:forEach var="item" items="${cartList}">
         <div style="border-top:1px solid #cccccc;margin-top:30px; font-size:13px">       
            
               <input type="hidden" class="pr" value="${item.price}">
-              <input type="hidden" class="pcode" value="${item.pCode}">
-              <input type="hidden" class="subPrice" value="${item.price*item.amount}">
+              <input type="hidden" class="pcode" value="${item.product_id}">
+              <input type="hidden" class="subPrice" value="${item.subPrice}">
                             
               <div style="display:flex; margin-top:10px">       
                  <div style="flex-basis:3%"><input type="checkbox" class="csub" onclick="subcheck()" value="${item.cartId}" checked></div>
-                 <div style="flex-basis:25%"><img src="/rice/resources/cart-img/${item.pImg}" width="140" height="140"></div>
+                 <div style="flex-basis:25%"><a href="/products/detail/${item.product_id}"><img src="/resources/img/${item.product_img}" width="140" height="140"></a></div>
                  <div style="flex-basis:72%">
                     <div style="height:50px">
-                       <span style="display:inline-block;font-weight:550; margin-top:7px">${item.pTitle}</span>
+                       <span style="display:inline-block;font-weight:550; margin-top:7px">${item.title}</span>
                        <span class="prin" style="display:inline-block;float:right; margin-top:7px"> 
-                          <fmt:formatNumber value="${item.price*item.amount}" 
-                          pattern="#,###" type="number"/>원 
+                          <fmt:formatNumber value="${item.subPrice}" 
+                          pattern="#,###" type="number"/>원
                        </span>
                     </div>  
-                    <div style="height:15px; margin-top:15px">수량<input type="text"   name="amount" class="amount" value="${item.amount}" readonly size="3px"> </div>
-                    <div style="height:15px; margin-top:10px">옵션
-                        <select id="option">
-                            <option value="0">소</option>
-                            <option value="1">중</option>
-                            <option value="2">대</option>
+                    <!-- 상품 구매수량  -->
+                    <div style="height:15px; margin-top:15px">수&nbsp;&nbsp;&nbsp;량&nbsp;
+                        <select class="amount"  >
+                          <c:forEach begin="1" end="5" var="i">
+                            <option value="${i}">${i}</option>
+                          </c:forEach>
+                        </select>   
+                    </div>
+                  <!--   상품 사이즈 -->
+                    <div style="height:15px; margin-top:10px">사이즈&nbsp;
+                        <select  class="size">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
                         </select>
                     </div>
-                    <div style="height:15px; margin-top:10px">도착 예정일: ${item.deliveryDay}
-                       <span style="float:right" <%-- onclick="location='cartdel?id=${item.cartId}'" --%>>
-                          <i class="fa-sharp fa-regular fa-lg fa-trash-can"></i>
+                    <!-- 상품 맵기단계 -->
+                    <div style="height:15px; margin-top:10px">맵&nbsp;&nbsp;&nbsp;기&nbsp;
+                        <select  class="spicy">
+                            <option value="1">1단계</option>
+                            <option value="2">2단계</option>
+                            <option value="3">3단계</option>
+                        </select>
+                    </div>
+                    <div style="height:15px; margin:10px auto 20px auto">도착 예정일: ${item.deliveryDay}
+                       <span style="float:right"  >
+                          <i class="fa-sharp fa-regular fa-lg fa-trash-can" style="cursor:pointer" onclick="location='cartDel?id=${item.cartId}'"></i>
                        </span>
                     </div>
-                    
+                   
                  </div>
               </div>
               
@@ -343,7 +413,11 @@
         <div class="mini">배송비<span class="mini-right">무료</span></div>
         <div class="mini">총 결제 금액<span class="mini-right" id="total2"></span></div>
         <div class="mini"><input type="button" value="주문결제" id="submitt"></div>
+        
+          
      </div>  
+     
+    
  </div>
 
 
