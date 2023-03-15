@@ -449,6 +449,26 @@
 		{
 			location.href="/wish";
 		}
+		
+		// 장바구니 카트에 현재 장바구니에 담겨있는 상품 수량 표시되는 함수
+		$(function() {
+       
+    		$.ajax ({
+    			type: "get",
+    			url : "/cartCount",
+    		    dataType: "text",
+    		    success: function(data) {
+    		    	console.log('통신성공');
+    		    	//상단 우측 카드 이미지에 현재 장바구니 상품 수량 넘기기
+    		    	document.getElementById("cart_amount").innerText=data;
+    		    	
+    		    },
+    		    error: function() {
+    		    	console.log('통신에러');
+    		    }
+    		});
+    	});
+		
 	</script>
 	
 </head>
@@ -492,7 +512,7 @@
 							<li> 주문목록 </li>		
 							<li> 적 립 금 </li>				
 							<li> 장바구니 </li>		
-							<li> <a href= "users/signout">로그아웃</a> </li>		
+							<li> <a href= "/users/signout">로그아웃</a> </li>		
 						</ul>
 					</span>
 					</c:if>

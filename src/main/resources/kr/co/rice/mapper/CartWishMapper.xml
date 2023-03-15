@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybats-3-mapper.dtd">
+<mapper namespace="kr.co.rice.mapper.CartWishMapper">
+	
+	<select id="getCarts" resultType="HashMap">
+	    select c.id as cartId, c.product_id, c.quantity, c.size, c.spicy, adddate(curdate(),3) as deliveryDay, 
+	    p.price, pi.image_url as product_img, p.title 
+	    from carts as c , products as p,products_images as pi 
+	    where c.product_id=p.id and p.id=pi.product_id and user_id=#{param} 
+	    order by c.id desc
+	</select>
+	
+	<select id="getWishLists" resultType="HashMap">
+	    select w.id as wishId, w.product_id, p.price, pi.image_url as product_img, p.title, ca.name as subcategory 
+	    from wishlists as w , products as p, products_images as pi, categories as ca 
+	    where w.product_id=p.id and p.id=pi.product_id and p.subcategory_id=ca.id and user_id=#{param} 
+	    order by w.id desc
+	</select>
+	
+	<select id="getCount" resultType="String">
+	    select count(*) as count from carts where user_id=#{param}
+	</select>
+	
+	<insert id="insertIntoCarts" parameterType="kr.co.rice.vo.CartVo">
+	    insert into carts(product_id, user_id, size, spicy, created_at, updated_at) 
+	    values(#{product_id}, #{user_id}, #{size}, #{spicy}, now(), now())
+	</insert>
+	
+	<insert id="insertIntoWishlists" parameterType="kr.co.rice.vo.WishlistVo">
+	    insert into wishlists(product_id,user_id,created_at,updated_at) 
+	    values(#{product_id},#{user_id},now(),now())
+	</insert>
+	
+	<select id="checkCarts" resultType="HashMap">
+	    select count(*) as num, quantity, id from carts where user_id=#{param1} and product_id=#{param2} and size=#{param3} and spicy=#{param4}
+	</select>
+	
+	<select id="checkWishlists" resultType="HashMap">
+	    select count(*) as num, id from wishlists where product_id=#{param1} and user_id=#{param2}
+	</select>
+	
+	<update id="plusQuantity" >
+	    update carts set quantity=quantity+1, updated_at=now() where id=#{param}
+	</update>
+	
+	<delete id="cartDel">
+	    delete from carts where id=#{param}
+	</delete>
+	
+	<delete id="wishlistDel">
+	    delete from wishlists where id=#{param}
+	</delete>
+	
+	<update id="changeCartsOption" >
+	    update carts set quantity=#{param2},size=#{param3},spicy=#{param4},updated_at=now() where id=#{param1}
+	</update>
+	
+	
+</mapper>
