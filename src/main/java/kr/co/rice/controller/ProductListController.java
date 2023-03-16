@@ -46,10 +46,11 @@ public class ProductListController {
     }
     
     //장바구니 페이지에서 주문결제 버튼 클릭시 주문결제창 연결
-    @RequestMapping("/products/orders/{cartId}/{price}/{totalPrice}") 
-	public String order(@PathVariable String cartId, @PathVariable String price, @PathVariable String totalPrice, HttpSession session, Model model ) {
+    @RequestMapping("/products/orders/{cartId}/{price}/{totalPrice}/{subTotalPrice}/{deliveryFees}") 
+	public String order(@PathVariable String cartId, @PathVariable String price, @PathVariable String totalPrice, 
+			            @PathVariable String subTotalPrice, @PathVariable String deliveryFees, HttpSession session, Model model ) {
 	
-	    return service.orderPage(cartId, price, totalPrice, session, model);
+	    return service.orderPage(cartId, price, totalPrice, subTotalPrice, deliveryFees, session, model);
 	
     }
     

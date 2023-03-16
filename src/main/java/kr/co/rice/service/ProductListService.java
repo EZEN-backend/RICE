@@ -15,7 +15,7 @@ public interface ProductListService {
 	public String detail(int product_id, Model model);
 	public ArrayList<ProductVo> getItems(HttpServletRequest request);
 	// 주문 확인 화면 _장바구니 페이지에서 연결
-	public String orderPage(String cartId, String price, String totalPrice, HttpSession session, Model model);
+	public String orderPage(String cartId, String price, String totalPrice,String subTotalPrice,String deliveryFees, HttpSession session, Model model);
 	// 주문 확인 화면_상품상세페이지에서 연결 
     public String orderPageSecond(double price, HttpSession session, Model model);
 }

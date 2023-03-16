@@ -5,17 +5,23 @@
 <mapper namespace="kr.co.rice.mapper.CartWishMapper">
 	
 	<select id="getCarts" resultType="HashMap">
-	    select c.id as cartId, c.product_id, c.quantity, c.size, c.spicy, adddate(curdate(),3) as deliveryDay, 
-	    p.price, pi.image_url as product_img, p.title 
-	    from carts as c , products as p,products_images as pi 
-	    where c.product_id=p.id and p.id=pi.product_id and user_id=#{param} 
+	    select  (select pi.image_url from products_images as pi where c.product_id=pi.product_id order by pi.id limit 1) as product_img, 
+	            c.id as cartId, c.product_id, c.quantity, c.size, c.spicy, 
+	            adddate(curdate(),3) as deliveryDay, 
+	            p.price, p.title 
+	    from carts as c , products as p  
+	    where c.product_id=p.id and 
+	          user_id=#{param} 
 	    order by c.id desc
 	</select>
 	
 	<select id="getWishLists" resultType="HashMap">
-	    select w.id as wishId, w.product_id, p.price, pi.image_url as product_img, p.title, ca.name as subcategory 
-	    from wishlists as w , products as p, products_images as pi, categories as ca 
-	    where w.product_id=p.id and p.id=pi.product_id and p.subcategory_id=ca.id and user_id=#{param} 
+	    select (select pi.image_url from products_images as pi where w.product_id=pi.product_id order by pi.id limit 1) as product_img,
+	           w.id as wishId, w.product_id, p.price, p.title, ca.name as subcategory 
+	    from wishlists as w , products as p, categories as ca 
+	    where w.product_id=p.id and 
+	          p.subcategory_id=ca.id and 
+	          user_id=#{param} 
 	    order by w.id desc
 	</select>
 	

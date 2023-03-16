@@ -63,24 +63,24 @@
        
         .container.product {
             flex-flow:row wrap;
-            width:1000px;
+            width:100%;
             margin:auto;
         }
         .container.product .item_img {
             position:relative;
-            width:300px;
+            width:30%;
             height: auto;
-            margin:20px 10px 8px 20px;
+            margin:20px 1% 8px 2%;
         }
         .container.product .img_product {
-            width:300px;
+            width:100%;
             height:310px;
         }
         .container.product .img_heart {
             display:inline-block;
             visibility: hidden;
             position:absolute;
-            left:260px;
+            left:85%;
             top: 10px;
             width:50px;
             height:50px;
@@ -89,8 +89,8 @@
         }
         /* 옵션선택 버튼 */
         .container.product input[type="button"] {
-            margin:20px 0 20px 200px;
-            width:100px;
+            margin:10px 0 20px 65%;
+            width:35%;
             height:30px;
             line-height:30px;
             font-size:13px;

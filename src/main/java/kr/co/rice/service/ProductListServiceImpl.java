@@ -63,7 +63,7 @@ public class ProductListServiceImpl implements ProductListService {
     
   //장바구니 페이지에서 주문결제 버튼 클릭시 주문결제창으로
   	@Override
-  	public String orderPage(String cartId, String price, String totalPrice, HttpSession session, Model model) {
+  	public String orderPage(String cartId, String price, String totalPrice,String subTotalPrice,String deliveryFees, HttpSession session, Model model) {
   		
   	    //로그인한 고객이 일반 로그인인지 네이버 로그인인지 구별해서, user_id 에 고객의 email을 저장함
         String user_id=null;
@@ -108,6 +108,8 @@ public class ProductListServiceImpl implements ProductListService {
   			//cartList 와 totalPrice, deliveryDay 를 order.jsp 로 보내기
   			model.addAttribute("cartList", cartList);
   			model.addAttribute("totalPrice", totalPrice);
+  			model.addAttribute("subTotalPrice", subTotalPrice);
+  			model.addAttribute("deliveryFees", deliveryFees);
   			model.addAttribute("deliveryDay", deliveryDay);
   				
   			return "products/order";
@@ -157,19 +159,36 @@ public class ProductListServiceImpl implements ProductListService {
   			} else if(size.equals("L")) {
   				price=price*1.4;
   			}
-  			//price 에 세자리 ',' 표시하기
-  			DecimalFormat decFormat=new DecimalFormat("###,###");
-  			String formatPrice=decFormat.format(price)+"원";
-  			
-  			//세자리 ',' 표시까지 마친 상품가격을 map 에 담기
-  			cartMap.put("price", formatPrice);	
+
+			//5만원 이상 무료배송, 5만원 미만 배송비 5,000원 처리
+			String deliveryFees=null; //배송비
+			String subTotalPrice=null; //배송비 포함 전 가격
+			String totalPrice=null; // 배송비 포함 후 가격
+            //상품 가격에 세자리 단위 ',' 표시하기 위한 DecimalFormat
+			DecimalFormat decFormat=new DecimalFormat("###,###");
+
+			if(price >= 50000) {
+				deliveryFees="무료배송";
+				subTotalPrice= decFormat.format(price)+"원";
+				totalPrice= decFormat.format(price)+"원";
+			} else if(price < 50000) {
+				deliveryFees="5,000원";
+				subTotalPrice= decFormat.format(price)+"원";
+				price += 5000; //상품가격에 배송비 포함시킴
+				totalPrice= decFormat.format(price)+"원";
+			}
+
+  			//세자리 ',' 표시까지 마친 배송비 포함전 상품가격을 map 에 담기
+  			cartMap.put("price", subTotalPrice);
   			//cartMap을 cartlist에 담기
   			ArrayList<HashMap<String,Object>> cartList=new ArrayList<HashMap<String,Object>>();
   			cartList.add(cartMap);	
   			  				
   			//cartList 와 totalPrice, deliveryDay 를 order.jsp 로 보내기
   			model.addAttribute("cartList", cartList);
-  			model.addAttribute("totalPrice", formatPrice);
+  			model.addAttribute("subTotalPrice", subTotalPrice);
+  			model.addAttribute("totalPrice", totalPrice);
+  			model.addAttribute("deliveryFees", deliveryFees);
   			model.addAttribute("deliveryDay", deliveryDay);
   				
   			return "products/order";
