@@ -19,16 +19,15 @@
     .item:nth-child(1) {
       margin-top:10px;
       flex-basis:70%;
-      /* background-color:yellow; */
+     
     
     }
     
     .item:nth-child(2) {
      margin-top:10px;
      margin-left:10px;
-      flex-basis:30%;
-      /* background-color:green; */
-    
+     flex-basis:30%;
+     
     }
     
     
@@ -62,17 +61,18 @@
        font-size:13px;
        font-weight:540;
     }
-    .mini:nth-child(5) {
+    .mini.total_price {
        height:40px;
        font-size:13px;
        font-weight:550;
-       padding-top:13px;
+       margin: 30px auto 30px auto;
+       padding-top:20px;
        border-top:1px solid #cccccc;
        border-bottom:1px solid #cccccc;
        
        
     }
-    .mini:nth-child(6) {
+    .mini.button {
        margin-top:20px;
     }
     .mini input[type=button] {
@@ -99,6 +99,23 @@
        margin:0 10px 0px 10px;
        padding-bottom:15px;
     }
+    
+    /* 장바구니 화면 우측 배송비 관련 태그 */
+    .deliveryPolicy.free {
+       height: 20px;
+       font-size: 12px;
+       margin: 3px auto  auto 68%;
+       
+    }
+    /* 무료배송을 위한 추가 금액 알림 */
+    .deliveryPolicy.hide {
+       display: none;
+       height: 20px;
+       font-size: 14px;
+       color: #f19022;
+       margin: 6px auto  auto 35%;
+    }
+    
    
   
   </style>
@@ -199,9 +216,24 @@
 	   }
 	   
 	   totalPrice=Math.ceil(totalPrice/100)*100; //100자리에서 올림	
+	   //구매총액이 5만원 이상이면 무료배송, 아니면 배송비 5,000원
+	   var deliveryFee=0; //배송비
+	   if(totalPrice < 50000) {
+		   deliveryFee=5000;
+		   //배송비 표시 영역에 배송비 표시
+		   document.getElementById("delivery_fee").innerText="5,000원";
+		   //얼마 더 구매하면 무료배송 가능한지 표시
+		   var morePurchase=50000-totalPrice; //무료배송 위한 추가구매금액
+		   document.getElementById("more_purchase").innerText=comma(morePurchase)+"원";
+		   document.querySelector(".deliveryPolicy.hide").style.display="block";
+	   } else {
+		   deliveryFee=0;
+		   document.getElementById("delivery_fee").innerText="무료배송";
+		   document.querySelector(".deliveryPolicy.hide").style.display="none";
+	   }
 	   //총합계 금액  영역에 데이터 전달
 	   document.getElementById("total").innerText=comma(totalPrice)+"원";
-	   document.getElementById("total2").innerText=comma(totalPrice)+"원";
+	   document.getElementById("total2").innerText=comma(totalPrice+deliveryFee)+"원";
 	  
 	   
 	   if(productCode=="") {
@@ -308,7 +340,9 @@
 	    	//장바구니에 담긴 상품들의 id와 상품 금액 저장
 	    	var cartId="";    
 	        var price="";
-	        var totalPrice=$("#total2").text();
+	        var totalPrice=$("#total2").text(); //배송비 합계한 총금액
+	        var subTotalPrice=$("#total").text(); //배송비 제외한 상품금액
+	        var deliveryFees=$("#delivery_fee").text(); //배송비 
 	        
 	        var csub= $(".csub");
 	        var prin= $(".prin");
@@ -317,7 +351,7 @@
 	    		price = price+prin.eq(i).text().trim()+"-";
 	    	}   
 	    	//결제화면으로 cartId와 subPrice 값 보내기
-	    	location.href="/products/orders/"+cartId+"/"+price+"/"+totalPrice;
+	    	location.href="/products/orders/"+cartId+"/"+price+"/"+totalPrice+"/"+subTotalPrice+"/"+deliveryFees;
 	    });
 	});
    
@@ -352,7 +386,8 @@
               <div style="display:flex; margin-top:10px">       
                  <div style="flex-basis:3%"><input type="checkbox" class="csub" onclick="subcheck()" value="${item.cartId}" checked></div>
                  <div style="flex-basis:25%"><a href="/products/detail/${item.product_id}"><img src="/resources/img/${item.product_img}" width="140" height="140"></a></div>
-                 <div style="flex-basis:72%">
+                 <div style="flex-basis:72%; margin-left:5px">
+                     <%--상품명과 가격--%>
                     <div style="height:50px">
                        <span style="display:inline-block;font-weight:550; margin-top:7px">${item.title}</span>
                        <span class="prin" style="display:inline-block;float:right; margin-top:7px"> 
@@ -410,9 +445,11 @@
         <div class="mini">주문 내역</div>
         <div class="mini">할인쿠폰이 있으신가요?<span class="mini-right">▽</span></div>
         <div class="mini">상품 금액<span class="mini-right" id="total"></span></div>
-        <div class="mini">배송비<span class="mini-right">무료</span></div>
-        <div class="mini">총 결제 금액<span class="mini-right" id="total2"></span></div>
-        <div class="mini"><input type="button" value="주문결제" id="submitt"></div>
+        <div class="mini">배송비<span class="mini-right" id="delivery_fee"></span></div>
+        <div class="deliveryPolicy free">5만원 이상 무료배송</div>
+        <div class="deliveryPolicy hide"><span id="more_purchase"></span>&nbsp;더 구매하시면 무료배송</div>
+        <div class="mini total_price">총 결제 금액<span class="mini-right" id="total2"></span></div>
+        <div class="mini button"><input type="button" value="주문결제" id="submitt"></div>
         
           
      </div>  
