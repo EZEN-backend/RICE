@@ -23,5 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where p.title like concat('%',#{param1},'%')
 		order by p.id desc limit #{param2},#{param3}
 	</select>
+
+	<select id="product" resultType="HashMap">
+		select id,title from products order by  views desc limit 4
+	</select>
 </mapper>
 
