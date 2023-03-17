@@ -706,7 +706,7 @@
                                 <div class="images-wrapper">
                                     <div class="images">
                                         <c:forEach items="${imglist}" var="image" varStatus="count">
-                                            <div class="a">
+                                            <div class="imagesContainer">
                                                 <img src="/resources/img/${image.image_url}">
                                             </div>
                                         </c:forEach>
