@@ -7,17 +7,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <style>
-	section {
-      width:1000px;
-      height:600px;
-      margin:auto;
-      margin-top : 50px;
-      text-align:center;
-   }
-   section div {
-   	text-color : red;
-     margin-top:12px;
-   }
+	 .fullbody {
+		 place-items: center;
+		 display:grid;
+		 grid-template-columns: 1fr 1fr 1fr;
+	 }
+	 .mainbody {
+		 width:435px;
+	 }
+
    
    #country, #agree {
 	 color : #A5A5A5;
@@ -31,41 +29,68 @@
 	text-align : left;
   }
    
-
-   section input[type=submit] {
+	 .mainbody input[type=submit] {
       width:80px;
       height:45px;
       border:1px solid black; 
       background:black;
       color:white;
-      border-radius : 30px 30px 30px 30px / 30px 30px 30px 30px;
-      margin-left : 300px;
+      border-radius : 30px;
+	  float:right;
    }
- 	  section input[type=password] {
-      width:270px;
-      height:35px;
+ 	  .mainbody input[type=password] {
+      width:100%;
+      height:50px;
       border:1px solid black; 
-      border-radius : 7px 7px 7px 7px / 7px 7px 7px 7px
+      border-radius : 7px;
    }
  </style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#pwd').keyup(function(){
+			if($('#pwd').val().length > 3)
+			{
+				$(this).css("background","#C7E2FF");
+				$('.submit').css("background","black");
+				$('.submit').css("color","white");
+				$('.submit').prop("disabled",false);
+			}
+			else{
+				$(this).css("background","white");
+				$('.submit').css("background","white");
+				$('.submit').css("color","black");
+				$('.submit').prop("disabled",true);
+			}
+		});
+	});
+
+</script>
 </head>
 <body>
-	<section>
-		<img src="../resources/img/rice.png" style = "float: left; margin-left : 280px;" width = "50px"> <br> <br> <br> <p>
-		 <form method="post" action="signinok">
-		 
-		   <%
-      		String email = request.getParameter("email");
-      		%>
-       
-    			 <h2> 비밀번호를 입력하세요. </h2> <p>
-    			 <input type = "hidden" name = "email" value = <%=email %>>
-       			 <div> <%=email%> </div> <p>
-       			 <input type = "password" name = "pwd" placeholder = "비밀번호">
-        
-        <div> <input type="submit" value="계속"> </div>
-			
-      </form>
-	</section>
+	<div class="fullbody">
+		<div></div>
+		<div class="mainbody">
+			<div class="mainlogo" style="margin-top:20px;">
+				<a href = "/"> <img src="../resources/img/rice.png" width = "70px"> </a><br>
+			</div>
+			<div>
+				<form method="post" action="signinok">
+
+				<%
+				String email = request.getParameter("email");
+				%>
+
+				<h2> 비밀번호를 입력하세요. </h2> <p>
+					<input type = "hidden" name = "email" value = <%=email %>>
+				<div> <%=email%>  <a href="/users/signin" style=""> 편집 </a> </div> <p>
+				<input type = "password" id="pwd" name = "pwd" placeholder = "비밀번호">
+
+				<div> <input class="submit" type="submit" value="로그인" style="background:white;color:black;cursor:pointer" disabled> </div>
+				</form>
+			</div>
+		</div>
+		<div></div>
+	</div>
 </body>
 </html>

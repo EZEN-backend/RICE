@@ -8,6 +8,7 @@
 <title>Insert title here</title>
  <style>
    .fullbody {
+	 place-items: center;
    	 display:grid;
    	 grid-template-columns: 1fr 1fr 1fr;
    }
@@ -21,10 +22,7 @@
    #agree > a {
      color:#A5A5A5;
    }
-   
-  input::placeholder {
-	text-align : left;
-  }
+
    .mainbody input[type=text] {
       width:435px;
       height:40px;
