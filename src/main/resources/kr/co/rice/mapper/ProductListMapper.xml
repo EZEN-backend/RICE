@@ -1,72 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybats-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybats-3-mapper.dtd">
 <mapper namespace="kr.co.rice.mapper.ProductListMapper">
-	<select id="category_list" resultType="kr.co.rice.vo.ProductVo">
-		select pi.image_url, c.id as category_id, c.name as category_name, sc.id as subcategory_id, sc.name as subcategory_name, p.* from products p
-		inner join subcategories as sc on sc.id = p.subcategory_id
-		inner join categories as c on c.id = sc.category_id
-		inner join products_images as pi on pi.product_id = p.id
-		where sc.category_id = #{param1} and p.subcategory_id = #{param2}
-		limit 6
-	</select>
-	<update id="product_views">
-		update products set views = views + 1 where id = #{param}
-	</update>
-	<select id="getProductImage" resultType="kr.co.rice.vo.ProductImagesVo">
-		select * from products_images where product_id = #{param}
-	</select>
-	<select id="detail" resultType="kr.co.rice.vo.ProductVo">
-		select (select ceil(count(*)) from wishlists as wl where wl.product_id = p.id and user_id = #{param1}) as wish_count, (select image_url from products_images as pi where pi.product_id = p.id limit 1) as image_url,sl.level as spicylevel, c.name as category_name, sc.name as subcategory_name, p.id, p.title, p.name, p.size, p.price, p.body, p.extra_detail from products as p
-		inner join subcategories as sc on sc.id = p.subcategory_id
-		inner join categories as c on c.id = sc.category_id
-		inner join spicylevels as sl on sl.id = p.spicylevel_id
-		where p.id = #{param2}
-	</select>
-	<select id="recommend_products" resultType="kr.co.rice.vo.ProductVo">
-		select (select image_url from products_images limit 1) as image_url, p.id, p.name, p.price, sc.name as subcategory_name from products as p
-		inner join subcategories as sc on sc.id = p.subcategory_id
-		order by p.views desc limit 10
-	</select>
-	<select id="getItems" resultType="kr.co.rice.vo.ProductVo">
-		select sl.id as spicylevel_id, sl.level as spicylevel, sc.name as subcategory_name,
-		p.id, p.title, p.name, p.size, p.price, pi.image_url from products as p
-		inner join products_images as pi on pi.product_id = p.id
-		inner join subcategories as sc on p.subcategory_id = sc.id
-		inner join spicylevels as sl on p.spicylevel_id = sl.id
-		where sc.category_id = #{param1} and p.subcategory_id = #{param2}
-		order by p.id desc limit #{param3},#{param4}
-	</select>
+    <select id="category_list" resultType="kr.co.rice.vo.ProductVo">
+        select pi.image_url, c.id as category_id, c.name as category_name, sc.id as subcategory_id, sc.name as
+        subcategory_name, p.* from products p
+        inner join subcategories as sc on sc.id = p.subcategory_id
+        inner join categories as c on c.id = sc.category_id
+        inner join products_images as pi on pi.product_id = p.id
+        where sc.category_id = #{param1} and p.subcategory_id = #{param2}
+        limit 6
+    </select>
+    <update id="product_views">
+        update products set views = views + 1 where id = #{param}
+    </update>
+    <select id="getProductImage" resultType="kr.co.rice.vo.ProductImagesVo">
+        select * from products_images where product_id = #{param}
+    </select>
+    <select id="detail" resultType="kr.co.rice.vo.ProductVo">
+        select (select ceil(count(*)) from wishlists as wl where wl.product_id = p.id and user_id = #{param1}) as
+        wish_count, (select image_url from products_images as pi where pi.product_id = p.id limit 1) as
+        image_url,sl.level as spicylevel, c.name as category_name, sc.name as subcategory_name, p.id, p.title, p.name,
+        p.size, p.price, p.body, p.extra_detail from products as p
+        inner join subcategories as sc on sc.id = p.subcategory_id
+        inner join categories as c on c.id = sc.category_id
+        inner join spicylevels as sl on sl.id = p.spicylevel_id
+        where p.id = #{param2}
+    </select>
+    <select id="recommend_products" resultType="kr.co.rice.vo.ProductVo">
+        select (select image_url from products_images limit 1) as image_url, p.id, p.name, p.price, sc.name as
+        subcategory_name from products as p
+        inner join subcategories as sc on sc.id = p.subcategory_id
+        order by p.views desc limit 10
+    </select>
+    <select id="getItems" resultType="kr.co.rice.vo.ProductVo">
+        select sl.id as spicylevel_id, sl.level as spicylevel, sc.name as subcategory_name,
+        p.id, p.title, p.name, p.size, p.price, pi.image_url from products as p
+        inner join products_images as pi on pi.product_id = p.id
+        inner join subcategories as sc on p.subcategory_id = sc.id
+        inner join spicylevels as sl on p.spicylevel_id = sl.id
+        where sc.category_id = #{param1} and p.subcategory_id = #{param2}
+        order by p.id desc limit #{param3},#{param4}
+    </select>
 
-	<!-- 장바구니 테이블에서 cartId를 통해서 데이터 가져오기 -->
-	<select id="getCartsByCartId" resultType="HashMap">
-		select (select image_url from products_images as pi where pi.product_id = c.product_id order by pi.id limit 1) as product_img,
-		c.quantity, c.size, c.spicy, adddate(curdate(),3) as deliveryDay,
-		p.title, ca.name as subcategory
-		from carts as c , products as p,categories as ca
-		where c.product_id=p.id and
-		      p.subcategory_id=ca.id and
-		      c.user_id=#{param1} and c.id=#{param2}
-	</select>
+    <!-- 장바구니 테이블에서 cartId를 통해서 데이터 가져오기 -->
+    <select id="getCartsByCartId" resultType="HashMap">
+        select (select image_url from products_images as pi where pi.product_id = c.product_id order by pi.id limit 1)
+        as product_img,
+        c.quantity, c.size, c.spicy, adddate(curdate(),3) as deliveryDay,
+        p.title, ca.name as subcategory
+        from carts as c , products as p,categories as ca
+        where c.product_id=p.id and
+        p.subcategory_id=ca.id and
+        c.user_id=#{param1} and c.id=#{param2}
+    </select>
 
-	<!-- 장바구니 테이블에서 가장 마지막에 업데이트 된 데이터 가져오기 -->
-	<select id="getCartsRecently" resultType="HashMap">
-		select (select image_url from products_images as pi where pi.product_id = c.product_id order by pi.id limit 1) as product_img,
-		c.quantity, c.size, c.spicy, adddate(curdate(),3) as deliveryDay,
-		p.title, ca.name as subcategory
-		from carts as c , products as p, categories as ca
-		where c.product_id=p.id and
-		      p.subcategory_id=ca.id and
-		      c.user_id=#{param}
-		order by c.updated_at desc
-		limit 1
-	</select>
+    <!-- 장바구니 테이블에서 가장 마지막에 업데이트 된 데이터 가져오기 -->
+    <select id="getCartsRecently" resultType="HashMap">
+        select (select image_url from products_images as pi where pi.product_id = c.product_id order by pi.id limit 1)
+        as product_img,
+        c.quantity, c.size, c.spicy, adddate(curdate(),3) as deliveryDay,
+        p.title, ca.name as subcategory
+        from carts as c , products as p, categories as ca
+        where c.product_id=p.id and
+        p.subcategory_id=ca.id and
+        c.user_id=#{param}
+        order by c.updated_at desc
+        limit 1
+    </select>
 
-	<!-- 배송예정일 가져오기 -->
-	<select id="getDeliveryDay" resultType="String">
-		select adddate(curdate(),3) as deliveryDay from carts where user_id=#{param1} and id=#{param2}
-	</select>
+    <!-- 배송예정일 가져오기 -->
+    <select id="getDeliveryDay" resultType="String">
+        select adddate(curdate(),3) as deliveryDay from carts where user_id=#{param1} and id=#{param2}
+    </select>
+    <!-- 주문페이지에서 주소 출력 -->
+    <select id="loview" resultType="kr.co.rice.vo.locationVo">
+        select * from locations where email=#{param}
+    </select>
 
+    <update id="locationup" parameterType="kr.co.rice.vo.locationVo">
+        update locations set address=#{address}, extra_address=#{extra_address}, zip=#{zip}, phone=#{phone} where
+        email=#{email}
+    </update>
 
 </mapper>
