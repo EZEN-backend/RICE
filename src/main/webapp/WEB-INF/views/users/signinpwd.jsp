@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <style>
@@ -16,23 +17,23 @@
 		 width:435px;
 	 }
 
-   
+
    #country, #agree {
 	 color : #A5A5A5;
    }
-   
+
    a {
   	color : #A5A5A5;
    }
-   
+
   input::placeholder {
 	text-align : left;
   }
-   
+
 	 .mainbody input[type=submit] {
       width:80px;
       height:45px;
-      border:1px solid black; 
+      border:1px solid black;
       background:black;
       color:white;
       border-radius : 30px;
@@ -41,11 +42,10 @@
  	  .mainbody input[type=password] {
       width:100%;
       height:50px;
-      border:1px solid black; 
+      border:1px solid black;
       border-radius : 7px;
    }
  </style>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 	$(document).ready(function(){
 		$('#pwd').keyup(function(){

@@ -1,35 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
- PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
- 
- <mapper namespace = "kr.co.rice.mapper.UserMapper">
- 
- <!-- 일반회원 아이디 중복 체크 -->
- <select id = "Id_Check" resultType = "int">
- 	select count(*) from users where email = #{param}
- </select>
- 
- <!-- 네이버 아이디 중복 체크 -->
- <select id = "Naver_Id_Check" resultType = "int">
- 	select count(*) from users where naveremail = #{param}
- </select>
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybats-3-mapper.dtd">
 
-<!-- 회원가입 -->
- <insert id="user_input_ok" parameterType="kr.co.rice.vo.UserVo">
-    insert into users(email, naveremail, name, pwd, birthdate, created_at)
-    values(#{email}, #{naveremail}, #{name}, #{pwd}, #{birthdate}, now())
-  </insert>
-  
-  <select id="idcheck" resultType="int">
-  	select count(*) from users where email=#{param1} or naveremail=#{param2} 
-  </select>
-  
-  <select id = "pwd_check" resultType = "kr.co.rice.vo.UserVo">
-  	select name, email from users where email = #{param1} and pwd = #{param2}
-  </select>
-  
-  <select id = "pwdcheck" resultType = "String">
-  	select pwd from users where email = #{param}
-  </select>
+<mapper namespace="kr.co.rice.mapper.UserMapper">
+
+    <!-- 일반회원 아이디 중복 체크 -->
+    <select id="Id_Check" resultType="int">
+        select count(*) from users where email = #{param}
+    </select>
+
+    <!-- 네이버 아이디 중복 체크 -->
+    <select id="Naver_Id_Check" resultType="int">
+        select count(*) from users where naveremail = #{param}
+    </select>
+
+    <!-- 회원가입 -->
+    <insert id="user_input_ok" parameterType="kr.co.rice.vo.UserVo">
+        insert into users(email, naveremail, name, pwd, birthdate, created_at)
+        values(#{email}, #{naveremail}, #{name}, #{pwd}, #{birthdate}, now())
+    </insert>
+
+    <select id="idcheck" resultType="int">
+        select count(*) from users where email=#{param1} or naveremail=#{param2}
+    </select>
+
+    <select id="pwd_check" resultType="kr.co.rice.vo.UserVo">
+        select name, email from users where email = #{param1} and pwd = #{param2}
+    </select>
+
+    <select id="pwdcheck" resultType="String">
+        select pwd from users where email = #{param}
+    </select>
+
+    <!-- 이메일 회원정보 -->
+    <select resultType="kr.co.rice.vo.UserVo" id="userview">
+        select * from users where email=#{param1}
+    </select>
+
+    <!-- 네이버로그인 회원정보 -->
+    <select resultType="kr.co.rice.vo.UserVo" id="userview2">
+        select * from users where naveremail=#{param1}
+    </select>
+
+    <!-- 이메일 주소 -->
+    <select id="locationview" resultType="kr.co.rice.vo.locationVo">
+        select *from locations where email=#{param1}
+    </select>
+
+    <!-- 네이버로그인 주소 -->
+    <select id="locationview2" resultType="kr.co.rice.vo.locationVo">
+        select *from locations where user_id=#{param1}
+    </select>
+
+    <select id="emailcheck" resultType="int">
+        select count(*) from users where email=#{param}
+    </select>
+
+    <select id="locheck" resultType="String">
+        select address from locations where email=#{param}
+    </select>
+
+    <select id="locheck2" resultType="String">
+        select address from locations where email=#{param}
+    </select>
+
+    <select id="getuserid" resultType="kr.co.rice.vo.locationVo">
+        select * from users where naveremail=#{param}
+    </select>
+
+    <select id="getuserid2" resultType="kr.co.rice.vo.locationVo">
+        select * from users where email=#{param}
+    </select>
+
+    <delete id="delete">
+        delete from users where id=#{param}
+    </delete>
+
+    <delete id="lodelete">
+        delete from locations where user_id=#{param}
+    </delete>
+    <!-- 회원정보에 주소가 없으면 주소를 넣는것 -->
+    <insert id="addressup" parameterType="kr.co.rice.vo.locationVo">
+        insert into locations (user_id, name, email, address, extra_address, zip)
+        values (#{user_id},#{name}, #{email}, #{address}, #{extra_address}, #{zip})
+    </insert>
+
+    <!-- 회원정보 주소 수정 -->
+    <update id="userup" parameterType="kr.co.rice.vo.locationVo">
+        update locations set address=#{address}, extra_address=#{extra_address}, zip=#{zip} where user_id=#{user_id}
+    </update>
+
+    <!-- 비밀번호 변경 -->
+    <update id="pwdchg">
+        update users set pwd=#{param2} where email=#{param1}
+    </update>
+
 </mapper>
