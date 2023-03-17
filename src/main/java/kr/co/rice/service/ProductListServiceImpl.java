@@ -38,10 +38,23 @@ public class ProductListServiceImpl implements ProductListService {
         mapper.product_views(product_id);
         return "redirect:/products/detail/" + product_id;
     }
-
     @Override
-    public String detail(int product_id, Model model) {
-        ProductVo pvo = mapper.detail(product_id);
+    public String detail(int product_id, Model model, HttpSession session) {
+		String user_id = null;
+
+		Enumeration<String> attrNames = session.getAttributeNames();
+
+		while(attrNames.hasMoreElements()){
+
+			String attrName=attrNames.nextElement();
+			if(attrName.equals("useremail")) {
+				user_id=session.getAttribute("useremail").toString();
+			}
+			else if(attrName.equals("naveremail")) {
+				user_id=session.getAttribute("naveremail").toString();
+			}
+		}
+		ProductVo pvo = mapper.detail(user_id, product_id);
         ArrayList<ProductVo> recommend_pvo = mapper.recommend_products();
         ArrayList<ProductImagesVo> imglist = mapper.getProductImage(product_id);
         model.addAttribute("recommend_pvo", recommend_pvo);

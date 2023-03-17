@@ -35,8 +35,8 @@ public class ProductListController {
     }
 
     @GetMapping("/products/detail/{product_id}")
-    public String product_detail(@PathVariable("product_id") int product_id, Model model) {
-        return service.detail(product_id, model);
+    public String product_detail(@PathVariable("product_id") int product_id, Model model, HttpSession session) {
+        return service.detail(product_id, model, session);
     }
 
     @ResponseBody
@@ -59,7 +59,7 @@ public class ProductListController {
 	public String orderSecond(double price, HttpSession session, Model model ) {
 	
 	    return service.orderPageSecond(price, session, model);
-	
+
     }
     
     
