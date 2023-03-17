@@ -1,6 +1,7 @@
 package kr.co.rice.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,5 +14,6 @@ public interface SearchService {
 	
 	public String list(HttpServletRequest request,Model model);
 	public ArrayList<ProductVo> getItems2(HttpServletRequest request, Model model);
+	public ArrayList<HashMap<String,Object>>product();
 
 }

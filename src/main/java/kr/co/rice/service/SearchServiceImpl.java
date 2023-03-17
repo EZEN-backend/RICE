@@ -1,6 +1,7 @@
 package kr.co.rice.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -45,5 +46,14 @@ public class SearchServiceImpl implements SearchService{
 		
 		return list;
 	}
+
+	@Override
+	public ArrayList<HashMap<String,Object>> product() {
+
+		ArrayList<HashMap<String,Object>> topview = mapper.product();
+
+		return topview;
+	}
+
 	
 }

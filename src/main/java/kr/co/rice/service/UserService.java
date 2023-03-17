@@ -7,7 +7,7 @@ import kr.co.rice.vo.locationVo;
 import org.springframework.ui.Model;
 
 import kr.co.rice.vo.UserVo;
-
+	
 public interface UserService {
     public String user_input_ok(UserVo uvo, HttpServletRequest request, HttpSession session, Model model);
 

@@ -41,8 +41,8 @@
 	</beans:bean>
 	
 	<mybatis-spring:scan base-package="kr.co.rice"/>
-	
+
 	<!-- NaverLoginBO Class에 대한 Bean설정 -->
 	<beans:bean id="naverLogin" class="kr.co.rice.utils.NaverLogin" />
-		
+	
 </beans:beans>

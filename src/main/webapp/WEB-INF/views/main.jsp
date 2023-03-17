@@ -109,6 +109,7 @@
 	   #fourth > #conta > span {
 	   	width:120px;
 	   	height:35px;
+		padding-bottom:7px;
 	   	display:inline-block;
 	   	font-size:16px;
 	   	border:1px solid black;
@@ -121,6 +122,7 @@
 	   #fourth > #conta2 > span {
 	   	width:120px;
 	   	height:35px;
+		padding-bottom:7px;
 	   	display:inline-block;
 	   	font-size:16px;
 	   	border:1px solid black;
@@ -181,7 +183,7 @@
 			font-size:40px;
 			font-weight:900;
 		}
-	   
+
 	</style>
 </head>
 <body>
@@ -231,8 +233,9 @@
 	</div>
 	
 	<div class="youtube-video">
-		<iframe width="100%" height="800" src="https://www.youtube.com/embed/QNipXG5LPik?autoplay=1&mute=1" title="YouTube video player" frameborder="0" 
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+		<iframe width="100%" height="800" src="https://www.youtube.com/embed/QNipXG5LPik?autoplay=1&controls=0&showinfo=0&modestbranding=1&mute=1"
+		title="YouTube video player" frameborder ="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+		gyroscope; picture-in-picture; web-share" controlslist="nodownload"></iframe>
 		<div>
 			<div class="video-content"> 집에서도 간편하게</div><p>
 			<div style="text-align:center"> 딱봐도 맛있어 보이는 떡볶이<br>빨갛게 아주 이쁘게 나왔넹</div>

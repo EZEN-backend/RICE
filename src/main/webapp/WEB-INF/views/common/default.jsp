@@ -9,22 +9,20 @@
 <script src="https://kit.fontawesome.com/f1fa4a6c48.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 	<style>
-		@font-face {
-			font-family: 'PuradakGentleGothicR';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
-			font-weight: lighter;
-			font-style: normal;
+		@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+		.notosanskr * {
+			font-family: 'Noto Sans KR', sans-serif;
 		}
+
 		body {
 			width:100%;
 			margin:0px;
 			z-index:1;
 			position:relative;
-			font-family: 'PuradakGentleGothicR';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-			font-size:14px;
+			font-family: 'Noto Sans KR', sans-serif;
+			font-weight: 500;
+			font-size: 14px;
 		
 		}
 		a {
@@ -53,9 +51,10 @@
 			list-style: none;
     		list-style-type: none;
 			display:inline-block;
-    		padding-top:17px;
+    		padding-top:11px;
     		vertical-align: top;
     		cursor:pointer;
+			font-size: 16px;
 		}
 		.pre-desktop-menu li {
 			width: 200px;
@@ -89,8 +88,13 @@
 		}
 		.subcate-container a {
 			margin-bottom:6px;
+			color:#757575;
 		}
-		
+
+		.topview {
+			color:#757575;
+		}
+
 		#csearch {
 			width:40px;
 			height:30px;
@@ -140,7 +144,7 @@
 			margin-top:0px;
 			width:400px;
 			text-align:right;
-			padding-top:12px;
+			padding-top:9px;
 			margin-right:50px;
 			font-size:14px;
 		}
@@ -468,6 +472,22 @@
     		    }
     		});
     	});
+
+	$(function() {
+		$.ajax({
+			url: "/search/product",
+			dataType: "json",
+			success: function(topview) {
+				for (var i = 0; i < topview.length; i++) {
+					document.getElementsByClassName('topview')[i].innerText=topview[i].title;
+					$('.topid').eq(i).attr('href','/products/views/'+topview[i].id);
+					console.log(topview);
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+			}
+		});
+	});
 		
 	</script>
 	
@@ -478,16 +498,16 @@
 <div id="first">
 	<div id="topmsg">
 		<div id="hfirst">
-			<form id="search_form" name="search_form" method="get" action="search_list">
+			<form id="search_form" name="search_form" method="get" action="/search/list">
 				<input type="text" name="search">
 				<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
 				<input type="button" value="취소" id="csearch" style="cursor:pointer">
 				<div>
-				<span>인기상품</span><p>
-				잘팔린상품1<p>
-				잘팔린상품2<p>
-				잘팔린상품3<p>
-				잘팔린상품4
+					<p><span>인기상품</span></p>
+					<a class="topid" href=""> <p class="topview"> </p> </a>
+					<a class="topid" href=""> <p class="topview"> </p> </a>
+					<a class="topid" href=""> <p class="topview"> </p> </a>
+					<a class="topid" href=""> <p class="topview"> </p> </a>
 				</div>
 			</form>
 		</div>
