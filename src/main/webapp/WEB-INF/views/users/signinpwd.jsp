@@ -40,11 +40,32 @@
    }
  	  .mainbody input[type=password] {
       width:100%;
-      height:35px;
+      height:50px;
       border:1px solid black; 
       border-radius : 7px;
    }
  </style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#pwd').keyup(function(){
+			if($('#pwd').val().length > 3)
+			{
+				$(this).css("background","#C7E2FF");
+				$('.submit').css("background","black");
+				$('.submit').css("color","white");
+				$('.submit').prop("disabled",false);
+			}
+			else{
+				$(this).css("background","white");
+				$('.submit').css("background","white");
+				$('.submit').css("color","black");
+				$('.submit').prop("disabled",true);
+			}
+		});
+	});
+
+</script>
 </head>
 <body>
 	<div class="fullbody">
@@ -63,9 +84,9 @@
 				<h2> 비밀번호를 입력하세요. </h2> <p>
 					<input type = "hidden" name = "email" value = <%=email %>>
 				<div> <%=email%>  <a href="/users/signin" style=""> 편집 </a> </div> <p>
-				<input type = "password" name = "pwd" placeholder = "비밀번호">
+				<input type = "password" id="pwd" name = "pwd" placeholder = "비밀번호">
 
-				<div> <input type="submit" value="로그인"> </div>
+				<div> <input class="submit" type="submit" value="로그인" style="background:white;color:black;cursor:pointer" disabled> </div>
 				</form>
 			</div>
 		</div>
