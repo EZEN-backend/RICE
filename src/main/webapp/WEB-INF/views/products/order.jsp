@@ -616,10 +616,10 @@ function PaySelect() {
         </div>
        </div>
        <div class="baeday">
-         <div> 도착예정일 : <span>${deliveryDay }</span></div>
+       <div> 도착예정일 : <span>${deliveryDay }</span></div>
        </div>
-       
-       <!-- 구매한 상품의 이미지와 선택한 옵션들이 list 형태로 출력 -->
+
+         <!-- 구매한 상품의 이미지와 선택한 옵션들이 list 형태로 출력 -->
     <c:forEach var="item" items="${cartList }">   
        <div class="mini-item-info">
         <div class="item-picture">

@@ -91,6 +91,9 @@
 			margin-bottom:6px;
 		}
 		
+		.topview{
+			
+		}
 		#csearch {
 			width:40px;
 			height:30px;
@@ -469,6 +472,26 @@
     		});
     	});
 		
+		$(function() {
+			$.ajax({
+			    url: "/search/product",
+			    dataType: "json",
+			    success: function(topview) {
+			        // data is the JSON object retrieved from the server
+			        // You can access individual items by their ID or loop through all items using a for loop
+			        for (var i = 0; i < topview.length; i++) {
+				 		document.getElementsByClassName('topview')[i].innerText=topview[i].title;
+				 		$('.topid').eq(i).attr('href','/products/views/'+topview[i].id);
+				 		console.log(topview);
+			        }
+			    },
+			    error: function(jqXHR, textStatus, errorThrown) {
+			        // Handle error here
+			    }
+			});
+		});
+		
+		
 	</script>
 	
 </head>
@@ -483,11 +506,11 @@
 				<i class="fa-solid fa-magnifying-glass" onclick="gsearch()"></i>
 				<input type="button" value="취소" id="csearch" style="cursor:pointer">
 				<div>
-				<span>인기상품</span><p>
-				잘팔린상품1<p>
-				잘팔린상품2<p>
-				잘팔린상품3<p>
-				잘팔린상품4
+				<p><span>인기상품</span></p>
+				<a class="topid" href=""> <p class="topview"> </p> </a>
+				<a class="topid" href=""> <p class="topview"> </p> </a>
+				<a class="topid" href=""> <p class="topview"> </p> </a>
+				<a class="topid" href=""> <p class="topview"> </p> </a>
 				</div>
 			</form>
 		</div>

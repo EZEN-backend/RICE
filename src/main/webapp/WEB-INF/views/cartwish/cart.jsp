@@ -15,7 +15,7 @@
       display:flex;
     
     }
-    
+
     .item:nth-child(1) {
       margin-top:10px;
       flex-basis:70%;
@@ -351,7 +351,7 @@
                             
               <div style="display:flex; margin-top:10px">       
                  <div style="flex-basis:3%"><input type="checkbox" class="csub" onclick="subcheck()" value="${item.cartId}" checked></div>
-                 <div style="flex-basis:25%"><a href="/products/detail/${item.product_id}"><img src="/resources/img/${item.product_img}" width="140" height="140"></a></div>
+                 <div style="flex-basis:25%"><a href="/products/detail/${item.product_id}"><img src="/resources/img/${item.product_img}" width="140" height="140" style="border-radius: 25px;"></a></div>
                  <div style="flex-basis:72%">
                     <div style="height:50px">
                        <span style="display:inline-block;font-weight:550; margin-top:7px">${item.title}</span>

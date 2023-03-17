@@ -1,9 +1,11 @@
 package kr.co.rice.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -34,5 +36,12 @@ public class SearchController {
 	public ArrayList<ProductVo> getItems(HttpServletRequest request ,Model model)
 	{
 		return service.getItems2(request,model);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/search/product")
+	public ArrayList<HashMap<String,Object>> products()
+	{
+		return service.product();
 	}
 }
