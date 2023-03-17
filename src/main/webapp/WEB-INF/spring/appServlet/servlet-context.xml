@@ -27,9 +27,15 @@
 	
 	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+<<<<<<< Updated upstream
 		<beans:property name="url" value="jdbc:mysql://rice-server-db.crmuyrtyguhv.ap-northeast-2.rds.amazonaws.com:3306/rice" />
 		<beans:property name="username" value="admin" />
 		<beans:property name="password" value="fkdltm1234" />
+=======
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/rice" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="1234" />
+>>>>>>> Stashed changes
 	</beans:bean>
 	
 	<beans:bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -42,7 +48,5 @@
 	
 	<mybatis-spring:scan base-package="kr.co.rice"/>
 	
-	<!-- NaverLoginBO Class에 대한 Bean설정 -->
-	<beans:bean id="naverLogin" class="kr.co.rice.utils.NaverLogin" />
-		
+	
 </beans:beans>
