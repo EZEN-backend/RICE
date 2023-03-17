@@ -9,22 +9,19 @@
 <script src="https://kit.fontawesome.com/f1fa4a6c48.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 	<style>
-		@font-face {
-			font-family: 'PuradakGentleGothicR';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
-			font-weight: lighter;
-			font-style: normal;
+		@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+		.notosanskr * {
+			font-family: 'Noto Sans KR', sans-serif;
 		}
+
 		body {
 			width:100%;
 			margin:0px;
 			z-index:1;
 			position:relative;
-			font-family: 'PuradakGentleGothicR';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-			font-size:14px;
+			font-family: 'Noto Sans KR', sans-serif;
+			font-weight: 500;
 		
 		}
 		a {
