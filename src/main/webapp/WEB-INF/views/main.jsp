@@ -109,6 +109,7 @@
 	   #fourth > #conta > span {
 	   	width:120px;
 	   	height:35px;
+		padding-bottom:7px;
 	   	display:inline-block;
 	   	font-size:16px;
 	   	border:1px solid black;
@@ -121,6 +122,7 @@
 	   #fourth > #conta2 > span {
 	   	width:120px;
 	   	height:35px;
+		padding-bottom:7px;
 	   	display:inline-block;
 	   	font-size:16px;
 	   	border:1px solid black;
@@ -186,7 +188,7 @@
 </head>
 <body>
 	<div id="third"> 
-	반품 및 환불 지연 안내<br>
+	반품 및 환불 지연 안내<p>
 	<a href="" style="font-size:13px">자세히 보기</a>
 	</div>
 	<div id="mimage">

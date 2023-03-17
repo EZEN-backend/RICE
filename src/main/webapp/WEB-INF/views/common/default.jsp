@@ -22,6 +22,7 @@
 			position:relative;
 			font-family: 'Noto Sans KR', sans-serif;
 			font-weight: 500;
+			font-size: 14px;
 		
 		}
 		a {
@@ -50,9 +51,10 @@
 			list-style: none;
     		list-style-type: none;
 			display:inline-block;
-    		padding-top:17px;
+    		padding-top:11px;
     		vertical-align: top;
     		cursor:pointer;
+			font-size: 16px;
 		}
 		.pre-desktop-menu li {
 			width: 200px;
@@ -86,8 +88,13 @@
 		}
 		.subcate-container a {
 			margin-bottom:6px;
+			color:#757575;
 		}
-		
+
+		.topview {
+			color:#757575;
+		}
+
 		#csearch {
 			width:40px;
 			height:30px;
@@ -137,7 +144,7 @@
 			margin-top:0px;
 			width:400px;
 			text-align:right;
-			padding-top:12px;
+			padding-top:9px;
 			margin-right:50px;
 			font-size:14px;
 		}
