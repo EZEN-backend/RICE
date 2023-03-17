@@ -8,6 +8,7 @@
 <title>Insert title here</title>
  <style>
    .fullbody {
+	 place-items: center;
    	 display:grid;
    	 grid-template-columns: 1fr 1fr 1fr;
    }
