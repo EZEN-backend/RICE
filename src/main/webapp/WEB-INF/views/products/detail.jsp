@@ -1,31 +1,3 @@
-Skip to content
-Product
-Solutions
-Open Source
-Pricing
-Search
-Sign in
-Sign up
-EZEN-backend
-/
-RICE
-Public
-Code
-Issues
-Pull requests
-2
-Actions
-Projects
-Security
-Insights
-RICE/src/main/webapp/WEB-INF/views/products/detail.jsp
-@kangil2
-kangil2 [Modify] url in detail.jsp to orders
-Latest commit 69a24ff 15 hours ago
- History
- 1 contributor
-1027 lines (931 sloc)  41 KB
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -139,7 +111,6 @@ Latest commit 69a24ff 15 hours ago
             justify-items: center;
             gap: 7px;
             width: 100%;
-            height: 100%;
         }
         .sizeContainer > div, .spicyContainer > div {
             width: 100%;
@@ -153,7 +124,6 @@ Latest commit 69a24ff 15 hours ago
             align-content: center;
             align-items: center;
             border-radius: 8px;
-            box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
             outline: none;
         }
         .sizeInput, .spicyInput {
@@ -172,9 +142,7 @@ Latest commit 69a24ff 15 hours ago
             display: flex;
             width: 100%;
             min-height: 60px;
-            padding: 22px 24px;
             font-size: 16px;
-            border-radius: 30px;
             justify-content: center;
         }
         .cartButton {
@@ -441,11 +409,22 @@ Latest commit 69a24ff 15 hours ago
             width: 90%;
             height: 60px;
         }
+        .wish-btn {
+            border-radius: 40px;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0px 6px 0px 6px;
+            border: 1px solid rgb(229 229 229);
+            width: 100%;
+            height: 60px;
+        }
         .detail-subname, .detail-size {
             color: #757575;
         }
-        /*
-        */
         .recommendsContainer {
             width: 94%;
             height: 30%;
@@ -454,14 +433,12 @@ Latest commit 69a24ff 15 hours ago
         .recommend-item {
             margin: 0;
         }
-        /* 슬라이드바 헤더 */
         .recommend-header {
             margin: auto;
             width: 94.5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
         }
         .header-title {
             font-size: 20px;
@@ -474,9 +451,6 @@ Latest commit 69a24ff 15 hours ago
             text-decoration: none;
             color: black;
         }
-        /* 이전, 다음 버튼 */
-        /*    border:1px solid rgba(0, 0, 0, 0.5);*/
-        /*    border-radius: 15px;*/
         .recommendBtn-wrapper {
             display: flex;
         }
@@ -501,7 +475,6 @@ Latest commit 69a24ff 15 hours ago
         .previousBtn:hover, .nextBtn:hover {
             color: gray;
         }
-        /* 슬라이드바 본문 */
         .recommend-slider {
             display: flex;
             margin: 0;
@@ -517,7 +490,6 @@ Latest commit 69a24ff 15 hours ago
             width: 100%;
             scroll-snap-align: center;
         }
-        /* 슬라이드바 아이템 이미지 */
         .recommend-item-image-container {
             position: relative;
             padding-top: 100%;
@@ -550,65 +522,115 @@ Latest commit 69a24ff 15 hours ago
             font-weight: bold;
             margin: 0;
         }
-        /*
-          */
     </style>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
-        const $cartButtons = $('.cartButton');
-        const $closeModalButtons = $('.close-modal');
-        const $modalContainers = $('.modal-container');
-        let product_id = ${pvo.id};
-        let price = ${pvo.price};
-        let size = "";
-        let spicy = "";
+
         $(document).ready(function () {
+            const spicyInput = document.querySelector('.spicyInput');
+            const sizeInput  = document.querySelector('.sizeInput');
+
+            let product_id = ${pvo.id};
+            let price      = ${pvo.price};
+            let size       = "";
+            let spicy      = "";
+
+            function timer(name) {
+                setTimeout(function() {
+                    $(name).fadeOut();
+                }, 4000);
+            };
+
+            function formatPrice(price) {
+                return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
             $('.sizeInput').on('click', function () {
                 $('.sizeInput').prop('checked', false).parent().removeClass('active');
                 $(this).prop('checked', true).parent().addClass('active');
                 size = $('input[name=productSize]:checked').next('label').text();
+                if (size == "M") {
+                    price = ${pvo.price} * 1.2;
+                } else if (size == "L") {
+                    price = ${pvo.price} * 1.4;
+                } else {
+                    price = ${pvo.price};
+                }
+                $('.detail-product-price').text(formatPrice(price)+'원');
             });
+
             $('.spicyInput').on('click', function () {
                 $('.spicyInput').prop('checked', false).parent().removeClass('active');
                 $(this).prop('checked', true).parent().addClass('active');
                 spicy = $('input[name=productSpicy]:checked').next('label').text();
             });
+
             $(".cartButton").on("click", function () {
-                if (size == "M") {
-                    price = ${pvo.price} * 1.2;
-                } else if (size == "L") {
-                    price = ${pvo.price} * 1.4;
-                }
-                $.ajax({
-                    type: "GET",
-                    url: "/cartBtn?product_id=" + product_id + "&size=" + size + "&spicy=" + spicy,
-                    dataType: "text",
-                    success: function (data) {
-                        //경우의 수 | 담긴다 or 안담긴다
-                        if (data == '0') {
-                            $('body').css('overflow', 'hidden');
-                            // 0(false)일 경우 || 상품 개수가 초과 되었을 때
-                            $('body').addClass('modal-open');
-                            $('.modal-overlay').fadeIn();
-                            $('div.modal > p:first').text('죄송합니다. 구매하실 수 있는 최대 수량를 넘었습니다. 제품을 삭제하고 다시 시도해 주세요.');
-                        } else if(data=="a") {
-                        	location.href="/users/signin";
-                        } else {
-                            // 1(true)일 경우 || 상품 등록. 우측 상단에 모달창 띄우기
-                            $('body').css('overflow', 'hidden');
-                            $('body').addClass('modal-open');
-                            $('.addModal').fadeIn();
-                            $('#cart_amount').text(data);
-                        }
-                    },
-                    error: function () {
-                        $('body').css('overflow', 'hidden');
-                        $('body').addClass('modal-open');
-                        $('.modal-overlay').fadeIn();
+                if (!spicyInput.checked && !sizeInput.checked) {
+                    event.preventDefault();
+                    $('.warningText').remove();
+                    $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">사이즈와 맵기를 선택하세요</span> ')
+                    $('.button-box').css('margin', '30px 0px 50px 0px');
+                    $('.spicyContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
+                    $('.sizeContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
+                    $('.spicy-title').css('color', 'rgb(212, 63, 33)');
+                    $('.size-title').css('color', 'rgb(212, 63, 33)');
+                } else if (!spicyInput.checked || !sizeInput.checked){
+                    if (!spicyInput.checked) {
+                        event.preventDefault();
+                        $('.warningText').remove();
+                        $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">맵기를 선택하세요</span> ')
+                        $('.button-box').css('margin', '30px 0px 50px 0px');
+                        $('.spicyContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
+                        $('.spicy-title').css('color', 'rgb(212, 63, 33)');
+                    } else {
+                        event.preventDefault();
+                        $('.warningText').remove();
+                        $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">사이즈를 선택하세요</span> ')
+                        $('.button-box').css('margin', '30px 0px 50px 0px');
+                        $('.sizeContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
+                        $('.size-title').css('color', 'rgb(212, 63, 33)');
                     }
-                });
+                }
+                else {
+                    $.ajax({
+                        type: "GET",
+                        url: "/cartBtn?product_id=" + product_id + "&size=" + size + "&spicy=" + spicy,
+                        dataType: "text",
+                        success: function (data) {
+                            //경우의 수 | 담긴다 or 안담긴다
+                            if (data == '0') {
+                                // 0(false)일 경우 || 상품 개수가 초과 되었을 때
+                                $('body').css('overflow', 'hidden').addClass('modal-open');
+                                $('.modal-overlay').fadeIn();
+                                $('div.modal > p:first').text('죄송합니다. 구매하실 수 있는 최대 수량를 넘었습니다. 제품을 삭제하고 다시 시도해 주세요.');
+                                timer('.modal-overlay');
+                            } else if(data=="a") {
+                                location.href="/users/signin";
+                            } else {
+                                // 1(true)일 경우 || 상품 등록. 우측 상단에 모달창 띄우기
+                                $('body').css('overflow', 'hidden').addClass('modal-open');
+                                $('.addModal').fadeIn();
+                                $('#cart_amount').text(data);
+                                $('div.modalButtonContainer > strong').text('장바구니 추가 완료');
+                                $('p.detail-size').css('display', '');
+                                $('p.detail-size').text('사이즈 ' +size);
+                                $('p.detail-price').text(formatPrice(price)+' 원');
+                                $('.wish-btn').css('display', 'none');
+                                $('.order-btn').css('display', '');
+                                $('.cart-btn').css('display', '');
+                                timer('.addModal');
+                            }
+                        },
+                        error: function () {
+                            $('body').css('overflow', 'hidden').addClass('modal-open');
+                            $('.modal-overlay').fadeIn();
+                            timer('.modal-overlay');
+                        }
+                    });
+                }
             });
-            
+
             $(".wishlistButton").on("click", function () {
                 $.ajax({
                     type: "GET",
@@ -616,33 +638,34 @@ Latest commit 69a24ff 15 hours ago
                     dataType: "Text",
                     success: function (data) {
                         if (data =='0') {
-                        	 console.log(data);
                             // 1 (true)일 경우 하트 아이콘 --> 빈 하트
-                            $('#heart').attr('class', 'fa-regular fa-heart');
+                            $('.fa-heart').attr('class', 'fa-regular fa-heart');
                         } else if(data=='a') {
                         	location.href="/users/signin";
                         } else {
-                        	console.log(data);
                             // 0 (false)일 경우 하트 아이콘 --> 꽉 찬 하트
                             // 모달 창 띄워서 정보 출력
-                            $('#heart').attr('class', 'fa-solid fa-heart');
-                            $('body').css('overflow', 'hidden');
-                            $('body').addClass('modal-open');
+                            $('.fa-heart').attr('class', 'fa-solid fa-heart');
+                            $('body').css('overflow', 'hidden').addClass('modal-open');
                             $('.addModal').fadeIn();
+                            $('div.modalButtonContainer > strong').text('위시리스트 추가되었습니다');
+                            $('p.detail-size').css('display', 'none');
+                            $('.order-btn').css('display', 'none');
+                            $('.cart-btn').css('display', 'none');
+                            $('.wish-btn').css('display', '');
+                            timer('.addModal');
                         }
                     }
                 });
             });
-            
+
             $('.close-modal').click(function () {
                 $('.modal-overlay').fadeOut();
-                $('body').removeClass('modal-open');
-                $('body').css('overflow', 'auto');
+                $('body').removeClass('modal-open').css('overflow', 'auto');
             });
             $(".closeModal").click(function () {
                 $('.addModal').fadeOut();
-                $('body').removeClass('modal-open');
-                $('body').css('overflow', 'auto');
+                $('body').removeClass('modal-open').css('overflow', 'auto');
             });
             $('.previousBtn').click(function () {
                 const currentPosition = $('.recommend-slider').scrollLeft();
@@ -672,9 +695,9 @@ Latest commit 69a24ff 15 hours ago
                             <span></span>
                             <p></p>
                         </div>
-                        <div class="carosel-text-empty-space"></div>
+                        <div class="carousel-text-empty-space"></div>
                     </div>
-                    <div class="empty-carosel"></div>
+                    <div class="empty-carousel"></div>
                 </div>
                 <div class="detail-body">
                     <div class="details">
@@ -758,7 +781,14 @@ Latest commit 69a24ff 15 hours ago
                                                         </button>
                                                         <button class="wishlistButton" type="button">
                                                             <span class="wishText">위시리스트</span>
-                                                            <span><i id="heart" class="fa-regular fa-heart"></i></span>
+                                                    <c:choose>
+                                                        <c:when test="${pvo.wish_count == 0}">
+                                                            <span><i class="fa-regular fa-heart"></i></span>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <span><i class="fa-solid fa-heart"></i></span>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -930,7 +960,7 @@ Latest commit 69a24ff 15 hours ago
                     <div class="addModal">
                         <div class="modal-header">
                             <div class="modalButtonContainer">
-                                <strong>장바구니 추가 완료</strong>
+                                <strong></strong>
                                 <button class="closeModal"><i class="fa-solid fa-xmark"></i></button>
                             </div>
                             <div class="modalInfo">
@@ -940,7 +970,7 @@ Latest commit 69a24ff 15 hours ago
                                 <div class="info-detail">
                                     <p class="detail-name">${pvo.name} </p>
                                     <p class="detail-subname">${pvo.subcategory_name}</p>
-                                    <p class="detail-size">사이즈 ${pvo.size}</p>
+                                    <p class="detail-size">사이즈</p>
                                     <p class="detail-price"><fmt:formatNumber value="${pvo.price}"
                                                                               pattern="###,###,###"/> 원</p>
                                 </div>
@@ -955,6 +985,7 @@ Latest commit 69a24ff 15 hours ago
                             </c:otherwise>
                         </c:choose>
                                 <button class="order-btn" onclick="location.href='/products/orders?price=${pvo.price}'">결제하기</button>
+                                <button class="wish-btn" onclick="location.href='/wish'">위시리스트 보기</button>
                             </div>
                         </div>
                     </div>
@@ -965,18 +996,3 @@ Latest commit 69a24ff 15 hours ago
 </div>
 </body>
 </html>
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-RICE/detail.jsp at main · EZEN-backend/RICE · GitHub

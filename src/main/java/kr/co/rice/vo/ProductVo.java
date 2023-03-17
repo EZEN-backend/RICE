@@ -1,8 +1,16 @@
 package kr.co.rice.vo;
 
 public class ProductVo {
-    private int id, price, views, subcategory_id, category_id, spicylevel_id, reviews_amount, cart_products_amount;
+    private int id, price, views, subcategory_id, category_id, spicylevel_id, reviews_amount, cart_products_amount, wish_count;
     private String title, name, size, body, code, extra_detail, category_name, subcategory_name, spicylevel, image_url;
+
+    public int getWish_count() {
+        return wish_count;
+    }
+
+    public void setWish_count(int wish_count) {
+        this.wish_count = wish_count;
+    }
 
     public int getReviews_amount() {
         return reviews_amount;
