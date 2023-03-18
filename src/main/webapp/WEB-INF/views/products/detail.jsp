@@ -13,34 +13,42 @@
         .contentSection {
             margin: auto;
         }
+
         .content {
             width: 100%;
         }
+
         .content-body {
             width: 100%;
         }
+
         .content-details {
             width: 100%;
         }
+
         .carousel {
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             align-items: center;
         }
+
         .carousel-text {
             width: 100%;
             height: 60px;
             display: grid;
             grid-template-columns: 1fr 3fr 1fr;
         }
+
         .detail-body {
             width: 100%;
         }
+
         .details {
             max-width: 1440px;
             margin: auto;
         }
+
         .detail-flex {
             width: 100%;
             display: flex;
@@ -48,43 +56,53 @@
             padding-top: 3%;
             padding-bottom: 3%;
         }
+
         .detail-images {
             width: calc(100% - 456px);
         }
+
         .images-wrapper {
             width: 89%;
             height: 100%;
             margin: auto;
         }
+
         .images {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 12px;
         }
+
         .detail-text {
             width: 456px;
         }
+
         img {
             max-width: 100%;
             object-fit: contain;
         }
+
         .title-text {
             font-weight: 500;
             font-size: 28px;
             margin: auto;
         }
+
         .subtitle-text {
             margin: auto;
             font-weight: 500;
             font-size: 16px;
         }
+
         .detail-product-price {
             margin-top: 14px;
             margin-bottom: 14px;
         }
+
         .detail-information {
             width: 80%;
         }
+
         .product-size, .product-spicy {
             line-height: 24px;
             font-size: 16px;
@@ -94,15 +112,18 @@
             padding: 0;
             margin: 0px 0px 0px 0px;
         }
+
         .product-size {
             margin: 32px 0px 0px 0px;
         }
+
         .product-size-headline, .product-spicy-headline {
             display: flex;
             width: 100%;
             justify-content: space-between;
             padding: 0px;
         }
+
         .sizeContainer, .spicyContainer {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -112,10 +133,12 @@
             gap: 7px;
             width: 100%;
         }
+
         .sizeContainer > div, .spicyContainer > div {
             width: 100%;
             height: 100%;
         }
+
         .sizeBox {
             width: 100%;
             height: 35px;
@@ -126,18 +149,22 @@
             border-radius: 8px;
             outline: none;
         }
+
         .sizeInput, .spicyInput {
             display: none;
         }
+
         .button-box-wrapper {
             display: table;
             vertical-align: middle;
             width: 100%;
             margin: auto;
         }
+
         .button-box {
             margin-bottom: 50px;
         }
+
         .cartButton, .wishlistButton {
             display: flex;
             width: 100%;
@@ -145,6 +172,7 @@
             font-size: 16px;
             justify-content: center;
         }
+
         .cartButton {
             background-color: #111111;
             border: none;
@@ -157,10 +185,12 @@
             text-decoration: none;
             text-transform: uppercase;
         }
+
         .cartButton:hover {
             background-color: #757575;
             border-color: #757575;
         }
+
         .wishlistButton {
             margin-top: 12px;
             background-color: #FFFFFF;
@@ -174,29 +204,36 @@
             text-decoration: none;
             text-transform: uppercase;
         }
+
         .wishlistButton:hover {
             background-color: #FFFFFF;
             border-color: #111111;
         }
+
         .wishText {
             padding: 0px 12px 0px 12px;
         }
+
         .product-detail-moreInfo {
             margin-top: 40px;
         }
+
         details {
             box-shadow: inset 0 -1px 0 0 #e5e5e5;
             box-sizing: inherit;
         }
+
         summary {
             list-style: none;
             cursor: pointer;
         }
+
         summary > h3 {
             font-weight: 500;
             font-size: 20px;
             line-height: 1.2;
         }
+
         .detail-body-information > ul, .etc-present-information > ul, .product-review > ul {
             margin-block-start: 0;
             margin-block-end: 0;
@@ -204,11 +241,13 @@
             margin-inline-end: 0;
             padding-inline-start: 17px;
         }
+
         .detail-body-information > ul > li, .etc-present-information > ul > li, .product-review > ul > li {
             list-style: disc;
             cursor: default;
             margin-top: 10px;
         }
+
         .order-returning > summary h3::after, .extra-detail > summary h3::after {
             content: "\f078";
             font-family: "Font Awesome 6 Free";
@@ -216,12 +255,15 @@
             margin-left: 5px;
             float: right;
         }
+
         .product-reviews > summary {
             display: flex;
         }
+
         .product-reviews > summary > h3 {
             width: 20%;
         }
+
         .product-reviews > summary::after {
             content: "\f078";
             font-family: "Font Awesome 6 Free";
@@ -233,24 +275,29 @@
             display: flex;
             font-size: 20px;
         }
+
         .product-reviews > summary > span {
             justify-content: flex-end;
             align-items: center;
             display: flex;
             width: 80%;
         }
+
         .review-button > button {
             all: unset;
             border-bottom: 1px solid #111111;
             cursor: pointer;
             margin-bottom: 40px;
         }
+
         .sizeBox {
             border: 1px solid #ccc;
         }
+
         .active .sizeBox {
             border-color: black;
         }
+
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -262,6 +309,7 @@
             overflow-y: auto;
             display: none;
         }
+
         .modal-container {
             position: fixed;
             top: 50%;
@@ -276,30 +324,36 @@
             border-radius: 20px;
             box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
         }
+
         .modalButtonContainer {
             display: flex;
             justify-content: flex-end;
         }
+
         .close-modal {
             border: none;
             background-color: transparent;
             font-size: 1.5rem;
             cursor: pointer;
         }
+
         .modal h2 {
             font-size: 1.5rem;
             font-weight: bold;
             margin: 0 0 20px;
         }
+
         .modal p {
             font-size: 1.2rem;
             line-height: 1.5;
             margin: 0;
         }
+
         .modal {
             padding-bottom: 45px;
             overflow: auto;
         }
+
         .move_to_cart {
             width: 100%;
             height: 30px;
@@ -307,6 +361,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .moveCart {
             border-radius: 20px;
             background-color: black;
@@ -316,51 +371,57 @@
             cursor: pointer;
             font-size: 16px;
         }
+
         .addModal {
             position: fixed;
-            top: 0;
+            top: 10.2%;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 90%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 9999;
             display: none;
         }
+
         .modal-header {
             position: fixed;
-            top: 0%;
-            right: 0%;
-            max-width: 420px;
-            max-height: 290px;
+            right: 2%;
+            max-width: 400px;
+            max-height: 250px;
             background-color: #fff;
             z-index: 10000;
             padding: 32px;
-            border-radius: 20px;
+            border-radius:10px;
             box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
         }
+
         .modalButtonContainer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 18px;
+            font-size: 16px;
         }
+
         .closeModal {
             border: none;
             background-color: transparent;
             font-size: 1.5rem;
             cursor: pointer;
         }
+
         .modalInfo h2 {
-            font-size: 1.5rem;
+            font-size: 16px;
             font-weight: bold;
             margin: 0 0 20px;
         }
+
         .modalInfo p {
             padding: 0px 0px 10px 20px;
-            font-size: 19px;
-            line-height: 1.5;
+            font-size: 14px;
+            line-height: 1;
             margin: 0;
         }
+
         .modalInfo {
             padding: 26px 0px 26px 0px;
             overflow: auto;
@@ -368,12 +429,15 @@
             width: 100%;
             height: 100%;
         }
+
         .info-img {
             width: 25%;
         }
+
         .info-detail {
             width: 75%;
         }
+
         .modal-btn {
             width: 100%;
             height: 50px;
@@ -381,6 +445,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .cart-btn {
             border-radius: 40px;
             background-color: white;
@@ -391,9 +456,11 @@
             font-size: 16px;
             color: #111111;
         }
+
         .cart-btn:hover {
             border: 1px solid black;
         }
+
         .order-btn {
             border-radius: 40px;
             background-color: black;
@@ -403,12 +470,14 @@
             cursor: pointer;
             font-size: 16px;
         }
+
         .cart-btn, .order-btn {
             margin: 0px 6px 0px 6px;
             border: 1px solid rgb(229 229 229);
             width: 90%;
             height: 60px;
         }
+
         .wish-btn {
             border-radius: 40px;
             background-color: black;
@@ -422,17 +491,21 @@
             width: 100%;
             height: 60px;
         }
-        .detail-subname, .detail-size {
+
+        .detail-subname, .detail-size, .detail-spicy {
             color: #757575;
         }
+
         .recommendsContainer {
             width: 94%;
             height: 30%;
             margin: auto;
         }
+
         .recommend-item {
             margin: 0;
         }
+
         .recommend-header {
             margin: auto;
             width: 94.5%;
@@ -440,20 +513,25 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .header-title {
             font-size: 20px;
             font-weight: normal;
         }
+
         .link-to-detail:visited {
             color: black;
         }
+
         .link-to-detail {
             text-decoration: none;
             color: black;
         }
+
         .recommendBtn-wrapper {
             display: flex;
         }
+
         .previousBtn-wrapper, .nextBtn-wrapper {
             border-radius: 30px;
             background: rgb(245, 245, 245);
@@ -463,18 +541,22 @@
             margin: auto;
             justify-content: center;
         }
+
         .nextBtn-wrapper {
             margin: 0px 0px 0px 10px;
         }
+
         .previousBtn, .nextBtn {
             background-color: transparent;
             border: none;
             cursor: pointer;
             font-size: 30px;
         }
+
         .previousBtn:hover, .nextBtn:hover {
             color: gray;
         }
+
         .recommend-slider {
             display: flex;
             margin: 0;
@@ -485,15 +567,18 @@
             -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
         }
+
         .slide-item {
             flex: 0 0 33.33%;
             width: 100%;
             scroll-snap-align: center;
         }
+
         .recommend-item-image-container {
             position: relative;
             padding-top: 100%;
         }
+
         .recommend-item-image {
             position: absolute;
             top: 0;
@@ -501,22 +586,26 @@
             right: 0;
             bottom: 0;
         }
+
         .recommend-item-image img {
             max-width: 100%;
             max-height: 100%;
             display: block;
             margin: 0 auto;
         }
+
         .recommend-detail-text h1 {
             font-size: 18px;
             font-weight: normal;
             margin: 0;
         }
+
         .recommend-detail-text h2 {
             font-size: 16px;
             font-weight: normal;
             margin: 5px 0;
         }
+
         .recommend-detail-price h3 {
             font-size: 16px;
             font-weight: bold;
@@ -525,18 +614,15 @@
     </style>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
-
         $(document).ready(function () {
-            const spicyInput = document.querySelector('.spicyInput');
-            const sizeInput  = document.querySelector('.sizeInput');
 
             let product_id = ${pvo.id};
-            let price      = ${pvo.price};
-            let size       = "";
-            let spicy      = "";
+            let price = ${pvo.price};
+            let size = "";
+            let spicy = "";
 
             function timer(name) {
-                setTimeout(function() {
+                setTimeout(function () {
                     $(name).fadeOut();
                 }, 4000);
             };
@@ -546,27 +632,113 @@
             }
 
             $('.sizeInput').on('click', function () {
+                $('.sizeContainer').css('box-shadow', 'none');
+                $('.size-title').css('color', 'inherit');
                 $('.sizeInput').prop('checked', false).parent().removeClass('active');
                 $(this).prop('checked', true).parent().addClass('active');
                 size = $('input[name=productSize]:checked').next('label').text();
-                if (size == "M") {
-                    price = ${pvo.price} * 1.2;
-                } else if (size == "L") {
-                    price = ${pvo.price} * 1.4;
+                if ($('.spicyInput:checked').length === 1) {
+                    $('.warningText').remove();
+                    $('.button-box').css('margin', '0px');
+                } else {
+                    $('.warningText').text('맵기를 선택하세요');
+                }
+                if (size == "중") {
+                    price =
+                    ${pvo.price} *
+                    1.2;
+                } else if (size == "대") {
+                    price =
+                    ${pvo.price} *
+                    1.4;
                 } else {
                     price = ${pvo.price};
                 }
-                $('.detail-product-price').text(formatPrice(price)+'원');
+                $('.detail-product-price').text(formatPrice(price) + '원');
             });
 
             $('.spicyInput').on('click', function () {
+                $('.spicyContainer').css('box-shadow', 'none');
+                $('.spicy-title').css('color', 'inherit');
+                if ($('.sizeInput:checked').length === 1) {
+                    $('.warningText').remove();
+                    $('.button-box').css('margin', '0px');
+                } else {
+                    $('.warningText').text('사이즈를 선택하세요');
+                }
                 $('.spicyInput').prop('checked', false).parent().removeClass('active');
                 $(this).prop('checked', true).parent().addClass('active');
                 spicy = $('input[name=productSpicy]:checked').next('label').text();
             });
 
+            if ($('.sizeInput:checked').length > 0 && $('.spicyInput:checked').length > 0) {
+                $('.warningText').remove();
+            }
             $(".cartButton").on("click", function () {
-                if (!spicyInput.checked && !sizeInput.checked) {
+                if ($('.sizeInput:checked').length > 0 && $('.spicyInput:checked').length > 0) {
+                    $('.button-box').css('margin', '0px');
+                    $.ajax({
+                        type: "GET",
+                        url: "/cartBtn?product_id=" + product_id + "&size=" + size + "&spicy=" + spicy,
+                        dataType: "text",
+                        success: function (data) {
+                            //경우의 수 | 담긴다 or 안담긴다
+                            if (data == '0') {
+                                timer('.modal-overlay');
+                                // 0(false)일 경우 || 상품 개수가 초과 되었을 때
+                                $('body').css('overflow', 'hidden').addClass('modal-open');
+                                $('.modal-overlay').fadeIn();
+                                $('div.modal > p:first').text('죄송합니다. 구매하실 수 있는 최대 수량를 넘었습니다. 제품을 삭제하고 다시 시도해 주세요.');
+                            } else if (data == "a") {
+                                location.href = "/users/signin";
+                            } else {
+                                // 1(true)일 경우 || 상품 등록. 우측 상단에 모달창 띄우기
+                                timer('.addModal');
+                                $('#cart_amount').text(data);
+                                $('body').css('overflow', 'hidden').addClass('modal-open');
+                                $('.addModal').fadeIn();
+                                $('#cart_amount').text(data);
+                                $('div.modalButtonContainer > strong').text('장바구니 추가 완료');
+                                $('p.detail-size').css('display', '');
+                                $('p.detail-size').text('사이즈 ' + size);
+                                $('p.detail-spicy').text('맵기 ' + spicy);
+                                $('p.detail-price').text(formatPrice(price) + ' 원');
+                                $('.wish-btn').css('display', 'none');
+                                $('.order-btn').css('display', '');
+                                $('.cart-btn').css('display', '');
+                                console.log(size);
+                                console.log(spicy);
+                            }
+                        },
+                        error: function () {
+                            timer('.modal-overlay');
+                            $('body').css('overflow', 'hidden').addClass('modal-open');
+                            $('.modal-overlay').fadeIn();
+                        }
+                    });
+                } else if ($('.sizeInput:checked').length > 0) {
+                    //사이즈가 체크가 되지 않았을 때
+                    event.preventDefault();
+                    $('.warningText').remove();
+                    $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">맵기를 선택하세요</span> ')
+                    $('.button-box').css('margin', '30px 0px 50px 0px');
+                    $('.spicyContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
+                    $('.spicy-title').css('color', 'rgb(212, 63, 33)');
+                    console.log(size + ' else if');
+                    console.log(spicy + ' else if');
+
+                } else if ($('.spicyInput:checked').length > 0) {
+                    // 맵기가 체크되지 않았을 떄
+                    event.preventDefault();
+                    $('.warningText').remove();
+                    $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">사이즈를 선택하세요</span> ')
+                    $('.button-box').css('margin', '30px 0px 50px 0px');
+                    $('.sizeContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
+                    $('.size-title').css('color', 'rgb(212, 63, 33)');
+                    console.log(size + ' else if else');
+                    console.log(spicy + ' else if else');
+                } else {
+                    //사이즈와 스파이스 체크 안되었을 떄
                     event.preventDefault();
                     $('.warningText').remove();
                     $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">사이즈와 맵기를 선택하세요</span> ')
@@ -575,59 +747,8 @@
                     $('.sizeContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
                     $('.spicy-title').css('color', 'rgb(212, 63, 33)');
                     $('.size-title').css('color', 'rgb(212, 63, 33)');
-                } else if (!spicyInput.checked || !sizeInput.checked){
-                    if (!spicyInput.checked) {
-                        event.preventDefault();
-                        $('.warningText').remove();
-                        $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">맵기를 선택하세요</span> ')
-                        $('.button-box').css('margin', '30px 0px 50px 0px');
-                        $('.spicyContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
-                        $('.spicy-title').css('color', 'rgb(212, 63, 33)');
-                    } else {
-                        event.preventDefault();
-                        $('.warningText').remove();
-                        $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">사이즈를 선택하세요</span> ')
-                        $('.button-box').css('margin', '30px 0px 50px 0px');
-                        $('.sizeContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
-                        $('.size-title').css('color', 'rgb(212, 63, 33)');
-                    }
-                }
-                else {
-                    $.ajax({
-                        type: "GET",
-                        url: "/cartBtn?product_id=" + product_id + "&size=" + size + "&spicy=" + spicy,
-                        dataType: "text",
-                        success: function (data) {
-                            //경우의 수 | 담긴다 or 안담긴다
-                            if (data == '0') {
-                                // 0(false)일 경우 || 상품 개수가 초과 되었을 때
-                                $('body').css('overflow', 'hidden').addClass('modal-open');
-                                $('.modal-overlay').fadeIn();
-                                $('div.modal > p:first').text('죄송합니다. 구매하실 수 있는 최대 수량를 넘었습니다. 제품을 삭제하고 다시 시도해 주세요.');
-                                timer('.modal-overlay');
-                            } else if(data=="a") {
-                                location.href="/users/signin";
-                            } else {
-                                // 1(true)일 경우 || 상품 등록. 우측 상단에 모달창 띄우기
-                                $('body').css('overflow', 'hidden').addClass('modal-open');
-                                $('.addModal').fadeIn();
-                                $('#cart_amount').text(data);
-                                $('div.modalButtonContainer > strong').text('장바구니 추가 완료');
-                                $('p.detail-size').css('display', '');
-                                $('p.detail-size').text('사이즈 ' +size);
-                                $('p.detail-price').text(formatPrice(price)+' 원');
-                                $('.wish-btn').css('display', 'none');
-                                $('.order-btn').css('display', '');
-                                $('.cart-btn').css('display', '');
-                                timer('.addModal');
-                            }
-                        },
-                        error: function () {
-                            $('body').css('overflow', 'hidden').addClass('modal-open');
-                            $('.modal-overlay').fadeIn();
-                            timer('.modal-overlay');
-                        }
-                    });
+                    console.log(size + ' else');
+                    console.log(spicy + ' else');
                 }
             });
 
@@ -637,12 +758,13 @@
                     url: "/wishBtn/" + product_id,
                     dataType: "Text",
                     success: function (data) {
-                        if (data =='0') {
+                        if (data == '0') {
                             // 1 (true)일 경우 하트 아이콘 --> 빈 하트
                             $('.fa-heart').attr('class', 'fa-regular fa-heart');
-                        } else if(data=='a') {
-                        	location.href="/users/signin";
+                        } else if (data == 'a') {
+                            location.href = "/users/signin";
                         } else {
+                            timer('.addModal');
                             // 0 (false)일 경우 하트 아이콘 --> 꽉 찬 하트
                             // 모달 창 띄워서 정보 출력
                             $('.fa-heart').attr('class', 'fa-solid fa-heart');
@@ -653,7 +775,6 @@
                             $('.order-btn').css('display', 'none');
                             $('.cart-btn').css('display', 'none');
                             $('.wish-btn').css('display', '');
-                            timer('.addModal');
                         }
                     }
                 });
@@ -667,6 +788,7 @@
                 $('.addModal').fadeOut();
                 $('body').removeClass('modal-open').css('overflow', 'auto');
             });
+
             $('.previousBtn').click(function () {
                 const currentPosition = $('.recommend-slider').scrollLeft();
                 const itemWidth = $('.slide-item').width();
@@ -735,17 +857,17 @@
                                                             <div>
                                                                 <input id="sSize" name="productSize" type="radio"
                                                                        class="sizeInput">
-                                                                <label for="sSize" class="sizeBox">S</label>
+                                                                <label for="sSize" class="sizeBox">소</label>
                                                             </div>
                                                             <div>
                                                                 <input id="mSize" name="productSize" type="radio"
                                                                        class="sizeInput">
-                                                                <label for="mSize" class="sizeBox">M</label>
+                                                                <label for="mSize" class="sizeBox">중</label>
                                                             </div>
                                                             <div>
                                                                 <input id="lSize" name="productSize" type="radio"
                                                                        class="sizeInput">
-                                                                <label for="lSize" class="sizeBox">L</label>
+                                                                <label for="lSize" class="sizeBox">대</label>
                                                             </div>
                                                         </div>
                                                     </fieldset>
@@ -781,14 +903,14 @@
                                                         </button>
                                                         <button class="wishlistButton" type="button">
                                                             <span class="wishText">위시리스트</span>
-                                                    <c:choose>
-                                                        <c:when test="${pvo.wish_count == 0}">
-                                                            <span><i class="fa-regular fa-heart"></i></span>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <span><i class="fa-solid fa-heart"></i></span>
-                                                        </c:otherwise>
-                                                    </c:choose>
+                                                            <c:choose>
+                                                                <c:when test="${pvo.wish_count == 0}">
+                                                                    <span><i class="fa-regular fa-heart"></i></span>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <span><i class="fa-solid fa-heart"></i></span>
+                                                                </c:otherwise>
+                                                            </c:choose>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -822,14 +944,14 @@
                                             </details>
                                             <details class="product-reviews">
                                                 <summary>
-                                            <c:choose>
-                                                <c:when test="${pvo.reviews_amount == 0}">
-                                                    <h3 >리뷰 </h3>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <h3>리뷰 (${pvo.reviews_amount})</h3>
-                                                </c:otherwise>
-                                            </c:choose>
+                                                    <c:choose>
+                                                        <c:when test="${pvo.reviews_amount == 0}">
+                                                            <h3>리뷰 </h3>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <h3>리뷰 (${pvo.reviews_amount})</h3>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                     <span></span>
                                                 </summary>
                                                 <div class="reviews-data">
@@ -953,7 +1075,7 @@
                                 <p>요청을 처리하는 과정에서 문제가 발생하였습니다. 문제가 계속되면 페이지를 새로고침 하세요.</p>
                             </div>
                             <div class="move_to_cart">
-                                <button class="moveCart">장바구니 보기</button>
+                                <button class="moveCart" onclick="location.href='/cart'">장바구니 보기</button>
                             </div>
                         </div>
                     </div>
@@ -970,21 +1092,23 @@
                                 <div class="info-detail">
                                     <p class="detail-name">${pvo.name} </p>
                                     <p class="detail-subname">${pvo.subcategory_name}</p>
-                                    <p class="detail-size">사이즈</p>
-                                    <p class="detail-price"><fmt:formatNumber value="${pvo.price}"
-                                                                              pattern="###,###,###"/> 원</p>
+                                    <p class="detail-size"></p>
+                                    <p class="detail-spicy"></p>
+                                    <p class="detail-price"></p>
                                 </div>
                             </div>
                             <div class="modal-btn">
-                        <c:choose>
-                            <c:when test="${pvo.cart_products_amount != 0}">
-                                <button class="cart-btn">장바구니 (${pvo.cart_products_amount})</button>
-                            </c:when>
-                            <c:otherwise>
-                                <button class="cart-btn" onclick="location.href='/cart'">장바구니 </button>
-                            </c:otherwise>
-                        </c:choose>
-                                <button class="order-btn" onclick="location.href='/products/orders?price=${pvo.price}'">결제하기</button>
+                                <c:choose>
+                                    <c:when test="${pvo.cart_products_amount != 0}">
+                                        <button class="cart-btn">장바구니 (${pvo.cart_products_amount})</button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button class="cart-btn" onclick="location.href='/cart'">장바구니</button>
+                                    </c:otherwise>
+                                </c:choose>
+                                <button class="order-btn" onclick="location.href='/products/orders?price=${pvo.price}'">
+                                    결제하기
+                                </button>
                                 <button class="wish-btn" onclick="location.href='/wish'">위시리스트 보기</button>
                             </div>
                         </div>
