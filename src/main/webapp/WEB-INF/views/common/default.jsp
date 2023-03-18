@@ -495,6 +495,7 @@
 	<decorator:head/>
 <body>
 
+<div id="modal"></div>
 <div id="first">
 	<div id="topmsg">
 		<div id="hfirst">
