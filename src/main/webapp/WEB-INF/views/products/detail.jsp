@@ -721,7 +721,7 @@
                     event.preventDefault();
                     $('.warningText').remove();
                     $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">맵기를 선택하세요</span> ')
-                    $('.button-box').css('margin', '30px 0px 50px 0px');
+                    $('.button-box').css('margin', '35px 0px 50px 0px');
                     $('.spicyContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
                     $('.spicy-title').css('color', 'rgb(212, 63, 33)');
                     console.log(size + ' else if');
@@ -732,7 +732,7 @@
                     event.preventDefault();
                     $('.warningText').remove();
                     $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">사이즈를 선택하세요</span> ')
-                    $('.button-box').css('margin', '30px 0px 50px 0px');
+                    $('.button-box').css('margin', '35px 0px 50px 0px');
                     $('.sizeContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
                     $('.size-title').css('color', 'rgb(212, 63, 33)');
                     console.log(size + ' else if else');
@@ -742,7 +742,7 @@
                     event.preventDefault();
                     $('.warningText').remove();
                     $('.product-spicy-wrapper').after('<span class="warningText" style="color:#d43f21;">사이즈와 맵기를 선택하세요</span> ')
-                    $('.button-box').css('margin', '30px 0px 50px 0px');
+                    $('.button-box').css('margin', '35px 0px 50px 0px');
                     $('.spicyContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
                     $('.sizeContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
                     $('.spicy-title').css('color', 'rgb(212, 63, 33)');
