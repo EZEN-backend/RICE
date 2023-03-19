@@ -532,9 +532,9 @@
 					<span id="mymenu" onmouseover="javascript:view_sub()" onmouseleave="javascript:out_sub()"> <a href="#">MyPage</a>
 						<ul id="mysub">
 							<li> <a href="/users/userview">회원정보</a> </li>
-							<li> 주문목록 </li>
-							<li> 적 립 금 </li>
-							<li> 장바구니 </li>
+							<li> <a href="#">주문목록</a> </li>
+							<li> <a href="#">적 립 금</a> </li>
+							<li> <a href="/cart">장바구니</a> </li>
 							<li> <a href= "/users/signout">로그아웃</a> </li>
 						</ul>
 					</span>
