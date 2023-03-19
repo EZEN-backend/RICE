@@ -432,6 +432,7 @@
 			});
 			$("#modal").fadeOut();
 
+			// 스크롤 이벤트를 방지하는 함수
 			$(document).on('scroll', function(e) {
 				if (isSearchFormShown) {
 					e.preventDefault();
