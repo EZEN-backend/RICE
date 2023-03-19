@@ -74,7 +74,6 @@ public class ProductListServiceImpl implements ProductListService {
         return list;
     }
 
-
     //장바구니 페이지에서 주문결제 버튼 클릭시 주문결제창으로
     @Override
     public String orderPage(String cartId, String price, String totalPrice, String subTotalPrice, String deliveryFees, HttpSession session, Model model) {
@@ -85,7 +84,6 @@ public class ProductListServiceImpl implements ProductListService {
         Enumeration<String> attrNames = session.getAttributeNames();
 
         while (attrNames.hasMoreElements()) {
-
             String attrName = attrNames.nextElement();
             if (attrName.equals("useremail")) {
                 user_id = session.getAttribute("useremail").toString();
@@ -94,10 +92,10 @@ public class ProductListServiceImpl implements ProductListService {
             }
         }
 
-        //로그인 하지 않았다면 로그인 페이지로
-        if (user_id == null) {
-            return "redirect: /users/signin";
-        }
+  		//로그인 하지 않았다면 로그인 페이지로
+  		if(user_id==null) {
+  			return "redirect: /users/signin";
+  		}
 
         //로그인 되어있는 경우
         else {
@@ -108,12 +106,23 @@ public class ProductListServiceImpl implements ProductListService {
             String deliveryDay = mapper.getDeliveryDay(user_id, cartIds[0]);
 
             //장바구니 테이블에서 저장된 데이터를 불러와서 cartlist에 담기
-            ArrayList<HashMap<String, String>> cartList = new ArrayList<HashMap<String, String>>();
+            ArrayList<HashMap<String, Object>> cartList = new ArrayList<HashMap<String, Object>>();
 
-            for (int i = 0; i < cartIds.length; i++) {
-                HashMap<String, String> cartMap = mapper.getCartsByCartId(user_id, cartIds[i]);
+            for(int i=0; i<cartIds.length; i++) {
+                HashMap<String,Object> cartMap=mapper.getCartsByCartId(user_id, cartIds[i]);
+
                 //cartList에 해당 장바구니 상품의 가격을 저장하기
                 cartMap.put("price", prices[i]);
+
+                //상품 사이즈를 소,중,대로 바꿔서 담기
+                String size=cartMap.get("size").toString();
+                if(size.equals("S")) {
+                    cartMap.put("size", "소");
+                } else if(size.equals("M")) {
+                    cartMap.put("size", "중");
+                } else if(size.equals("L")) {
+                    cartMap.put("size", "대");
+                }
                 //cartMap을 cartList에 담기
                 cartList.add(cartMap);
             }
@@ -121,6 +130,7 @@ public class ProductListServiceImpl implements ProductListService {
             // 주문자 정보
             locationVo lvo = mapper.loview(user_id); // user_id == email
             model.addAttribute("lvo", lvo);
+
             //cartList 와 totalPrice, deliveryDay 를 order.jsp 로 보내기
             model.addAttribute("cartList", cartList);
             model.addAttribute("totalPrice", totalPrice);

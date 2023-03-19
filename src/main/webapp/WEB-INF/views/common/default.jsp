@@ -154,7 +154,7 @@
 		}
 		#topmsg #right {
 			margin-top:0px;
-			width:400px;
+			width:500px;
 			text-align:right;
 			padding-top:9px;
 			margin-right:50px;
@@ -522,27 +522,40 @@
 			<a href = "/users/signin"> 로그인 </a>
 			</c:if>
 			<c:if test="${useremail != null or naveremail != null }">
+			
 				<c:if test = "${useremail != null }">
-				${username}님, 안녕하세요 |  고객센터 |
+				    ${username}님, 안녕하세요 |  고객센터 |
 				</c:if>
-					<c:if test = "${naveremail != null }">
-					${navername}님, 안녕하세요 |  고객센터 |
-					</c:if>
 
-					<span id="mymenu" onmouseover="javascript:view_sub()" onmouseleave="javascript:out_sub()"> <a href="#">MyPage</a>
-						<ul id="mysub">
-							<li> <a href="/users/userview">회원정보</a> </li>
-							<li> <a href="#">주문목록</a> </li>
-							<li> <a href="#">적 립 금</a> </li>
-							<li> <a href="/cart">장바구니</a> </li>
-							<li> <a href= "/users/signout">로그아웃</a> </li>
-						</ul>
-					</span>
-					</c:if>
-					</div>
-			</div>
+				<c:if test = "${naveremail != null }">
+				    ${navername}님, 안녕하세요 |  고객센터 |
+				</c:if>
+	            
+	            <c:choose>
+	                <c:when test = "${useremail == 'admin@rice.co.kr' }">
+	                    <a href = "/admin"> 관리자페이지 |  </a>
+	                    <a href= "/users/signout">로그아웃</a>
+	                </c:when>
+	                
+	                <c:otherwise>
+				        <span id="mymenu"> <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
+					    <ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
+						    <li> <a href="/users/userview">회원정보</a> </li>
+						    <li> 주문목록 </li>		
+						    <li> 적 립 금 </li>				
+						    <li> <a href= "/cart">장바구니</a> </li>		
+						    <li> <a href= "/users/signout">로그아웃</a> </li>		
+					    </ul>
+				       </span>
+				   </c:otherwise>
+			    </c:choose>
+			</c:if>
 		</div>
-	</div> <!-- 광고성 메세지 -->
+	</div>
+</div>
+ 
+
+
 
 	<header>
 		<div id="second">

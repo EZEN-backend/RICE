@@ -659,9 +659,9 @@
                 </table>
                 <div class="order-info">
                     <div class="item">
-                        <div class="mini">상품금액<span class="mini-right" id="total">${totalPrice }</span></div>
+                        <div class="mini">상품금액<span class="mini-right" id="total">${subTotalPrice }</span> </div>
                         <div class="mini">할인<span class="mini-right"> 0원 </span></div>
-                        <div class="mini">배송비<span class="mini-right">무료</span></div>
+                        <div class="mini">배송비<span class="mini-right">${deliveryFees }</span></div>
                         <div>(5만원 이상 무료배송)</div>
                         <div class="mini">총 결제 금액<span class="mini-right" id="total2">${totalPrice }</span></div>
                     </div>
