@@ -424,8 +424,13 @@
 		    var container = $('#search_form');
 		    var modal = $('#modal');
 		    if (!container.is(e.target) && container.has(e.target).length == 0) {
-		      container.slideUp(100);
-		      modal.fadeOut();
+				isSearchFormShown = false;
+				$('html, body').css({
+					overflow: '', // searchbar가 사라지면 초기값으로 변환해서 스크롤 기능 돌려놓기
+					height: ''
+				});
+				container.slideUp(100);
+				modal.fadeOut();
 		    }
 		  });
 		});
