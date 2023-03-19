@@ -116,7 +116,27 @@ $(window).scroll(function(){
 	    $grid.isotope({ filter: filters });
 	  });
 	});
-	
+
+    $(document).ready(function() {
+        const filterSection = $('.filterSection');
+        const filterOffsetTop = filterSection.offset().top-90; // filterSection의 top offset 위치를 구하고 top에서 -90만큼 멀어지지 않게 변수에 담기
+
+        $(window).scroll(function() {
+            const scrollPosition = $(window).scrollTop(); // 현재 스크롤의 값 가져오기
+            const scrollThreshold = filterOffsetTop - 80; // 사용자의 스크롤값
+            console.log(scrollThreshold);
+
+            //브라우저창의 스크롤 위치가 고정값인 filterOffsetTop 값을 비교해서 filterSection top 값 변경해주기
+            if (scrollPosition > scrollThreshold){
+                filterSection.addClass('fixed'); // 요소의 css를 고정하기 위해 fixed를 filterSection에 추가해주기
+                filterSection.animate({ top: '80px' }, 'fast');
+            } else {
+                filterSection.removeClass('fixed');
+                filterSection.animate({ top: filterOffsetTop }, 'fast');
+            }
+        });
+    });
+
 </script>
  <style>
         .Section {
@@ -173,6 +193,8 @@ $(window).scroll(function(){
         }
         .filterSection {
             width:13.5%;
+            height:100%;
+            position: sticky;
         }
         .bodySection {
             width:86.5%;
@@ -249,7 +271,7 @@ $(window).scroll(function(){
         }
         
         .left-nav-wrapper {
-        	height:1000px;
+        	height:100%;
         	padding: 0 0 1em 48px;
         }
         .left-nav {
@@ -324,7 +346,7 @@ $(window).scroll(function(){
 							<input type="checkbox" value=".high">100,000원 이상 상품 <p>
 						</div>
 					</div>
-					
+
 					<div class="filter-group-content">
 						<div class="filter-title-cate">
 							<div class="spicy-level-label">
@@ -332,12 +354,12 @@ $(window).scroll(function(){
 							</div>
 						</div>
 						<div class="filters">
-							<input type="checkbox" value=".S"> S <p>
-							<input type="checkbox" value=".M"> M <p>
-							<input type="checkbox" value=".L"> L <p>
+							<input type="checkbox" value=".소"> 소 <p>
+							<input type="checkbox" value=".중"> 중 <p>
+							<input type="checkbox" value=".대"> 대 <p>
 						</div>
 					</div>
-					
+
 					<div class="filter-group-content">
 						<div class="filter-title-cate">
 							<div class="spicy-level-label">
