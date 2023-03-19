@@ -415,7 +415,7 @@
 		$('#search_form').slideDown(200, function() {
 			isSearchFormShown = true;
 			$('html, body').css({
-				overflow: 'hidden',
+				overflow: 'hidden', // searchbar가 열리면 overflow hidden으로 body태그가 전체를 가리게 끔 만들어서 scroll 막대 자체를 숨김
 				height: '100%'
 			});
 		});
@@ -426,7 +426,7 @@
 			$("#search_form").slideUp(100, function() {
 				isSearchFormShown = false;
 				$('html, body').css({
-					overflow: '',
+					overflow: '', // searchbar가 사라지면 초기값으로 변환해서 스크롤 기능 돌려놓기
 					height: ''
 				});
 			});
