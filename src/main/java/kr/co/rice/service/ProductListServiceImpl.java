@@ -95,12 +95,22 @@ public class ProductListServiceImpl implements ProductListService {
   			String deliveryDay=mapper.getDeliveryDay(user_id, cartIds[0]);
   				
   			//장바구니 테이블에서 저장된 데이터를 불러와서 cartlist에 담기
-  			ArrayList<HashMap<String,String>> cartList=new ArrayList<HashMap<String,String>>();
+  			ArrayList<HashMap<String,Object>> cartList=new ArrayList<HashMap<String,Object>>();
   				
   			for(int i=0; i<cartIds.length; i++) {
-  				HashMap<String,String> cartMap=mapper.getCartsByCartId(user_id, cartIds[i]);
+  				HashMap<String,Object> cartMap=mapper.getCartsByCartId(user_id, cartIds[i]);
   				//cartList에 해당 장바구니 상품의 가격을 저장하기
   				cartMap.put("price", prices[i]);
+  				//상품 사이즈를 소,중,대로 바꿔서 담기
+  				String size=cartMap.get("size").toString();
+  				if(size.equals("S")) {
+  					cartMap.put("size", "소");
+  				} else if(size.equals("M")) {
+  					cartMap.put("size", "중");
+  				} else if(size.equals("L")) {
+  					cartMap.put("size", "대");
+  				}
+  					
   				//cartMap을 cartList에 담기
   				cartList.add(cartMap);
   			}
@@ -151,13 +161,17 @@ public class ProductListServiceImpl implements ProductListService {
   			         
   			//상품 가격을 사이즈에 맞춰 조정하고, cartMap 에 담기
   			String size=cartMap.get("size").toString();
-  			         	            
+  			
+  			//상품 사이즈 별로 가격 조정하고, 사이즈 표시를 소,중,대로 변경
   			if(size.equals("S")) {
   				price=price*1;
+  				cartMap.put("size","소" );
   			} else if(size.equals("M")) {
   				price=price*1.2;
+  				cartMap.put("size", "중" );
   			} else if(size.equals("L")) {
   				price=price*1.4;
+  				cartMap.put("size", "대");
   			}
 
 			//5만원 이상 무료배송, 5만원 미만 배송비 5,000원 처리

@@ -44,5 +44,8 @@
 	
 	<!-- NaverLoginBO Class에 대한 Bean설정 -->
 	<beans:bean id="naverLogin" class="kr.co.rice.utils.NaverLogin" />
-		
+
+	<!--Multipart 객체를 컨트롤러에 전달하는 역할-->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
 </beans:beans>

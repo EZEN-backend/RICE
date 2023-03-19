@@ -1,7 +1,7 @@
 package kr.co.rice.vo;
 
 public class ProductVo {
-    private int id, price, views, subcategory_id, category_id, spicylevel_id, reviews_amount, cart_products_amount;
+    private int id, price, views, subcategory_id, category_id, spicylevel_id, reviews_amount, cart_products_amount, calory;
     private String title, name, size, body, code, extra_detail, category_name, subcategory_name, spicylevel, image_url;
 
     public int getReviews_amount() {
@@ -147,4 +147,14 @@ public class ProductVo {
     public void setCategory_id(int category_id) {
         this.category_id = category_id;
     }
+
+	public int getCalory() {
+		return calory;
+	}
+
+	public void setCalory(int calory) {
+		this.calory = calory;
+	}
+
+	
 }
