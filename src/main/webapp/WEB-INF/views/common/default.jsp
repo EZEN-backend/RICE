@@ -90,6 +90,9 @@
 			margin-bottom:6px;
 			color:#757575;
 		}
+		.subcate-container a:hover {
+			color:black;
+		}
 
 		.topview {
 			color:#757575;
@@ -138,6 +141,11 @@
 		#search_form > div > span {
 			color:#C0C0C0;
 		}
+		.topid :hover {
+			color:black;
+		}
+
+
 		#topmsg {
 			width:100%;
 			height:40px;
@@ -188,14 +196,15 @@
 		body #mymenu {
 			position:relative;
 			display:inline-block;
-			height:25px;
+			height:35px;
 		}
 		body #mymenu #mysub {
 			width:105px;
-			height:110px;
+			height:130px;
+			margin-right: -30px;
 			padding-left:0px;
 			position:absolute;
-			margin-top:5px;
+			margin-top:21px;
 			right:0px;
 			top:10px;
 			padding:4px;
@@ -204,6 +213,7 @@
 			visibility:hidden;
 			border-radius:25px;
 		}
+
 		body #mymenu #mysub li {
 			list-style-type:none;
 			margin:auto;
@@ -215,6 +225,9 @@
 		#topmsg a {
 			text-decoration:none;
 			color:black;
+		}
+		#topmsg a:hover {
+			color:#757575;
 		}
 		footer {
 			width:100%;
@@ -516,8 +529,8 @@
 					${navername}님, 안녕하세요 |  고객센터 |
 					</c:if>
 
-					<span id="mymenu"> <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a>
-						<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
+					<span id="mymenu" onmouseover="javascript:view_sub()" onmouseleave="javascript:out_sub()"> <a href="#">MyPage</a>
+						<ul id="mysub">
 							<li> <a href="/users/userview">회원정보</a> </li>
 							<li> 주문목록 </li>
 							<li> 적 립 금 </li>
