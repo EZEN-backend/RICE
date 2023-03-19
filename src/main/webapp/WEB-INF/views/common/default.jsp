@@ -408,27 +408,46 @@
 	// 검색바를 포함하고 있는 modal slideDown
 		// 클릭 이벤트 등록 , 모달창을 제외한 부분에 backdrop-filter 이용해서 blur
 
-		$(document).ready(function() {
-		  $('#vsearch').click(function() {
-		    $('#search_form').slideDown(200);
-		    $("#modal").fadeIn();
-		  });
+	$(document).ready(function() {
+	var isSearchFormShown = false;
 
-		  $("#csearch").click(function(){
-		        $("#search_form").slideUp(100);
-		        $("#modal").fadeOut();
-		    });
-
-		  // outside 클릭 이벤트 등록
-		  $(document).mouseup(function(e) {
-		    var container = $('#search_form');
-		    var modal = $('#modal');
-		    if (!container.is(e.target) && container.has(e.target).length == 0) {
-		      container.slideUp(100);
-		      modal.fadeOut();
-		    }
-		  });
+	$('#vsearch').click(function() {
+		$('#search_form').slideDown(200, function() {
+			isSearchFormShown = true;
+			$('html, body').css({
+				overflow: 'hidden',
+				height: '100%'
+			});
 		});
+		$("#modal").fadeIn();
+	});
+
+		$("#csearch").click(function(){
+			$("#search_form").slideUp(100, function() {
+				isSearchFormShown = false;
+				$('html, body').css({
+					overflow: '',
+					height: ''
+				});
+			});
+			$("#modal").fadeOut();
+
+			$(document).on('scroll', function(e) {
+				if (isSearchFormShown) {
+					e.preventDefault();
+				}
+			});
+		});
+			  // outside 클릭 이벤트 등록
+	  $(document).mouseup(function(e) {
+		var container = $('#search_form');
+		var modal = $('#modal');
+		if (!container.is(e.target) && container.has(e.target).length == 0) {
+		  container.slideUp(100);
+		  modal.fadeOut();
+		}
+	  });
+	});
 
 
 		function view_sub()
