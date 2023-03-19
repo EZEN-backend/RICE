@@ -23,7 +23,7 @@
 			font-family: 'Noto Sans KR', sans-serif;
 			font-weight: 500;
 			font-size: 14px;
-		
+
 		}
 		a {
 			list-style-type:none;
@@ -58,7 +58,7 @@
 		}
 		.pre-desktop-menu li {
 			width: 200px;
-			height: 30px;
+			height: 40px;
 		}
 		.cate-container {
 			width: 100%;
@@ -67,7 +67,7 @@
 			text-align: center;
 			display:none;
 			position:absolute;
-			z-index:98;
+			z-index:99;
 			background:white;
 			list-style:none;
 			list-style-type:none;
@@ -82,7 +82,7 @@
 		.subcate-container {
 		    list-style: none;
 		    list-style-type: none;
-		    display: inline-block;		    
+		    display: inline-block;
 		    vertical-align: top;
 		    line-height:50px;
 		}
@@ -101,6 +101,10 @@
 			background:-60px 0;
 			float:right;
 			margin-top:5px;
+		}
+
+		.fa-solid {
+			cursor: pointer;
 		}
 		#search_form {
 			position:absolute;
@@ -157,7 +161,7 @@
 			background:white;
 			height:50px;
 		}
-		
+
 		.header-icons {
 			width:8.9%;
 			text-align:center;
@@ -185,19 +189,6 @@
 			position:relative;
 			display:inline-block;
 			height:25px;
-		}
-		#cate > li {
-			font-weight:500;
-			font-size:16px;
-		}
-		#cate > li > ul > li > a {
-			text-decoration-line: none;
-			color:#757575;
-			font-size:16px;
-		}
-		#cate > li > ul > li > a:hover {
-			color:#111111;
-			cursor:pointer;
 		}
 		body #mymenu #mysub {
 			width:105px;
@@ -337,20 +328,20 @@
 		/* 장바구니 속에 숫자 보이게 하기 */
 		#cart_amount {
 		    display:inline-block;
-		    position:absolute; 
+		    position:absolute;
 		    left:18px;
 		    top:-5px;
-		    width:13px; 
-		    height:13px; 
-		    border-radius:6px; 
+		    width:13px;
+		    height:13px;
+		    border-radius:6px;
 		    background-color:purple;
 		    color:white;
 		    font-size:5px;
 		    text-align:center;
 		    padding-top:2px;
-		    
+
 		}
-		
+
 		#search_form input[type=button] {
 			border:none;
 			border-radius:15px;
@@ -373,50 +364,48 @@
 	</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
-	
-	// 새로 만든 카테고리 기능
-	   $(document).ready(function() {
-			var $second = $('#second'),
-			    $modal = $('#modal'),
-			    $subcate = $('.subcate'),
-			    $catecon = $('.cate-container');
 
-			  $($subcate).hover(function() {
-			    $catecon.stop().slideDown(),
-			    $modal.stop().fadeIn();
-			  }, function() {
-			    if (!$catecon.is(":hover")) {
-			    	$catecon.stop().slideUp();
-			    	$modal.stop().fadeOut();
-			    }
-			  });
+	//새로 만든 카테고리 기능
+	$(document).ready(function() {
+		var $second = $('#second'),
+			$modal = $('#modal'),
+			$subcate = $('.subcate'),
+			$catecon = $('.cate-container');
 
-			  $('.subcate-container > a').hover(function(e) {
-			    e.stopPropagation();
-			  });
+		$($subcate).hover(function() {
+			$catecon.stop().slideDown(),
+					$modal.stop().fadeIn();
+		}, function() {
+			if (!$catecon.is(":hover")) {
+				$catecon.stop().slideUp();
+				$modal.stop().fadeOut();
+			}
+		});
+		$('.subcate-container > a').hover(function(e) {
+			e.stopPropagation();
+		});
+		$catecon.hover(function() {
+			$modal.stop().fadeIn();
+		}, function() {
+			$catecon.stop().slideUp();
+			$modal.stop().fadeOut();
+		});
+	});
 
-			  $catecon.hover(function() {
-			    $modal.stop().fadeIn();
-			  }, function() {
-			    $catecon.stop().slideUp();
-			    $modal.stop().fadeOut();
-			  });
-			});
-	   
-		// 검색바를 포함하고 있는 modal slideDown
+	// 검색바를 포함하고 있는 modal slideDown
 		// 클릭 이벤트 등록 , 모달창을 제외한 부분에 backdrop-filter 이용해서 blur
-		
+
 		$(document).ready(function() {
 		  $('#vsearch').click(function() {
 		    $('#search_form').slideDown(200);
 		    $("#modal").fadeIn();
 		  });
-		  
+
 		  $("#csearch").click(function(){
 		        $("#search_form").slideUp(100);
 		        $("#modal").fadeOut();
 		    });
-		  
+
 		  // outside 클릭 이벤트 등록
 		  $(document).mouseup(function(e) {
 		    var container = $('#search_form');
@@ -427,8 +416,8 @@
 		    }
 		  });
 		});
-		
-		
+
+
 		function view_sub()
 		{
 		 document.getElementById("mysub").style.visibility="visible";
@@ -437,12 +426,12 @@
 		{
 		 document.getElementById("mysub").style.visibility="hidden";
 		}
-		
+
 		function gsearch()
 		{
 			document.search_form.submit();
 		}
-		
+
 		// main 카트 아이콘 클릭시 이동하는 경로
 		function gcart()
 		{
@@ -453,10 +442,10 @@
 		{
 			location.href="/wish";
 		}
-		
+
 		// 장바구니 카트에 현재 장바구니에 담겨있는 상품 수량 표시되는 함수
 		$(function() {
-       
+
     		$.ajax ({
     			type: "get",
     			url : "/cartCount",
@@ -465,7 +454,7 @@
     		    	console.log('통신성공');
     		    	//상단 우측 카드 이미지에 현재 장바구니 상품 수량 넘기기
     		    	document.getElementById("cart_amount").innerText=data;
-    		    	
+
     		    },
     		    error: function() {
     		    	console.log('통신에러');
@@ -488,9 +477,9 @@
 			}
 		});
 	});
-		
+
 	</script>
-	
+
 </head>
 	<decorator:head/>
 <body>
@@ -514,10 +503,10 @@
 		</div>
 		<div id="right">
 			<c:if test="${useremail == null and naveremail == null}">
-			<a href="/users/signin">  매장찾기  </a> | 
+			<a href="/users/signin">  매장찾기  </a> |
 			<a href="/users/signup">  고객센터  </a> |
 			<a href ="/users/signin"> 가입하기 </a> |
-			<a href = "/users/signin"> 로그인 </a> 
+			<a href = "/users/signin"> 로그인 </a>
 			</c:if>
 			<c:if test="${useremail != null or naveremail != null }">
 				<c:if test = "${useremail != null }">
@@ -526,14 +515,14 @@
 					<c:if test = "${naveremail != null }">
 					${navername}님, 안녕하세요 |  고객센터 |
 					</c:if>
-	
-					<span id="mymenu"> <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
+
+					<span id="mymenu"> <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a>
 						<ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
 							<li> <a href="/users/userview">회원정보</a> </li>
-							<li> 주문목록 </li>		
-							<li> 적 립 금 </li>				
-							<li> 장바구니 </li>		
-							<li> <a href= "/users/signout">로그아웃</a> </li>		
+							<li> 주문목록 </li>
+							<li> 적 립 금 </li>
+							<li> 장바구니 </li>
+							<li> <a href= "/users/signout">로그아웃</a> </li>
 						</ul>
 					</span>
 					</c:if>
@@ -541,6 +530,7 @@
 			</div>
 		</div>
 	</div> <!-- 광고성 메세지 -->
+
 	<header>
 		<div id="second">
 			<div id="left"><a href="/"><img src="/resources/img/rice.png" width="70" height="50"></a> </div>
@@ -559,7 +549,7 @@
 				<i class="fa-solid fa-cart-shopping" id="cart_view" onclick="gcart()" style="cursor:pointer; ">
 			   		<span id="cart_amount">0</span>
 				</i>
-			</div>	
+			</div>
 		</div>
 	</header> <!-- 로그인,회원가입,로고 -->
 	<div class="cate-container">
@@ -592,7 +582,7 @@
 			</li>
 		</ul>
 	</div><!-- menu 관련 -->
-<decorator:body/>	
+<decorator:body/>
 	<footer><!-- 사이트관련 내용 -->
 	<div id="container">
 		<div id="footerbody">
