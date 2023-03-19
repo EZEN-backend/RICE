@@ -408,27 +408,47 @@
 	// 검색바를 포함하고 있는 modal slideDown
 		// 클릭 이벤트 등록 , 모달창을 제외한 부분에 backdrop-filter 이용해서 blur
 
-		$(document).ready(function() {
-		  $('#vsearch').click(function() {
-		    $('#search_form').slideDown(200);
-		    $("#modal").fadeIn();
-		  });
+	$(document).ready(function() {
+	var isSearchFormShown = false;
 
-		  $("#csearch").click(function(){
-		        $("#search_form").slideUp(100);
-		        $("#modal").fadeOut();
-		    });
-
-		  // outside 클릭 이벤트 등록
-		  $(document).mouseup(function(e) {
-		    var container = $('#search_form');
-		    var modal = $('#modal');
-		    if (!container.is(e.target) && container.has(e.target).length == 0) {
-		      container.slideUp(100);
-		      modal.fadeOut();
-		    }
-		  });
+	$('#vsearch').click(function() {
+		$('#search_form').slideDown(200, function() {
+			isSearchFormShown = true;
+			$('html, body').css({
+				overflow: 'hidden', // searchbar가 열리면 overflow hidden으로 body태그가 전체를 가리게 끔 만들어서 scroll 막대 자체를 숨김
+				height: '100%'
+			});
 		});
+		$("#modal").fadeIn();
+	});
+
+		$("#csearch").click(function(){
+			$("#search_form").slideUp(100, function() {
+				isSearchFormShown = false;
+				$('html, body').css({
+					overflow: '', // searchbar가 사라지면 초기값으로 변환해서 스크롤 기능 돌려놓기
+					height: ''
+				});
+			});
+			$("#modal").fadeOut();
+
+			// 스크롤 이벤트를 방지하는 함수
+			$(document).on('scroll', function(e) {
+				if (isSearchFormShown) {
+					e.preventDefault();
+				}
+			});
+		});
+			  // outside 클릭 이벤트 등록
+	  $(document).mouseup(function(e) {
+		var container = $('#search_form');
+		var modal = $('#modal');
+		if (!container.is(e.target) && container.has(e.target).length == 0) {
+		  container.slideUp(100);
+		  modal.fadeOut();
+		}
+	  });
+	});
 
 
 		function view_sub()
