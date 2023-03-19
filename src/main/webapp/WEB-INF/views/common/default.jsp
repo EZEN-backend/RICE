@@ -516,8 +516,8 @@
 		</div>
 		<div id="right">
 			<c:if test="${useremail == null and naveremail == null}">
-			<a href="/users/signin">  매장찾기  </a> |
-			<a href="/users/signup">  고객센터  </a> |
+			<a href="#">  매장찾기  </a> |
+			<a href="#">  고객센터  </a> |
 			<a href ="/users/signin"> 가입하기 </a> |
 			<a href = "/users/signin"> 로그인 </a>
 			</c:if>
