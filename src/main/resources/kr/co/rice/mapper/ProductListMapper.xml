@@ -21,7 +21,7 @@
     <select id="detail" resultType="kr.co.rice.vo.ProductVo">
         select (select ceil(count(*)) from wishlists as wl where wl.product_id = p.id and user_id = #{param1}) as
         wish_count, (select image_url from products_images as pi where pi.product_id = p.id limit 1) as
-        image_url,sl.level as spicylevel, c.name as category_name, sc.name as subcategory_name, p.id, p.title, p.name,
+        image_url,sl.level as spicylevel, c.name as category_name, sc.name as subcategory_name, p.id, p.title,
         p.size, p.price, p.body, p.extra_detail from products as p
         inner join subcategories as sc on sc.id = p.subcategory_id
         inner join categories as c on c.id = sc.category_id
@@ -29,14 +29,14 @@
         where p.id = #{param2}
     </select>
     <select id="recommend_products" resultType="kr.co.rice.vo.ProductVo">
-        select (select image_url from products_images limit 1) as image_url, p.id, p.name, p.price, sc.name as
+        select (select image_url from products_images limit 1) as image_url, p.id, p.price, sc.name as
         subcategory_name from products as p
         inner join subcategories as sc on sc.id = p.subcategory_id
         order by p.views desc limit 10
     </select>
     <select id="getItems" resultType="kr.co.rice.vo.ProductVo">
         select sl.id as spicylevel_id, sl.level as spicylevel, sc.name as subcategory_name,
-        p.id, p.title, p.name, p.size, p.price, pi.image_url from products as p
+        p.id, p.title, p.size, p.price, pi.image_url from products as p
         inner join products_images as pi on pi.product_id = p.id
         inner join subcategories as sc on p.subcategory_id = sc.id
         inner join spicylevels as sl on p.spicylevel_id = sl.id

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/WEB-INF/views/common">
+
     <!-- 제외할 패턴 -->
     <excludes>
         <pattern>/non</pattern>
         <pattern>/admin/*</pattern>
+        <pattern>/admin</pattern>
         <pattern>/users/signin</pattern>
         <pattern>/users/signpwd</pattern>
         <pattern>/users/signup</pattern>
@@ -17,6 +19,8 @@
     <decorator name="mobileDefault" page="mobileDefault.jsp">
         <pattern>/m.*.do</pattern>
     </decorator>
+
+
 </decorators>
 
  

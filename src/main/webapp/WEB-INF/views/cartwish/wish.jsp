@@ -385,9 +385,9 @@
             <div class="popup" id="title1"></div>
             <div class="popup">사이즈&nbsp;
                 <select style="font-size: 13px" id="size_option">
-                   <option value="S">S</option>
-                   <option value="M">M</option>
-                   <option value="L">L</option>
+                   <option value="S">소</option>
+                   <option value="M">중</option>
+                   <option value="L">대</option>
                 </select>
             </div>
             <div class="popup">맵&nbsp;&nbsp;&nbsp;기&nbsp;

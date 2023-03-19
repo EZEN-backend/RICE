@@ -218,7 +218,7 @@
 	   totalPrice=Math.ceil(totalPrice/100)*100; //100자리에서 올림	
 	   //구매총액이 5만원 이상이면 무료배송, 아니면 배송비 5,000원
 	   var deliveryFee=0; //배송비
-	   if(totalPrice < 50000) {
+	   if(totalPrice > 0 && totalPrice < 50000) {
 		   deliveryFee=5000;
 		   //배송비 표시 영역에 배송비 표시
 		   document.getElementById("delivery_fee").innerText="5,000원";
@@ -226,6 +226,9 @@
 		   var morePurchase=50000-totalPrice; //무료배송 위한 추가구매금액
 		   document.getElementById("more_purchase").innerText=comma(morePurchase)+"원";
 		   document.querySelector(".deliveryPolicy.hide").style.display="block";
+	   } else if(totalPrice==0) {
+		   deliveryFee=0;
+		   document.querySelector(".deliveryPolicy.hide").style.display="none";
 	   } else {
 		   deliveryFee=0;
 		   document.getElementById("delivery_fee").innerText="무료배송";
@@ -406,9 +409,9 @@
                   <!--   상품 사이즈 -->
                     <div style="height:15px; margin-top:10px">사이즈&nbsp;
                         <select  class="size">
-                            <option value="S">S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
+                            <option value="S">소</option>
+                            <option value="M">중</option>
+                            <option value="L">대</option>
                         </select>
                     </div>
                     <!-- 상품 맵기단계 -->
