@@ -22,10 +22,6 @@
 	var timer = null;
 // 스크롤 이벤트 발동!
 $(window).scroll(function(){
-    //console.log(search);
-    //console.log(category);
-	//console.log(subcategory);
-	
     // 현재 스크롤의 위치를 scrT 라는 변수안에 저장
     var scrT = $(window).scrollTop();
     // 현재스크롤위치(scrT) == 페이지 전체높이 - 브라우저창의 높이가 350이하 일때 실행
@@ -62,16 +58,16 @@ $(window).scroll(function(){
                     {
                         var productHtml = '<div class="product-item '+list[i].size+' '+list[i].spicylevel_id+' ';
                         
-                        if (parseFloat(list[i].price) <= 50000) {
+                        if (parseFloat(list[i].price) <= 15000) {
                             productHtml += 'low';
-                        } else if (parseFloat(list[i].price) > 50000 && parseFloat(list[i].price) <= 100000) {
+                        } else if (parseFloat(list[i].price) > 15000 && parseFloat(list[i].price) <= 30000) {
                             productHtml += 'middle';
                         } else {
                             productHtml += 'high';
                         }
                         // 문자열 이어줄때 실수한게 끝부분에 '+ 까지 적어둔 다음에 밑에줄에 적을때 ' 로 다시 이어줘야 하는거야 까먹지말자 주냥아
                         productHtml += '"><div class="item"><div class="item_body"><figure><a class="item_card" href="/products/detail/'+list[i].id+'">'+
-                        '<div class="item_img"><img class="image" src="/resources/img/'+list[i].image_url+'" width="100%" height="490"></div><div class="item_info">'+
+                        '<div class="item_img"><img class="image" src="'+list[i].image_url+'" width="100%" height="490"></div><div class="item_info">'+
                         '<div class="item_titles"><div class="item_title">'+list[i].title+'</div><div class="item_subtitle">'+list[i].subcategory_name+'</div></div>'+
                         '<div class="item_spicy_level">'+list[i].spicylevel+'</div><div class="item_size">'+list[i].size+'</div><div class="item_price">'+parseFloat(list[i].price).toLocaleString()+'원</div></div></a></figure></div></div></div>';
                        
@@ -341,9 +337,9 @@ $(window).scroll(function(){
 							</div>
 						</div>
 						<div class="filters">
-							<input type="checkbox" value=".low">0~50,000원 <p>
-							<input type="checkbox" value=".middle">50,000 ~ 100,000원 <p>
-							<input type="checkbox" value=".high">100,000원 이상 상품 <p>
+							<input type="checkbox" value=".low">0~15,000원 <p>
+							<input type="checkbox" value=".middle">15,000 ~ 30,000원 <p>
+							<input type="checkbox" value=".high">30,000원 이상 상품 <p>
 						</div>
 					</div>
 
@@ -397,7 +393,7 @@ $(window).scroll(function(){
                                 <figure>
                                     <a class="item_card" href="/products/views/${list.id}">
                                         <div class="item_img">
-                                            <img class="image" src="/resources/img/${list.image_url}" width="100%" height="490">
+                                            <img class="image" src="${list.image_url}" width="100%" height="490">
                                         </div>
                                         <div class="item_info">
                                             <div class="item_titles">

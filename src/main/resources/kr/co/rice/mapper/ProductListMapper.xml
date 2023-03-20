@@ -4,13 +4,13 @@
         "http://mybatis.org/dtd/mybats-3-mapper.dtd">
 <mapper namespace="kr.co.rice.mapper.ProductListMapper">
     <select id="category_list" resultType="kr.co.rice.vo.ProductVo">
-        select pi.image_url, c.id as category_id, c.name as category_name, sc.id as subcategory_id, sc.name as
-        subcategory_name, p.* from products p
-        inner join subcategories as sc on sc.id = p.subcategory_id
-        inner join categories as c on c.id = sc.category_id
-        inner join products_images as pi on pi.product_id = p.id
-        where sc.category_id = #{param1} and p.subcategory_id = #{param2}
-        limit 6
+        select p.id, p.title, p.size, p.price, p.calory, sc.id as subcategory_id,
+        sc.name as subcategory_name, c.id as category_id, c.name as category_name
+        ,(select image_url from products_images pi where pi.product_id = p.id limit 1) as image_url
+        from products p
+        inner join subcategories sc on sc.id = p.subcategory_id
+        inner join categories c on c.id = sc.category_id
+        where sc.category_id = #{param1} and p.subcategory_id = #{param2} limit 12
     </select>
     <update id="product_views">
         update products set views = views + 1 where id = #{param}
@@ -19,13 +19,12 @@
         select * from products_images where product_id = #{param}
     </select>
     <select id="detail" resultType="kr.co.rice.vo.ProductVo">
-        select (select ceil(count(*)) from wishlists as wl where wl.product_id = p.id and user_id = #{param1}) as
-        wish_count, (select image_url from products_images as pi where pi.product_id = p.id limit 1) as
-        image_url,sl.level as spicylevel, c.name as category_name, sc.name as subcategory_name, p.id, p.title,
-        p.size, p.price, p.body, p.extra_detail from products as p
-        inner join subcategories as sc on sc.id = p.subcategory_id
-        inner join categories as c on c.id = sc.category_id
-        inner join spicylevels as sl on sl.id = p.spicylevel_id
+        select p.id, p.price, p.title, p.body, p.size, sc.name as subcategory_name, sl.level as spicylevel,
+        (select ceil(count(*)) from wishlists w where w.product_id = p.id and w.user_id = #{param1}) as wish_count,
+        (select image_url from products_images pi where pi.product_id = p.id limit 1 ) as image_url
+        from products p
+        inner join spicylevels sl on sl.id = p.spicylevel_id
+        inner join subcategories sc on sc.id = p.subcategory_id
         where p.id = #{param2}
     </select>
     <select id="recommend_products" resultType="kr.co.rice.vo.ProductVo">

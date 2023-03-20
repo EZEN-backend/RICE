@@ -358,7 +358,7 @@
                 <input class="price" type="hidden" value="${item.price }">
                 <input class="subcategory" type="hidden" value="${item.subcategory }">
                 
-                <div ><a href="/products/detail/${item.product_id}"><img class="img_product" src="/resources/img/${item.product_img}"></a>
+                <div ><a href="/products/detail/${item.product_id}"><img class="img_product" src="${item.product_img}"></a>
                     <div class="img_heart"  ><i class="fa-solid fa-heart fa-2x img_img" ></i></div>
                 </div>
                 <div style="font-size:15px; font-weight:550">${item.title }

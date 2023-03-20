@@ -5,13 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="kr.co.rice.mapper.SearchMapper">
 	<select id="list" resultType="kr.co.rice.vo.ProductVo">
-		select sl.id as spicylevel_id, sl.level as spicylevel, sc.name as subcategory_name,
-		p.id, p.title, p.name, p.size, p.price, pi.image_url from products as p
-		inner join products_images as pi on pi.product_id = p.id
-		inner join subcategories as sc on p.subcategory_id = sc.id
-		inner join spicylevels as sl on p.spicylevel_id = sl.id
-		where p.title like concat('%',#{param},'%') order by p.id desc
-		limit 6
+		select p.id, p.title, p.size, p.price, p.calory, sc.id as subcategory_id,
+		sc.name as subcategory_name, c.id as category_id, c.name as category_name
+		,(select image_url from products_images pi where pi.product_id = p.id limit 1) as image_url
+		from products p
+		inner join subcategories sc on sc.id = p.subcategory_id
+		inner join categories c on c.id = sc.category_id
+		where p.title like concat('%', #{param}, '%') or sc.name like concat('%', #{param}, '%') order by p.id desc
 	</select>
 	
 	<select id="getItems" resultType="kr.co.rice.vo.ProductVo">

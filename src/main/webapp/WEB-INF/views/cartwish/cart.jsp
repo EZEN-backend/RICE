@@ -388,7 +388,7 @@
                             
               <div style="display:flex; margin-top:10px">       
                  <div style="flex-basis:3%"><input type="checkbox" class="csub" onclick="subcheck()" value="${item.cartId}" checked></div>
-                 <div style="flex-basis:25%"><a href="/products/detail/${item.product_id}"><img src="/resources/img/${item.product_img}" width="140" height="140"></a></div>
+                 <div style="flex-basis:25%"><a href="/products/detail/${item.product_id}"><img src="${item.product_img}" width="140" height="140"></a></div>
                  <div style="flex-basis:72%; margin-left:5px">
                      <%--상품명과 가격--%>
                     <div style="height:50px">

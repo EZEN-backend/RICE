@@ -606,10 +606,9 @@
 		<ul>
 			<li class="subcate-container">
 				<a href="/products/1/1">찜/탕</a><p>
-				<a href="/products/1/2">반찬</a><p>
 				<a href="/products/1/3">볶음류</a><p>
 				<a href="/products/1/4">구이</a><p>
-				<a href="/products/1/5">치킨</a>
+				<a href="/products/1/5">치킨</a></p>
 				<a href="/products/1/6">기타/분식</a>
 			</li>
 			<li class="subcate-container">

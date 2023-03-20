@@ -636,18 +636,18 @@
                 $('.size-title').css('color', 'inherit');
                 $('.sizeInput').prop('checked', false).parent().removeClass('active');
                 $(this).prop('checked', true).parent().addClass('active');
-                size = $('input[name=productSize]:checked').next('label').text();
+                size = $('input[name=productSize]:checked').attr('id');
                 if ($('.spicyInput:checked').length === 1) {
                     $('.warningText').remove();
                     $('.button-box').css('margin', '0px');
                 } else {
                     $('.warningText').text('맵기를 선택하세요');
                 }
-                if (size == "중") {
+                if (size == "M") {
                     price =
                     ${pvo.price} *
                     1.2;
-                } else if (size == "대") {
+                } else if (size == "L") {
                     price =
                     ${pvo.price} *
                     1.4;
@@ -829,7 +829,7 @@
                                     <div class="images">
                                         <c:forEach items="${imglist}" var="image" varStatus="count">
                                             <div class="imagesContainer">
-                                                <img src="/resources/img/${image.image_url}">
+                                                <img src="${image.image_url}">
                                             </div>
                                         </c:forEach>
                                     </div>
@@ -839,7 +839,7 @@
                                 <div class="detail-text-wrapper">
                                     <div class="detail-information">
                                         <div class="detail-titles">
-                                            <h1 class="title-text">${pvo.name}</h1>
+                                            <h1 class="title-text">${pvo.title}</h1>
                                             <h2 class="subtitle-text">${pvo.subcategory_name}</h2>
                                             <div class="detail-product-price">
                                                 <fmt:formatNumber value="${pvo.price}" pattern="###,###,###"/>원
@@ -855,19 +855,19 @@
                                                         </legend>
                                                         <div class="sizeContainer">
                                                             <div>
-                                                                <input id="sSize" name="productSize" type="radio"
+                                                                <input id="S" name="productSize" type="radio"
                                                                        class="sizeInput">
-                                                                <label for="sSize" class="sizeBox">소</label>
+                                                                <label for="S" class="sizeBox">소</label>
                                                             </div>
                                                             <div>
-                                                                <input id="mSize" name="productSize" type="radio"
+                                                                <input id="M" name="productSize" type="radio"
                                                                        class="sizeInput">
-                                                                <label for="mSize" class="sizeBox">중</label>
+                                                                <label for="M" class="sizeBox">중</label>
                                                             </div>
                                                             <div>
-                                                                <input id="lSize" name="productSize" type="radio"
+                                                                <input id="L" name="productSize" type="radio"
                                                                        class="sizeInput">
-                                                                <label for="lSize" class="sizeBox">대</label>
+                                                                <label for="L" class="sizeBox">대</label>
                                                             </div>
                                                         </div>
                                                     </fieldset>
@@ -1038,7 +1038,7 @@
                                                             <div class="recommend-item-image-container">
                                                                 <div class="recommend-item-image">
                                                                     <picture>
-                                                                        <img src="/resources/img/${items.image_url}">
+                                                                        <img src="${items.image_url}">
                                                                     </picture>
                                                                 </div>
                                                             </div>
@@ -1087,10 +1087,10 @@
                             </div>
                             <div class="modalInfo">
                                 <div class="info-img">
-                                    <img src="/resources/img/${pvo.image_url}">
+                                    <img src="${pvo.image_url}">
                                 </div>
                                 <div class="info-detail">
-                                    <p class="detail-name">${pvo.name} </p>
+                                    <p class="detail-name">${pvo.title} </p>
                                     <p class="detail-subname">${pvo.subcategory_name}</p>
                                     <p class="detail-size"></p>
                                     <p class="detail-spicy"></p>

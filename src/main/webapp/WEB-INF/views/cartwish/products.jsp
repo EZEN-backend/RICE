@@ -112,7 +112,7 @@
       <c:forEach var="item" items="${productList}">
       
       <div class="item" style="margin: 40px 40px 0 0">
-        <div ><img  src="/resources/cart-img/${item.product_img}" style="width:100px"></div>
+        <div ><img  src="${item.product_img}" style="width:100px"></div>
         <div style="font-size:15px; font-weight:550">${item.title }</div>
         <div>${item.price}원</div>
         <div >${item.subcategory }</div>

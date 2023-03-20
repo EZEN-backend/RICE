@@ -674,7 +674,7 @@
                 <c:forEach var="item" items="${cartList }">
                     <div class="mini-item-info">
                         <div class="item-picture">
-                            <div><img src="/resources/img/${item.product_img}" width="120" height="120"></div>
+                            <div><img src="${item.product_img}" width="120" height="120"></div>
                         </div>
                         <div class="item-info">
                             <div class="title"> ${item.title } </div>
