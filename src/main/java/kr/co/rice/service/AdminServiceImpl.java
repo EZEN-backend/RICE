@@ -72,6 +72,8 @@ public class AdminServiceImpl implements AdminService {
 				//전송을 위해 임시 저장했던 was 서버에 남은 파일은 삭제시킴
 				removeFile(file);
 
+				System.out.println("image_url = " + image_url);
+
 				//DB의 products_images 테이블에 product_id와 image_url을 저장
 				mapper.insertImgUrl(product_id, image_url);
 			}
@@ -98,6 +100,7 @@ public class AdminServiceImpl implements AdminService {
 
 	//서버로 전송된 이미지 파일을 S3 서버에 저장하고 img_url 을 받아오는 메서드
 	private String getImgUrl(File file, String s3Filename) throws IOException {
+
 		//s3 bucket에 이미지 저장
 		amazonS3.putObject(bucket, s3Filename, file);
 		//저장된 이미지 url 받아옴

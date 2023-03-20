@@ -3,6 +3,7 @@ target/
 .DS_Store
 rice.iml
 application.yml
+application.properties
 
 src/main/webapp/META-INF/
 src/main/webapp/WEB-INF/lib/

@@ -617,6 +617,12 @@
         $(document).ready(function () {
 
             let product_id = ${pvo.id};
+
+            alert("product_id="+product_id);
+            alert("price="+price);
+
+
+
             let price = ${pvo.price};
             let size = "";
             let spicy = "";

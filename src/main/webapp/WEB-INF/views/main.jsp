@@ -187,10 +187,10 @@
 	</style>
 </head>
 <body>
-	<div id="third"> 
-	반품 및 환불 지연 안내<p>
-	<a href="" style="font-size:13px">자세히 보기</a>
-	</div>
+<div id="third">
+	<div>반품 및 환불 지연 안내</div>
+	<div style="margin-top: 8px"><a href="" style="font-size:13px">자세히 보기</a></div>
+</div>
 	<div id="mimage">
 		<div id="msub">
 			<img src="/resources/img/googi.jpeg" width="1920" height="1000">

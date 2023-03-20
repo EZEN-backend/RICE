@@ -45,7 +45,7 @@
 
     <!-- 장바구니 테이블에서 cartId를 통해서 데이터 가져오기 -->
     <select id="getCartsByCartId" resultType="HashMap">
-        select (select image_url from products_images as pi where pi.product_id = c.product_id order by pi.id limit 1)
+        select (select image_url from products_images as pi where pi.product_id = c.product_id limit 1)
         as product_img,
         c.quantity, c.size, c.spicy, adddate(curdate(),3) as deliveryDay,
         p.title, ca.name as subcategory
