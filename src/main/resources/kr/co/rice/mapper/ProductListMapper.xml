@@ -10,6 +10,7 @@
         inner join subcategories as sc on sc.id = p.subcategory_id
         inner join categories as c on c.id = sc.category_id
         where sc.category_id = #{param1} and p.subcategory_id = #{param2}
+
     </select>
     <update id="product_views">
         update products set views = views + 1 where id = #{param}
@@ -17,15 +18,18 @@
     <select id="getProductImage" resultType="kr.co.rice.vo.ProductImagesVo">
         select * from products_images where product_id = #{param}
     </select>
-    <select id="detail" resultType="kr.co.rice.vo.ProductVo">
-        select (select ceil(count(*)) from wishlists as wl where wl.product_id = p.id and user_id = #{param1}) as
-        wish_count, (select image_url from products_images as pi where pi.product_id = p.id limit 1) as
-        image_url,sl.level as spicylevel, c.name as category_name, sc.name as subcategory_name, p.id, p.title,
-        p.size, p.price, p.body, p.extra_detail from products as p
-        inner join subcategories as sc on sc.id = p.subcategory_id
-        inner join categories as c on c.id = sc.category_id
-        inner join spicylevels as sl on sl.id = p.spicylevel_id
-        where p.id = #{param2}
+    <select id="detail" resultType="HashMap">
+        select
+           (select count(*) from wishlists as wl where wl.product_id = p.id and wl.user_id = #{param1})
+           as wish_count,
+           (select image_url from products_images as pi where pi.product_id = p.id limit 1)
+           as image_url,
+           sl.level as spicylevel, c.name as category_name, sc.name as subcategory_name,
+           p.id, p.title, p.size, p.price, p.body, p.extra_detail
+
+           from products as p, categories as c, subcategories as sc, spicylevels as sl
+           where p.subcategory_id=sc.id and p.spicylevel_id=sl.id and sc.category_id=c.id
+           and p.id = #{param2}
     </select>
     <select id="recommend_products" resultType="kr.co.rice.vo.ProductVo">
         select (select image_url from products_images limit 1) as image_url, p.id, p.price, sc.name as
@@ -45,7 +49,7 @@
 
     <!-- 장바구니 테이블에서 cartId를 통해서 데이터 가져오기 -->
     <select id="getCartsByCartId" resultType="HashMap">
-        select (select image_url from products_images as pi where pi.product_id = c.product_id order by pi.id limit 1)
+        select (select image_url from products_images as pi where pi.product_id = c.product_id limit 1)
         as product_img,
         c.quantity, c.size, c.spicy, adddate(curdate(),3) as deliveryDay,
         p.title, ca.name as subcategory

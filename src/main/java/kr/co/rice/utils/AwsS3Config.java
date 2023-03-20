@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
 
-
+@PropertySource("classpath:application.properties")
 @Configuration
 public class AwsS3Config {
 
@@ -31,10 +32,13 @@ public class AwsS3Config {
 
     @Bean
     public AmazonS3 amazonS3(BasicAWSCredentials basicAWSCredentials) {
+
         return AmazonS3ClientBuilder.standard()
                 .withRegion(region)
                 .withCredentials(new AWSStaticCredentialsProvider(basicAWSCredentials))
                 .build();
+
+
    }
 
 }
