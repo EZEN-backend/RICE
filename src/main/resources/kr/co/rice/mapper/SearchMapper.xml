@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="kr.co.rice.mapper.SearchMapper">
 	<select id="list" resultType="kr.co.rice.vo.ProductVo">
 		select sl.id as spicylevel_id, sl.level as spicylevel, sc.name as subcategory_name,
-		p.id, p.title, p.name, p.size, p.price, pi.image_url from products as p
+		p.id, p.title, p.size, p.price, pi.image_url from products as p
 		inner join products_images as pi on pi.product_id = p.id
 		inner join subcategories as sc on p.subcategory_id = sc.id
 		inner join spicylevels as sl on p.spicylevel_id = sl.id
@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getItems" resultType="kr.co.rice.vo.ProductVo">
 		select sl.id as spicylevel_id, sl.level as spicylevel, sc.name as subcategory_name,
-		p.id, p.title, p.name, p.size, p.price, pi.image_url from products as p
+		p.id, p.title, p.size, p.price, pi.image_url from products as p
 		inner join products_images as pi on pi.product_id = p.id
 		inner join subcategories as sc on p.subcategory_id = sc.id
 		inner join spicylevels as sl on p.spicylevel_id = sl.id
