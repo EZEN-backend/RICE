@@ -4,13 +4,12 @@
         "http://mybatis.org/dtd/mybats-3-mapper.dtd">
 <mapper namespace="kr.co.rice.mapper.ProductListMapper">
     <select id="category_list" resultType="kr.co.rice.vo.ProductVo">
-        select pi.image_url, c.id as category_id, c.name as category_name, sc.id as subcategory_id, sc.name as
-        subcategory_name, p.* from products p
+        select (select image_url from products_images as pi where pi.product_id = p.id order by pi.id limit 1) as image_url,
+        c.id as category_id, c.name as category_name, sc.id as subcategory_id, sc.name as subcategory_name, p.*
+        from products as p
         inner join subcategories as sc on sc.id = p.subcategory_id
         inner join categories as c on c.id = sc.category_id
-        inner join products_images as pi on pi.product_id = p.id
         where sc.category_id = #{param1} and p.subcategory_id = #{param2}
-        limit 6
     </select>
     <update id="product_views">
         update products set views = views + 1 where id = #{param}

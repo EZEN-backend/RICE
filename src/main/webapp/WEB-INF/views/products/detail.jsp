@@ -829,7 +829,7 @@
                                     <div class="images">
                                         <c:forEach items="${imglist}" var="image" varStatus="count">
                                             <div class="imagesContainer">
-                                                <img src="/resources/img/${image.image_url}">
+                                                <img src="${image.image_url}">
                                             </div>
                                         </c:forEach>
                                     </div>

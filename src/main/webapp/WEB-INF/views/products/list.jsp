@@ -397,7 +397,7 @@ $(window).scroll(function(){
                                 <figure>
                                     <a class="item_card" href="/products/views/${list.id}">
                                         <div class="item_img">
-                                            <img class="image" src="/resources/img/${list.image_url}" width="100%" height="490">
+                                            <img class="image" src="${list.image_url}" width="100%" height="490">
                                         </div>
                                         <div class="item_info">
                                             <div class="item_titles">
