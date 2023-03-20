@@ -55,9 +55,17 @@ public class ProductListServiceImpl implements ProductListService {
                 user_id = session.getAttribute("naveremail").toString();
             }
         }
-        ProductVo pvo = mapper.detail(user_id, product_id);
+        System.out.println("user_id=" + user_id);
+
+        HashMap<String,Object> pvo= mapper.detail(user_id, product_id);
         ArrayList<ProductVo> recommend_pvo = mapper.recommend_products();
         ArrayList<ProductImagesVo> imglist = mapper.getProductImage(product_id);
+
+        System.out.println("product_id = " + product_id);
+        System.out.println(" pvo= " + pvo );
+        System.out.println("recommend_pvo = " + recommend_pvo);
+        System.out.println("imglist = " + imglist);
+
         model.addAttribute("recommend_pvo", recommend_pvo);
         model.addAttribute("imglist", imglist);
         model.addAttribute("pvo", pvo);

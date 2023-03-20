@@ -617,6 +617,12 @@
         $(document).ready(function () {
 
             let product_id = ${pvo.id};
+
+            alert("product_id="+product_id);
+            alert("price="+price);
+
+
+
             let price = ${pvo.price};
             let size = "";
             let spicy = "";
@@ -829,7 +835,7 @@
                                     <div class="images">
                                         <c:forEach items="${imglist}" var="image" varStatus="count">
                                             <div class="imagesContainer">
-                                                <img src="/resources/img/${image.image_url}">
+                                                <img src="${image.image_url}">
                                             </div>
                                         </c:forEach>
                                     </div>

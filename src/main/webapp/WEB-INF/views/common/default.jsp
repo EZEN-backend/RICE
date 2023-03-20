@@ -562,8 +562,8 @@
 	                </c:when>
 	                
 	                <c:otherwise>
-				        <span id="mymenu"> <a href="#" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">MyPage</a> 
-					    <ul id="mysub" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()">
+				        <span id="mymenu" onmouseover="javascript:view_sub()" onmouseout="javascript:out_sub()"> <a href="#">MyPage</a>
+					    <ul id="mysub">
 						    <li> <a href="/users/userview">회원정보</a> </li>
 						    <li> 주문목록 </li>		
 						    <li> 적 립 금 </li>				
