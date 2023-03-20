@@ -15,7 +15,7 @@ public interface ProductListMapper {
 
     public void product_views(int product_id);
 
-    public HashMap<String,Object> detail(String user_id, int product_id);
+    public ProductVo detail(String user_id, int product_id);
 
     public ArrayList<ProductImagesVo> getProductImage(int product_id);
 

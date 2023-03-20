@@ -615,14 +615,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
         $(document).ready(function () {
-
             let product_id = ${pvo.id};
-
-            alert("product_id="+product_id);
-            alert("price="+price);
-
-
-
             let price = ${pvo.price};
             let size = "";
             let spicy = "";
@@ -712,8 +705,6 @@
                                 $('.wish-btn').css('display', 'none');
                                 $('.order-btn').css('display', '');
                                 $('.cart-btn').css('display', '');
-                                console.log(size);
-                                console.log(spicy);
                             }
                         },
                         error: function () {
@@ -730,9 +721,6 @@
                     $('.button-box').css('margin', '35px 0px 50px 0px');
                     $('.spicyContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
                     $('.spicy-title').css('color', 'rgb(212, 63, 33)');
-                    console.log(size + ' else if');
-                    console.log(spicy + ' else if');
-
                 } else if ($('.spicyInput:checked').length > 0) {
                     // 맵기가 체크되지 않았을 떄
                     event.preventDefault();
@@ -741,8 +729,6 @@
                     $('.button-box').css('margin', '35px 0px 50px 0px');
                     $('.sizeContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
                     $('.size-title').css('color', 'rgb(212, 63, 33)');
-                    console.log(size + ' else if else');
-                    console.log(spicy + ' else if else');
                 } else {
                     //사이즈와 스파이스 체크 안되었을 떄
                     event.preventDefault();
@@ -753,8 +739,6 @@
                     $('.sizeContainer').css('box-shadow', 'rgb(212, 63, 33) 0px 0px 0px 1px');
                     $('.spicy-title').css('color', 'rgb(212, 63, 33)');
                     $('.size-title').css('color', 'rgb(212, 63, 33)');
-                    console.log(size + ' else');
-                    console.log(spicy + ' else');
                 }
             });
 
