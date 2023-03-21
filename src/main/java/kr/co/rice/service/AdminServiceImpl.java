@@ -7,6 +7,7 @@ import java.util.UUID;
 
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -61,16 +62,20 @@ public class AdminServiceImpl implements AdminService {
 
 				//파일명을 s3에 저장하기 위한 파일명으로 전환
 				String originalFilename = multipartFile.getOriginalFilename();
-				String s3Filename = "riceimg/" + UUID.randomUUID().toString() + "-" + originalFilename;
+				String s3Filename = UUID.randomUUID().toString() + "-" + originalFilename;
 
+				ObjectMetadata objectMetadata = new ObjectMetadata();
+				objectMetadata.setContentLength(multipartFile.getInputStream().available());
+
+				amazonS3.putObject(bucket, s3Filename, multipartFile.getInputStream(),objectMetadata);
 				//multipart 형태의 file을 s3 저장을 위한 file 형태로 전환
-				File file = convertMultipartFileToFile(multipartFile);
+//				File file = convertMultipartFileToFile(multipartFile);
 
 				//파일명과 파일을 s3 전송을 위한 메소드로 보내고, 결과값인 저장된 url을 리턴 받음
-				String image_url = getImgUrl(file, s3Filename);
+				String image_url = amazonS3.getUrl(bucket, s3Filename).toString();
 
 				//전송을 위해 임시 저장했던 was 서버에 남은 파일은 삭제시킴
-				removeFile(file);
+//				removeFile(file);
 
 				System.out.println("image_url = " + image_url);
 
