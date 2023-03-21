@@ -638,6 +638,7 @@
                 size = $('input[name=productSize]:checked').attr('id');
                 if ($('.spicyInput:checked').length === 1) {
                     $('.warningText').remove();
+                    $('.button-box').css('margin', '0px 0px 50px 0px');
                 } else {
                     $('.warningText').text('맵기를 선택하세요');
                 }
@@ -660,7 +661,7 @@
                 $('.spicy-title').css('color', 'inherit');
                 if ($('.sizeInput:checked').length === 1) {
                     $('.warningText').remove();
-                    $('.button-box').css('margin', '35px 0px 50px 0px');
+                    $('.button-box').css('margin', '0px 0px 50px 0px');
                 } else {
                     $('.warningText').text('사이즈를 선택하세요');
                 }
@@ -670,11 +671,12 @@
             });
 
             if ($('.sizeInput:checked').length > 0 && $('.spicyInput:checked').length > 0) {
+                    $('.button-box').css('margin', '0px 0px 50px 0px');
                 $('.warningText').remove();
             }
             $(".cartButton").on("click", function () {
                 if ($('.sizeInput:checked').length > 0 && $('.spicyInput:checked').length > 0) {
-                    $('.button-box').css('margin', '35px 0px 50px 0px');
+                    $('.button-box').css('margin', '0px 0px 50px 0px');
                     $.ajax({
                         type: "GET",
                         url: "/cartBtn?product_id=" + product_id + "&size=" + size + "&spicy=" + spicy,
